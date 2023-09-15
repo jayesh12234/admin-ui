@@ -3,12 +3,14 @@ package io.mosip.testrig.adminui.utility;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -426,6 +428,39 @@ public class Commons  extends BaseClass{
 	return preappend;
 	  }
 	
-	
+	public static void calendar(String date) {
+		String a=date.replaceAll("/","");
+	    String mon="";
+	    if(a.substring(0,2).equals("10")) {
+	    	 mon=	a.substring(0,2);
+	    }else {
+	    	 mon=a.substring(0,2).replace("0","");
+	    }
+	  String d="";
+	  if(a.substring(2,4).equals("10") || a.substring(2,4).equals("20")||a.substring(2,4).equals("30")) {
+		  d=a.substring(2,4);
+	  }else {
+	 	 d=a.substring(2,4).replace("0","");
+	 }
+
+	    int month=Integer.parseInt(mon)  ;
+	    int day=Integer.parseInt(d);
+	    int year=Integer.parseInt(a.substring(4,8));
+	    try {
+	    Commons.click(test,driver,By.xpath("//*[@class='mat-datepicker-toggle']//button"));
+	    Thread.sleep(500);
+	    Commons.click(test,driver,By.xpath("//*[@class='mat-calendar-arrow']"));
+	    Thread.sleep(500);
+	    Commons.click(test,driver,By.xpath("//*[text()='"+year+"']"));
+	    Thread.sleep(500);
+	  List<WebElement> cli=  driver.findElements(By.xpath("//*[@class='mat-calendar-body-cell-content']"));
+	  cli.get(month-1).click();
+	  Thread.sleep(500);
+	  Commons.click(test,driver,By.xpath("//*[text()='"+day+"']"));
+	    }catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

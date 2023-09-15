@@ -47,8 +47,8 @@ public class DeviceTest extends BaseClass{
 	   test.log(Status.INFO, "Enters MACAddress");
  
 	   Commons.enter(test,driver, By.id("ipAddress"),"2.2345");
-	   Commons.enter(test,driver, By.id("validity"),validityDate);
-      
+	//   Commons.enter(test,driver, By.id("validity"),validityDate);
+      Commons.calendar(validityDate);
     Commons.dropdown(test,driver,By.id("deviceSpecId"));
     // Commons.dropdown(test,driver,By.id("zone"));
       Commons.dropdown(test,driver,By.id("regCenterId"));

@@ -21,7 +21,20 @@ public class Screenshot  {
 	public static String  ClickScreenshot(WebDriver driver) throws IOException {
 		TakesScreenshot ss=(TakesScreenshot)driver;
 		File so=ss.getScreenshotAs(OutputType.FILE);
-		String path=System.getProperty("user.dir")+"/Screenshots/"+System.currentTimeMillis()+".png";
+		String path=null;
+		
+		if (TestRunner.checkRunType().equalsIgnoreCase("JAR")) {
+			path = TestRunner.getResourcePath()+"/Screenshots/"+System.currentTimeMillis()+".png";
+		} else if (TestRunner.checkRunType().equalsIgnoreCase("IDE")) {
+
+        
+			path = System.getProperty("user.dir") + System.getProperty("path.config")+ "/Screenshots/"+System.currentTimeMillis()+".png";
+		}
+		
+		
+		
+		
+	//	String path=System.getProperty("user.dir")+"/resources/Screenshots/"+System.currentTimeMillis()+".png";
 		File des=new File(path);
 		FileHandler.copy(so, des);
 		FileInputStream fis=new FileInputStream(path);

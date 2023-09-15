@@ -51,7 +51,7 @@ import org.testng.annotations.Test;
 
 public class BaseClass {
 	private static final Logger logger = Logger.getLogger(TestRunner.class);
-	protected WebDriver driver;
+	protected static WebDriver driver;
 	protected Map<String, Object> vars;
 	protected JavascriptExecutor js;
 	protected String langcode;
@@ -88,14 +88,17 @@ public class BaseClass {
 		   test=extent.createTest(getCommitId(),getCommitId());
 		  
 		ChromeOptions options = new ChromeOptions();
+		
 		String headless=JsonUtil.JsonObjParsing(Commons.getTestData(),"headless");
 		
 	
 		if(headless.equalsIgnoreCase("yes")) {
 			options.addArguments("--headless=new");
 		}
-		WebDriverManager.chromedriver().setup();
-		driver=new ChromeDriver(options);
+	
+	WebDriverManager.chromedriver().setup();
+	driver=new ChromeDriver(options);
+		 
 		
 //		
 		js = (JavascriptExecutor) driver;

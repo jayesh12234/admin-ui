@@ -46,7 +46,8 @@ public class MachineTest extends BaseClass{
     Commons.enter(test,driver,By.id("macAddress"),"1.2.3.4.5.6");
     Commons.enter(test,driver,By.id("ipAddress"),"2.3.4.5.6");
     test.log(Status.INFO, "ENter IpAddress");
-    Commons.enter(test,driver,By.id("validity"),holidayDateCenter);
+ //   Commons.enter(test,driver,By.id("validity"),holidayDateCenter);
+    Commons.calendar(holidayDateCenter);
     Commons.dropdown(test,driver,By.id("machineSpecId"));
     Commons.enter(test,driver,By.id("publicKey"),publicKey);
     		

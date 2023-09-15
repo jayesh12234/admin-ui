@@ -89,7 +89,8 @@ public class CenterTest extends BaseClass{
     Commons.click(test,driver,By.cssSelector(".mat-list-item:nth-child(4) > .mat-list-item-content"));
     Commons.click(test,driver,By.cssSelector(".mat-list-item:nth-child(5) > .mat-list-item-content"));
     
-    Commons.enter(test,driver,By.id("holidayDate"),holidayDate);
+  //  Commons.enter(test,driver,By.id("holidayDate"),holidayDate);
+    Commons.calendar(holidayDate);
     Commons.click(test,driver, By.id("createExceptionalHoliday"));
     test.log(Status.INFO, "Click on Exceptional Holiday");
     

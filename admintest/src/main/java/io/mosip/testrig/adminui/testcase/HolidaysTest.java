@@ -1,6 +1,7 @@
 package io.mosip.testrig.adminui.testcase;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -48,7 +49,8 @@ public class HolidaysTest extends BaseClass{
   
     Commons.enter(test,driver,By.id("holidayName"),data);
     Commons.enter(test,driver,By.id("holidayDesc"),data);
-    Commons.enter(test,driver,By.id("holidayDate"),holidayDate);
+  //  Commons.enter(test,driver,By.id("holidayDate"),holidayDate);
+   Commons.calendar(holidayDate);
     test.log(Status.INFO, "Click on Enters HolidayDate");
     Commons.dropdown(test,driver,By.id("locationCode"));
         
