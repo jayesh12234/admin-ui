@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="29" total="43" passed="10" failed="4" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[centerCRUD]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+    <line>
+      <![CDATA[BaseClass]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2023-09-12T17:45:33 IST" name="Command line suite" finished-at="2023-09-12T18:02:02 IST" duration-ms="988883">
+    <groups>
+      <group name="CTR">
+        <method signature="CenterTest.centerCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" name="centerCRUD" class="io.mosip.testrig.adminui.testcase.CenterTest"/>
+      </group> <!-- CTR -->
+      <group name="DF">
+        <method signature="DynamicFieldTest.dynamicFieldCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DynamicFieldTest@627bcd7e]" name="dynamicFieldCRUD" class="io.mosip.testrig.adminui.testcase.DynamicFieldTest"/>
+      </group> <!-- DF -->
+      <group name="D">
+        <method signature="DeviceTest.deviceCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTest@34e990cc]" name="deviceCRUD" class="io.mosip.testrig.adminui.testcase.DeviceTest"/>
+      </group> <!-- D -->
+      <group name="MS">
+        <method signature="MachineSpecificationTest.machineSpecCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineSpecificationTest@269c7104]" name="machineSpecCRUD" class="io.mosip.testrig.adminui.testcase.MachineSpecificationTest"/>
+      </group> <!-- MS -->
+      <group name="MT">
+        <method signature="MachineTypesTest.machineTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTypesTest@6de84336]" name="machineTypesCRUD" class="io.mosip.testrig.adminui.testcase.MachineTypesTest"/>
+      </group> <!-- MT -->
+      <group name="H">
+        <method signature="HolidaysTest.holidaysCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.HolidaysTest@1533338c]" name="holidaysCRUD" class="io.mosip.testrig.adminui.testcase.HolidaysTest"/>
+      </group> <!-- H -->
+      <group name="BL">
+        <method signature="BlockListTest.blocklistedwordsCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.BlockListTest@21f91efa]" name="blocklistedwordsCRUD" class="io.mosip.testrig.adminui.testcase.BlockListTest"/>
+      </group> <!-- BL -->
+      <group name="M">
+        <method signature="MachineTest.machineCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTest@2d5ae78e]" name="machineCRUD" class="io.mosip.testrig.adminui.testcase.MachineTest"/>
+      </group> <!-- M -->
+      <group name="DS">
+        <method signature="DeviceSpecificationTest.deviceSpecCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35e75f7a]" name="deviceSpecCRUD" class="io.mosip.testrig.adminui.testcase.DeviceSpecificationTest"/>
+      </group> <!-- DS -->
+      <group name="DT">
+        <method signature="DeviceTypesTest.deviceTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTypesTest@4f7bb8df]" name="deviceTypesCRUD" class="io.mosip.testrig.adminui.testcase.DeviceTypesTest"/>
+      </group> <!-- DT -->
+      <group name="CT">
+        <method signature="CenterTypeTest.centerTypeCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTypeTest@4df0d9f8]" name="centerTypeCRUD" class="io.mosip.testrig.adminui.testcase.CenterTypeTest"/>
+      </group> <!-- CT -->
+      <group name="T">
+        <method signature="TemplateTest.templateCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.TemplateTest@4315fe1b]" name="templateCRUD" class="io.mosip.testrig.adminui.testcase.TemplateTest"/>
+      </group> <!-- T -->
+      <group name="DOC">
+        <method signature="DocumentCategoriesTest.documentCategoriesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@70543cae]" name="documentCategoriesCRUD" class="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest"/>
+      </group> <!-- DOC -->
+      <group name="DOCT">
+        <method signature="DocumentTypes.documentTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentTypes@350567f1]" name="documentTypesCRUD" class="io.mosip.testrig.adminui.testcase.DocumentTypes"/>
+      </group> <!-- DOCT -->
+    </groups>
+    <test started-at="2023-09-12T17:45:33 IST" name="Command line test" finished-at="2023-09-12T18:02:02 IST" duration-ms="988883">
+      <class name="io.mosip.testrig.adminui.testcase.HolidaysTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.HolidaysTest@1533338c]" started-at="2023-09-12T17:47:51 IST" name="setUp" finished-at="2023-09-12T17:47:56 IST" duration-ms="5122" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.HolidaysTest@1533338c]" started-at="2023-09-12T17:47:51 IST" name="set" finished-at="2023-09-12T17:47:51 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method signature="holidaysCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.HolidaysTest@1533338c]" started-at="2023-09-12T17:47:56 IST" name="holidaysCRUD" finished-at="2023-09-12T17:48:50 IST" duration-ms="53246" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- holidaysCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.HolidaysTest@1533338c]" started-at="2023-09-12T17:48:50 IST" name="tearDown" finished-at="2023-09-12T17:48:50 IST" duration-ms="247" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.HolidaysTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DocumentTypes">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentTypes@350567f1]" started-at="2023-09-12T18:00:48 IST" name="set" finished-at="2023-09-12T18:00:48 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentTypes@350567f1]" started-at="2023-09-12T18:00:48 IST" name="setUp" finished-at="2023-09-12T18:00:53 IST" duration-ms="4804" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="documentTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentTypes@350567f1]" started-at="2023-09-12T18:00:53 IST" name="documentTypesCRUD" finished-at="2023-09-12T18:02:02 IST" duration-ms="68818" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56721}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4eee9917382d13787096eed1e8e6d125
+*** Element info: {Using=id, value=Activate0}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56721}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4eee9917382d13787096eed1e8e6d125
+*** Element info: {Using=id, value=Activate0}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+at io.mosip.testrig.adminui.testcase.DocumentTypes.documentTypesCRUD(DocumentTypes.java:56)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- documentTypesCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentTypes@350567f1]" started-at="2023-09-12T18:02:02 IST" name="tearDown" finished-at="2023-09-12T18:02:02 IST" duration-ms="241" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentTypes -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceSpecificationTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35e75f7a]" started-at="2023-09-12T17:54:55 IST" name="set" finished-at="2023-09-12T17:54:55 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35e75f7a]" started-at="2023-09-12T17:54:55 IST" name="setUp" finished-at="2023-09-12T17:55:00 IST" duration-ms="5170" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="deviceSpecCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35e75f7a]" started-at="2023-09-12T17:55:00 IST" name="deviceSpecCRUD" finished-at="2023-09-12T17:55:53 IST" duration-ms="53389" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deviceSpecCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35e75f7a]" started-at="2023-09-12T17:55:53 IST" name="tearDown" finished-at="2023-09-12T17:55:54 IST" duration-ms="275" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceSpecificationTest -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTest@2d5ae78e]" started-at="2023-09-12T17:51:23 IST" name="set" finished-at="2023-09-12T17:51:23 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTest@2d5ae78e]" started-at="2023-09-12T17:51:23 IST" name="setUp" finished-at="2023-09-12T17:51:28 IST" duration-ms="4743" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="machineCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTest@2d5ae78e]" started-at="2023-09-12T17:51:28 IST" name="machineCRUD" finished-at="2023-09-12T17:52:47 IST" duration-ms="78963" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- machineCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTest@2d5ae78e]" started-at="2023-09-12T17:52:47 IST" name="tearDown" finished-at="2023-09-12T17:52:47 IST" duration-ms="263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineTest -->
+      <class name="io.mosip.testrig.adminui.testcase.CenterTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T17:45:33 IST" name="set" finished-at="2023-09-12T17:45:33 IST" duration-ms="97" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T17:45:33 IST" name="set" finished-at="2023-09-12T17:45:33 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T17:45:33 IST" name="setUp" finished-at="2023-09-12T17:45:38 IST" duration-ms="5288" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="centerCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T17:45:38 IST" name="centerCRUD" finished-at="2023-09-12T17:47:51 IST" duration-ms="132524" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#confirmpopup"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56070}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ae91bfb94c6899ed7edde084a6a5526
+*** Element info: {Using=id, value=confirmpopup}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#confirmpopup"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56070}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ae91bfb94c6899ed7edde084a6a5526
+*** Element info: {Using=id, value=confirmpopup}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+at io.mosip.testrig.adminui.utility.Commons.createRes(Commons.java:404)
+at io.mosip.testrig.adminui.testcase.CenterTest.centerCRUD(CenterTest.java:96)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+            <line>
+              <![CDATA[centerCRUD]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- centerCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T17:47:51 IST" name="tearDown" finished-at="2023-09-12T17:47:51 IST" duration-ms="454" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="pushFileToS3()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTest@e72fb04]" started-at="2023-09-12T18:02:02 IST" name="pushFileToS3" finished-at="2023-09-12T18:02:02 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pushFileToS3 -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.CenterTest -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineSpecificationTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineSpecificationTest@269c7104]" started-at="2023-09-12T17:56:48 IST" name="set" finished-at="2023-09-12T17:56:48 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineSpecificationTest@269c7104]" started-at="2023-09-12T17:56:48 IST" name="setUp" finished-at="2023-09-12T17:56:53 IST" duration-ms="4757" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="machineSpecCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineSpecificationTest@269c7104]" started-at="2023-09-12T17:56:53 IST" name="machineSpecCRUD" finished-at="2023-09-12T17:57:46 IST" duration-ms="53322" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- machineSpecCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineSpecificationTest@269c7104]" started-at="2023-09-12T17:57:46 IST" name="tearDown" finished-at="2023-09-12T17:57:46 IST" duration-ms="294" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineSpecificationTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceTypesTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTypesTest@4f7bb8df]" started-at="2023-09-12T17:55:54 IST" name="setUp" finished-at="2023-09-12T17:55:59 IST" duration-ms="4905" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTypesTest@4f7bb8df]" started-at="2023-09-12T17:55:54 IST" name="set" finished-at="2023-09-12T17:55:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method signature="deviceTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTypesTest@4f7bb8df]" started-at="2023-09-12T17:55:59 IST" name="deviceTypesCRUD" finished-at="2023-09-12T17:56:48 IST" duration-ms="49271" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deviceTypesCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTypesTest@4f7bb8df]" started-at="2023-09-12T17:56:48 IST" name="tearDown" finished-at="2023-09-12T17:56:48 IST" duration-ms="245" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceTypesTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTest@34e990cc]" started-at="2023-09-12T17:49:56 IST" name="setUp" finished-at="2023-09-12T17:50:01 IST" duration-ms="4935" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTest@34e990cc]" started-at="2023-09-12T17:49:56 IST" name="set" finished-at="2023-09-12T17:49:56 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method signature="deviceCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTest@34e990cc]" started-at="2023-09-12T17:50:01 IST" name="deviceCRUD" finished-at="2023-09-12T17:51:23 IST" duration-ms="81400" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deviceCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DeviceTest@34e990cc]" started-at="2023-09-12T17:51:23 IST" name="tearDown" finished-at="2023-09-12T17:51:23 IST" duration-ms="283" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceTest -->
+      <class name="io.mosip.testrig.adminui.testcase.CenterTypeTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTypeTest@4df0d9f8]" started-at="2023-09-12T17:53:41 IST" name="setUp" finished-at="2023-09-12T17:53:46 IST" duration-ms="4797" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTypeTest@4df0d9f8]" started-at="2023-09-12T17:53:41 IST" name="set" finished-at="2023-09-12T17:53:41 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method signature="centerTypeCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTypeTest@4df0d9f8]" started-at="2023-09-12T17:53:46 IST" name="centerTypeCRUD" finished-at="2023-09-12T17:54:54 IST" duration-ms="68495" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56397}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 64e25264985e1bccc40d3454f4d33a04
+*** Element info: {Using=id, value=Activate0}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56397}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 64e25264985e1bccc40d3454f4d33a04
+*** Element info: {Using=id, value=Activate0}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+at io.mosip.testrig.adminui.testcase.CenterTypeTest.centerTypeCRUD(CenterTypeTest.java:55)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- centerTypeCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.CenterTypeTest@4df0d9f8]" started-at="2023-09-12T17:54:54 IST" name="tearDown" finished-at="2023-09-12T17:54:55 IST" duration-ms="322" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.CenterTypeTest -->
+      <class name="io.mosip.testrig.adminui.testcase.TemplateTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.TemplateTest@4315fe1b]" started-at="2023-09-12T17:48:50 IST" name="set" finished-at="2023-09-12T17:48:50 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.TemplateTest@4315fe1b]" started-at="2023-09-12T17:48:50 IST" name="setUp" finished-at="2023-09-12T17:48:55 IST" duration-ms="5038" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="templateCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.TemplateTest@4315fe1b]" started-at="2023-09-12T17:48:55 IST" name="templateCRUD" finished-at="2023-09-12T17:49:56 IST" duration-ms="60946" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- templateCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.TemplateTest@4315fe1b]" started-at="2023-09-12T17:49:56 IST" name="tearDown" finished-at="2023-09-12T17:49:56 IST" duration-ms="263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.TemplateTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DynamicFieldTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DynamicFieldTest@627bcd7e]" started-at="2023-09-12T17:58:41 IST" name="set" finished-at="2023-09-12T17:58:41 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DynamicFieldTest@627bcd7e]" started-at="2023-09-12T17:58:41 IST" name="setUp" finished-at="2023-09-12T17:58:46 IST" duration-ms="5221" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="dynamicFieldCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DynamicFieldTest@627bcd7e]" started-at="2023-09-12T17:58:46 IST" name="dynamicFieldCRUD" finished-at="2023-09-12T17:59:34 IST" duration-ms="48355" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dynamicFieldCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DynamicFieldTest@627bcd7e]" started-at="2023-09-12T17:59:34 IST" name="tearDown" finished-at="2023-09-12T17:59:34 IST" duration-ms="320" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DynamicFieldTest -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineTypesTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTypesTest@6de84336]" started-at="2023-09-12T17:57:46 IST" name="set" finished-at="2023-09-12T17:57:46 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTypesTest@6de84336]" started-at="2023-09-12T17:57:46 IST" name="setUp" finished-at="2023-09-12T17:57:51 IST" duration-ms="4559" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="machineTypesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTypesTest@6de84336]" started-at="2023-09-12T17:57:51 IST" name="machineTypesCRUD" finished-at="2023-09-12T17:58:40 IST" duration-ms="49261" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- machineTypesCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.MachineTypesTest@6de84336]" started-at="2023-09-12T17:58:40 IST" name="tearDown" finished-at="2023-09-12T17:58:41 IST" duration-ms="282" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineTypesTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@70543cae]" started-at="2023-09-12T17:59:34 IST" name="setUp" finished-at="2023-09-12T17:59:39 IST" duration-ms="4807" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@70543cae]" started-at="2023-09-12T17:59:34 IST" name="set" finished-at="2023-09-12T17:59:34 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method signature="documentCategoriesCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@70543cae]" started-at="2023-09-12T17:59:39 IST" name="documentCategoriesCRUD" finished-at="2023-09-12T18:00:48 IST" duration-ms="68538" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0e383ae7ef42b2d4f34099dbb765264c
+*** Element info: {Using=id, value=Activate0}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#Activate0"}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TECHNO-531', ip: '192.168.254.134', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0e383ae7ef42b2d4f34099dbb765264c
+*** Element info: {Using=id, value=Activate0}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+at io.mosip.testrig.adminui.testcase.DocumentCategoriesTest.documentCategoriesCRUD(DocumentCategoriesTest.java:56)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- documentCategoriesCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@70543cae]" started-at="2023-09-12T18:00:48 IST" name="tearDown" finished-at="2023-09-12T18:00:48 IST" duration-ms="274" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentCategoriesTest -->
+      <class name="io.mosip.testrig.adminui.testcase.BlockListTest">
+        <test-method is-config="true" signature="set()[pri:0, instance:io.mosip.testrig.adminui.testcase.BlockListTest@21f91efa]" started-at="2023-09-12T17:52:47 IST" name="set" finished-at="2023-09-12T17:52:47 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:io.mosip.testrig.adminui.testcase.BlockListTest@21f91efa]" started-at="2023-09-12T17:52:47 IST" name="setUp" finished-at="2023-09-12T17:52:52 IST" duration-ms="4941" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BaseClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="blocklistedwordsCRUD()[pri:0, instance:io.mosip.testrig.adminui.testcase.BlockListTest@21f91efa]" started-at="2023-09-12T17:52:52 IST" name="blocklistedwordsCRUD" finished-at="2023-09-12T17:53:41 IST" duration-ms="49174" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- blocklistedwordsCRUD -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.mosip.testrig.adminui.testcase.BlockListTest@21f91efa]" started-at="2023-09-12T17:53:41 IST" name="tearDown" finished-at="2023-09-12T17:53:41 IST" duration-ms="296" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.BlockListTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

@@ -1,0 +1,60 @@
+{
+	"identity": {
+		"BELOW_ARE_KEYWORDS_FOR_HELP": "Below Keys use to put in setExcludedGroups to exclude scenarios eg BL for blocklistedwordsCRUD to ignore this execution",
+		"ALL": "BU,BL,CTR,CT,DS,D,DT,DOC,DOCT,DF,H,MS,M,MT,T",
+		"1blocklistedwordsCRUD": "BL",
+		"2bulkUploadCRUD": "BU",
+		"3centerCRUD": "CTR",
+		"4centerTypeCRUD": "CT",
+		"5deviceSpecCRUD": "DS",
+		"6deviceCRUD": "D",
+		"7deviceTypesCRUD": "DT",
+		"8documentCategoriesCRUD": "DOC",
+		"9documentTypesCRUD": "DOCT",
+		"10dynamicFieldCRUD": "DF",
+		"11holidaysCRUD": "H",
+		"12machineSpecCRUD": "MS",
+		"13machineCRUD": "M",
+		"14machineTypesCRUD": "MT",
+		"15templateCRUD": "T",
+		"BELOW_ARE_STATIC_KEYWORDS": "We are using this setExcludedGroups to exclude scenarios",
+		"setExcludedGroups": "BU",
+		"holidayDateCenter": "23/12/2027",
+		"holidayDate": "8/29/2025",
+		"validityDate":"10/12/2027",
+		"loginlang": "sin",
+		"preappend": "0",
+		"jsonObjName": "identity",
+		"headless": "no",
+		"bulkwait": "10000",
+		"dummyData":"blocklistwordsss",
+		"publicKey": "AAEACwACAHIAIINxl2dEhLP4GpDMjUal1yT9UtduBlILZPKh2hszFGmqABAAFwALCAAAAQABAQDDg75ctP0GxwDUvaKneXZ4wbdfr98beJ9jEdvANZpHdjlXTGkxy3tzqE9NQCd83Vy4fni-mA14kqNdmCjs3AAGJToC86EC_QqG81TeeG-MfQuIbBlc1uDLHAcLypEMkjnubyTKUpfkA7t3lqSRgn0ck5XRwZjjNlF9Gj16P9fEY668oeUUe_3rPM5AkEC9OY21Jkod81etdYWuNBuBCXa0S_7Vx5Y3HfS0mkihuYlisL-BaQVt_sq6cFFfE-9oMv1sDiXaEwrcSP7e1CikIbqQCtZb4AIkvowUKb_2d_4mi9iwtxa6yomso5Ji36BfQBVwSU8RCe6QCyOfmmkjBXMa",
+		"signPublicKey": "AAEABAAEAHIAAAAQABQACwgAAAEAAQEAnpLxkf161vM6zIUxD-rEV010TRawgms7-O2p_Qo0t23fDWqYN0AD8PgsEUO8VJ6JkMpowdMtBzyygJDjGB3uPz8LA79WbotuchWOwQdE5jrYrRT1gvZvHIPPI3R1kn7WxmhAFMowV8nX-Ka2FcqQHdqT1vKxGn5cWqk5hptvq4GB_hBJX93kkPJXs2Lt7PyWR2iMjewauAfu1mcxiSy1L-dfhQ9h2DP80oue46Fqe1i9wGNdDOzrLYYZGCgrMJbPxCj-zeDsdnD4z6iCEp8-9qglie92PyJi1_61SlNS9bOLRnX374AjIUyvbL-xx2WSfibjHi9--jeiCmpiasdujh",
+		"langcode": [
+			{
+				"language": "tam",
+				"value": "à®¤à®®à®¿à®´à¯�"
+			},
+			{
+				"language": "kan",
+				"value": "à²•à²¨à³�à²¨à²¡"
+			},
+			{
+				"language": "hin",
+				"value": "à¤¹à¤¿à¤‚à¤¦à¥€"
+			},
+			{
+				"language": "eng",
+				"value": "English"
+			},
+			{
+				"language": "fra",
+				"value": "FranÃ§ais"
+			},
+			{
+				"language": "ara",
+				"value": "Arabic"
+			}
+		]
+	}
+}
