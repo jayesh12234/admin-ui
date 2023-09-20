@@ -66,10 +66,15 @@ public class CommonLibrary extends BaseTestCaseFunc {
 	public Map<String, String> readProperty(String propertyFileName) {
 		Properties prop = new Properties();
 		try {
+			if(propertyFileName.equals("Kernel")) {
+				File propertyFile = new File(getResourcePathForKernel() + "config/" +TestRunner.GetKernalFilename());
+				prop.load(new FileInputStream(propertyFile));
+			}else {
 			logger.info("propertyFileName:  " + propertyFileName + "Path :" + getResourcePathForKernel() + "config/" + propertyFileName + ".properties");
 			logger.info("propertyFileName:  " + propertyFileName + "Path :" + getResourcePathForKernel() + "config/" + propertyFileName + ".properties");
 			File propertyFile = new File(getResourcePathForKernel() + "config/" + propertyFileName + ".properties");
 			prop.load(new FileInputStream(propertyFile));
+			}
 
 		} catch (IOException e) {
 			logger.info("Error occrued while reading propertyFileName " + propertyFileName + e.getMessage());

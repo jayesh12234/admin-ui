@@ -172,6 +172,7 @@ public class ConfigManager {
 //	private static String km_db_pass;
 //	private static String km_db_schema;
 //
+	private static String enableDebug;
 	private static String master_db_user;
 	private static String master_db_pass;
 	private static String master_db_schema;
@@ -210,7 +211,8 @@ public class ConfigManager {
 
 	public static void init() {
 		// Loading Kernel property
-		propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/Kernel.properties");
+//		propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/Kernel.properties");
+		propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/"+TestRunner.GetKernalFilename());
 
 		idrepo_client_secret = getValueForKey(MOSIP_IDREPO_CLIENT_SECRET);
 		idrepo_client_id = getValueForKey(MOSIP_IDREPO_CLIENT_ID);
@@ -398,6 +400,9 @@ public class ConfigManager {
 	public static String getDbSessionContext() {
 		return hibernate_current_session_context_class;
 	}
+	public static Boolean IsDebugEnabled() {
+		return enableDebug.equalsIgnoreCase("yes");
+	}
 //
 //	public static String getAuditDbUser() {
 //		return audit_db_user;
@@ -494,7 +499,9 @@ public class ConfigManager {
 	}
 
 	public static String getRolesForUser(String userId) {
-		propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/Kernel.properties");
+	//	propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/Kernel.properties");
+		propsKernel = getproperty(TestRunner.getResourcePath() + "/" + "config/"+TestRunner.GetKernalFilename());
+		
 		return propsKernel.getProperty("roles." + userId);
 	}
 
@@ -521,5 +528,7 @@ public class ConfigManager {
 //	public static String getAuthDemoServiceUrl() {
 //		return ConfigManager.getAuthDemoServiceBaseUrl() + ":" + ConfigManager.getAuthDemoServicePort();
 //	}
+
+	
 	
 }

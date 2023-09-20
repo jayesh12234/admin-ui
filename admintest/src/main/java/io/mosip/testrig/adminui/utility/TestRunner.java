@@ -1,6 +1,7 @@
 package io.mosip.testrig.adminui.utility;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -38,7 +39,7 @@ public class TestRunner {
 //		BaseTestCase.setReportName("masterdata-" + localLanguageList.get(i));
 		//startTestRunner();
 		
-		testNg=new TestNG();
+	/*	testNg=new TestNG();
 		
 		String listExcludedGroups=JsonUtil.JsonObjParsing(Commons.getTestData(),"setExcludedGroups");
 		testNg.setExcludedGroups(listExcludedGroups);
@@ -58,9 +59,52 @@ public class TestRunner {
 		
 		});
 	//	testNg.addListener(tla);
+	//	testNg.run();*/
+	
+	//	MockSMTPListener mockSMTPListener = new MockSMTPListener();
+	//	mockSMTPListener.run();
+		startTestRunner();
+	}
+
+	
+	public static void startTestRunner() throws Exception {
+		File homeDir = null;
+	//	TestNG runner = new TestNG();
+testNg=new TestNG();
+		
+		String listExcludedGroups=JsonUtil.JsonObjParsing(Commons.getTestData(),"setExcludedGroups");
+		testNg.setExcludedGroups(listExcludedGroups);
+		testNg.setTestClasses(new Class[] {
+				
+	CenterTest.class,HolidaysTest.class,TemplateTest.class
+				
+				,
+				
+				DeviceTest.class,MachineTest.class
+				,BlockListTest.class,CenterTypeTest.class,
+				DeviceSpecificationTest.class,DeviceTypesTest.class,
+				MachineSpecificationTest.class,MachineTypesTest.class,
+				DynamicFieldTest.class,DocumentCategoriesTest.class,DocumentTypes.class,
+				
+			BulkUploadTest.class
+		
+		});
+		
+		System.getProperties().setProperty("testng.outpur.dir", "testng-report");
+		testNg.setOutputDirectory("testng-report");
+		System.getProperties().setProperty("emailable.report2.name", "AdminUI" + "-"
+				+ System.getProperty("env.user") + System.currentTimeMillis() + "-report.html");
+		
+		
 		testNg.run();
 		
+	//	MockSMTPListener mockSMTPListener = new MockSMTPListener();
+	//	mockSMTPListener.bTerminate = true;
+
+		System.exit(0);
 	}
+
+	
 	public static String getGlobalResourcePath() {
 		if (checkRunType().equalsIgnoreCase("JAR")) {
 			return new File(jarUrl).getParentFile().getAbsolutePath().toString();
@@ -95,6 +139,12 @@ public class TestRunner {
 		else
 			return "IDE";
 	}
+	public static String GetKernalFilename(){
+		String path = System.getProperty("env.user");
 	
+		String kernalpath="Kernel_"+path+".properties";
+		return kernalpath;
+		
+	}
 
 }
