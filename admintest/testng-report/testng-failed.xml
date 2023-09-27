@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Command line suite]">
+  <test thread-count="5" name="Command line test(failed)">
+    <groups>
+      <run>
+        <exclude name="BU"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="io.mosip.testrig.adminui.testcase.DocumentTypes">
+        <methods>
+          <include name="set"/>
+          <include name="documentTypesCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentTypes -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineTypesTest">
+        <methods>
+          <include name="set"/>
+          <include name="machineTypesCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineTypesTest -->
+      <class name="io.mosip.testrig.adminui.testcase.TemplateTest">
+        <methods>
+          <include name="set"/>
+          <include name="templateCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.TemplateTest -->
+      <class name="io.mosip.testrig.adminui.testcase.CenterTypeTest">
+        <methods>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="centerTypeCRUD"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.CenterTypeTest -->
+      <class name="io.mosip.testrig.adminui.testcase.HolidaysTest">
+        <methods>
+          <include name="set"/>
+          <include name="holidaysCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.HolidaysTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceSpecificationTest">
+        <methods>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="deviceSpecCRUD"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceSpecificationTest -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineTest">
+        <methods>
+          <include name="machineCRUD"/>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineTest -->
+      <class name="io.mosip.testrig.adminui.testcase.BlockListTest">
+        <methods>
+          <include name="blocklistedwordsCRUD"/>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.BlockListTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceTest">
+        <methods>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="deviceCRUD"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DeviceTypesTest">
+        <methods>
+          <include name="set"/>
+          <include name="deviceTypesCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DeviceTypesTest -->
+      <class name="io.mosip.testrig.adminui.testcase.MachineSpecificationTest">
+        <methods>
+          <include name="set"/>
+          <include name="machineSpecCRUD"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.MachineSpecificationTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DynamicFieldTest">
+        <methods>
+          <include name="dynamicFieldCRUD"/>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DynamicFieldTest -->
+      <class name="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest">
+        <methods>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="documentCategoriesCRUD"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentCategoriesTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->
