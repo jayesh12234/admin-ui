@@ -55,15 +55,15 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Command line test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>10/4/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Sep 26 17:22:55 IST 2023</td>
+<td>Started on:</td><td>Mon Oct 09 10:41:35 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>1986 seconds (1986527 ms)</td>
+<tr><td>Total time:</td><td>196 seconds (196304 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
-<td>Excluded groups:</td><td>BU </td>
+<td>Excluded groups:</td><td>CTR DF D MS MT H BL DS DT CT BU T DOC DOCT </td>
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
@@ -75,23 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='io.mosip.testrig.adminui.testcase.CenterTest.centerCRUD()'><b>centerCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.CenterTest<br/>
-<a href="#Output-1266421561" onClick='toggleBox("Output-1266421561", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1266421561" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1266421561">
-centerCRUD<br/>
-</div>
-</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#Create\ Center&quot;}
-  (Session info: chrome=116.0.5845.188)
+<td title='io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD()'><b>machineCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.MachineTest</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ellipsis\-button0&quot;}
+  (Session info: chrome=117.0.5938.149)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65331}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6db35a169c6437c833ddddd69ef86c61
-*** Element info: {Using=id, value=Create Center}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61677}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
+*** Element info: {Using=id, value=ellipsis-button0}
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -103,20 +96,21 @@ Session ID: 6db35a169c6437c833ddddd69ef86c61
 	at org.openqa.selenium.By$ById.findElement(By.java:188)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.testcase.CenterTest.centerCRUD(CenterTest.java:42)
+	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:290)
+	at io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD(MachineTest.java:68)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
 	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1266421561", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1266421561'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#Create\ Center&quot;}
-  (Session info: chrome=116.0.5845.188)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1156336184", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1156336184'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ellipsis\-button0&quot;}
+  (Session info: chrome=117.0.5938.149)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65331}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6db35a169c6437c833ddddd69ef86c61
-*** Element info: {Using=id, value=Create Center}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61677}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
+*** Element info: {Using=id, value=ellipsis-button0}
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -133,173 +127,8 @@ Session ID: 6db35a169c6437c833ddddd69ef86c61
 	at org.openqa.selenium.By$ById.findElement(By.java:188)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.testcase.CenterTest.centerCRUD(CenterTest.java:42)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:766)
-	at org.testng.TestRunner.run(TestRunner.java:587)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-	at org.testng.TestNG.runSuites(TestNG.java:1039)
-	at org.testng.TestNG.run(TestNG.java:1007)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-</pre></div></td>
-<td>46</td>
-<td>io.mosip.testrig.adminui.testcase.CenterTest@72ceafeb</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.CenterTypeTest.centerTypeCRUD()'><b>centerTypeCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.CenterTypeTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#admin\/masterdata\/center\-type\/view&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60783}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0c4b3ac23395df8a2e83118055b35ac1
-*** Element info: {Using=id, value=admin/masterdata/center-type/view}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.testcase.CenterTypeTest.centerTypeCRUD(CenterTypeTest.java:38)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace408656269", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace408656269'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#admin\/masterdata\/center\-type\/view&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60783}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0c4b3ac23395df8a2e83118055b35ac1
-*** Element info: {Using=id, value=admin/masterdata/center-type/view}
-	at jdk.internal.reflect.GeneratedConstructorAccessor52.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.testcase.CenterTypeTest.centerTypeCRUD(CenterTypeTest.java:38)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:766)
-	at org.testng.TestRunner.run(TestRunner.java:587)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-	at org.testng.TestNG.runSuites(TestNG.java:1039)
-	at org.testng.TestNG.run(TestNG.java:1007)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-</pre></div></td>
-<td>43</td>
-<td>io.mosip.testrig.adminui.testcase.CenterTypeTest@3a1a0bc</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DeviceSpecificationTest.deviceSpecCRUD()'><b>deviceSpecCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DeviceSpecificationTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ellipsis\-button0&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60902}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 67f4d312a98b5233e326b462d715384e
-*** Element info: {Using=id, value=ellipsis-button0}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
 	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:290)
-	at io.mosip.testrig.adminui.testcase.DeviceSpecificationTest.deviceSpecCRUD(DeviceSpecificationTest.java:60)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace182733287", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace182733287'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ellipsis\-button0&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60902}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 67f4d312a98b5233e326b462d715384e
-*** Element info: {Using=id, value=ellipsis-button0}
-	at jdk.internal.reflect.GeneratedConstructorAccessor52.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:290)
-	at io.mosip.testrig.adminui.testcase.DeviceSpecificationTest.deviceSpecCRUD(DeviceSpecificationTest.java:60)
+	at io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD(MachineTest.java:68)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -328,150 +157,8 @@ Session ID: 67f4d312a98b5233e326b462d715384e
 	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
 	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
 </pre></div></td>
-<td>188</td>
-<td>io.mosip.testrig.adminui.testcase.DeviceSpecificationTest@35d114f4</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD()'><b>machineCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.MachineTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#confirmpopup&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60569}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2ded4c65973f4d079bf2b3cd6f96e328
-*** Element info: {Using=id, value=confirmpopup}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.utility.Commons.createRes(Commons.java:406)
-	at io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD(MachineTest.java:60)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace237005797", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace237005797'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#confirmpopup&quot;}
-  (Session info: chrome=116.0.5845.188)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.0.104&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.188, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60569}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2ded4c65973f4d079bf2b3cd6f96e328
-*** Element info: {Using=id, value=confirmpopup}
-	at jdk.internal.reflect.GeneratedConstructorAccessor52.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.utility.Commons.createRes(Commons.java:406)
-	at io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD(MachineTest.java:60)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:766)
-	at org.testng.TestRunner.run(TestRunner.java:587)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-	at org.testng.TestNG.runSuites(TestNG.java:1039)
-	at org.testng.TestNG.run(TestNG.java:1007)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-</pre></div></td>
-<td>89</td>
-<td>io.mosip.testrig.adminui.testcase.MachineTest@11e24688</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.BlockListTest.blocklistedwordsCRUD()'><b>blocklistedwordsCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.BlockListTest</td>
-<td></td>
-<td>42</td>
-<td>io.mosip.testrig.adminui.testcase.BlockListTest@63d3c9dc</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DeviceTest.deviceCRUD()'><b>deviceCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DeviceTest</td>
-<td></td>
-<td>139</td>
-<td>io.mosip.testrig.adminui.testcase.DeviceTest@16d4024e</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DeviceTypesTest.deviceTypesCRUD()'><b>deviceTypesCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DeviceTypesTest</td>
-<td></td>
-<td>89</td>
-<td>io.mosip.testrig.adminui.testcase.DeviceTypesTest@3684d2c0</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DocumentCategoriesTest.documentCategoriesCRUD()'><b>documentCategoriesCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</td>
-<td></td>
-<td>84</td>
-<td>io.mosip.testrig.adminui.testcase.DocumentCategoriesTest@6807989e</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DocumentTypes.documentTypesCRUD()'><b>documentTypesCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DocumentTypes</td>
-<td></td>
-<td>101</td>
-<td>io.mosip.testrig.adminui.testcase.DocumentTypes@c2e33</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.DynamicFieldTest.dynamicFieldCRUD()'><b>dynamicFieldCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.DynamicFieldTest</td>
-<td></td>
-<td>69</td>
-<td>io.mosip.testrig.adminui.testcase.DynamicFieldTest@7805478c</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.HolidaysTest.holidaysCRUD()'><b>holidaysCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.HolidaysTest</td>
-<td></td>
-<td>163</td>
-<td>io.mosip.testrig.adminui.testcase.HolidaysTest@65b2ee36</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.MachineSpecificationTest.machineSpecCRUD()'><b>machineSpecCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.MachineSpecificationTest</td>
-<td></td>
-<td>90</td>
-<td>io.mosip.testrig.adminui.testcase.MachineSpecificationTest@4be460e5</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.MachineTypesTest.machineTypesCRUD()'><b>machineTypesCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.MachineTypesTest</td>
-<td></td>
-<td>71</td>
-<td>io.mosip.testrig.adminui.testcase.MachineTypesTest@454e9d65</td></tr>
-<tr>
-<td title='io.mosip.testrig.adminui.testcase.TemplateTest.templateCRUD()'><b>templateCRUD</b><br>Test class: io.mosip.testrig.adminui.testcase.TemplateTest</td>
-<td></td>
-<td>219</td>
-<td>io.mosip.testrig.adminui.testcase.TemplateTest@28e91f6d</td></tr>
+<td>187</td>
+<td>io.mosip.testrig.adminui.testcase.MachineTest@3de56885</td></tr>
 </table><p>
 </body>
 </html>
