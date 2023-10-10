@@ -52,7 +52,11 @@ public class MachineTest extends BaseClass{
     Commons.enter(test,driver,By.id("publicKey"),publicKey);
     		
     		Commons.enter(test,driver,By.id("signPublicKey"),signPublicKey);
-    				//Commons.dropdown(test,driver,By.id("zone"));
+    		try{   Commons.dropdown(test,driver, By.id("zone"));
+    		 
+    		 }catch(Exception e) {
+    			 test.log(Status.INFO, e);
+    		 }
     Commons.dropdown(test,driver,By.id("regCenterId"));
     
     
