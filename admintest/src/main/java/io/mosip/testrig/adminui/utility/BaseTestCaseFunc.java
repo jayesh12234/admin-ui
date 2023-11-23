@@ -20,7 +20,9 @@ import io.mosip.testrig.adminui.authentication.fw.util.RestClient;
 import io.mosip.testrig.adminui.kernel.util.CommonLibrary;
 import io.mosip.testrig.adminui.kernel.util.ConfigManager;
 import io.mosip.testrig.adminui.kernel.util.KernelAuthentication;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 //import org.apache.log4j.Logger;
 
@@ -151,13 +153,24 @@ public class BaseTestCaseFunc {
 		return kernelCmnLib.readJsonData(filepath, true);
 
 	}
+	
+	public static void getLeafeZone() {
+		String token = kernelAuthLib.getTokenByRole("globalAdmin");
+		String url=ApplnURI + propsKernel.getProperty("leafzonesURL");
+		JSONObject request = new JSONObject();
+		
+		Response response = RestClient.getRequestWithCookieAndPathParm(url, request, MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON, "Authorization", token);
+		logger.info(response.getBody());
+			}
+	
+	
 	@SuppressWarnings("unchecked")
 	public static void mapUserToZone(String user, String zone) {
 		String token = kernelAuthLib.getTokenByRole("globalAdmin");
 		String url = ApplnURI + propsKernel.getProperty("zoneMappingUrl");
 		org.json.simple.JSONObject actualrequest = getRequestJson(zoneMappingRequest);
 		JSONObject request = new JSONObject();
-		request.put("zoneCode", zone);
+		request.put("zoneCode", RestClient.ZONECODE);
 		request.put("userId", user);
 		request.put("langCode", BaseTestCaseFunc.getLanguageList().get(0));
 		request.put("isActive","true");

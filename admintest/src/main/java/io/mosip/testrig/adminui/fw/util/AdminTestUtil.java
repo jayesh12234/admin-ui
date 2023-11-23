@@ -237,7 +237,8 @@ public class AdminTestUtil extends BaseTestCaseFunc {
 	    		
 	        	// Generate Keycloak Users
 	        	KeycloakUserManager.createUsers();
-	        	BaseTestCaseFunc.mapUserToZone(BaseTestCaseFunc.currentModule+"-"+propsKernel.getProperty("admin_userName"),"CSB");
+	        	BaseTestCaseFunc.getLeafeZone();
+	        	BaseTestCaseFunc.mapUserToZone(BaseTestCaseFunc.currentModule+"-"+propsKernel.getProperty("admin_userName"),RestClient.ZONECODE);
 	    		BaseTestCaseFunc.mapZone(BaseTestCaseFunc.currentModule+"-"+propsKernel.getProperty("admin_userName"));	
 	    		initialized = true;
 	    	}
