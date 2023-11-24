@@ -4,15 +4,22 @@ on:
   release:
     types: [published]
   pull_request:
-    types: [opened]
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Message for manually triggering'
+        required: false
+        default: 'Triggered for Updates'
+        type: string
   push:
     branches:
-      - MOSIP*
-      - 1.*
       - '!release-branch'
       - develop
+      - release-*
       - master
-      - '*'
+      - 1.*
+      - MOSIP*
 
 jobs:
   build-admin-ui:
@@ -91,25 +98,14 @@ jobs:
       ACTOR_DOCKER_HUB: ${{ secrets.ACTOR_DOCKER_HUB }}
       RELEASE_DOCKER_HUB: ${{ secrets.RELEASE_DOCKER_HUB }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-  publish_to_nexus:
-    if: "${{ !contains(github.ref, 'master') && github.event_name != 'pull_request' }}"
-    needs: build-maven-admintest
-    uses: mosip/kattu/.github/workflows/maven-publish-to-nexus.yml@master
-    with:
-      SERVICE_LOCATION: admintest
-    secrets:
-      OSSRH_USER: ${{ secrets.OSSRH_USER }}
-      OSSRH_SECRET: ${{ secrets.OSSRH_SECRET }}
-      OSSRH_URL: ${{ secrets.OSSRH_SNAPSHOT_URL }}
-      OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
-      GPG_SECRET: ${{ secrets.GPG_SECRET }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-  sonar_analysis:
+  sonar-analysis-admintest:
     needs: build-maven-admintest
     if: "${{  github.event_name != 'pull_request' }}"
     uses: mosip/kattu/.github/workflows/maven-sonar-analysis.yml@master
     with:
       SERVICE_LOCATION: admintest
+      SONAR_URL: 'https://sonarcloud.io'
+      PROJECT_KEY: 'mosip_admintest'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       ORG_KEY: ${{ secrets.ORG_KEY }}
