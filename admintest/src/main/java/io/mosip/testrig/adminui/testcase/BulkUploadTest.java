@@ -91,7 +91,7 @@ public class BulkUploadTest extends BaseClass {
    // Commons.click(test,driver,By.id("fileInput"));
     
 
-    String filePath = System.getProperty("user.dir") + "\\BulkUploadFiles\\"+ JsonUtil.JsonObjParsing(Commons.getTestData(),"loginlang")+"\\"+table+".csv";
+    String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\BulkUploadFiles\\"+ JsonUtil.JsonObjParsing(Commons.getTestData(),"loginlang")+"\\"+table+".csv";
    Commons.enter(test, driver, By.id("fileInput"), filePath);
    
  

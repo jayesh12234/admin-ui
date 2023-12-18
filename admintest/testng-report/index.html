@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">2 methods, 2 failed,   </span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content failed suite-Command_line_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.MachineTest" class="method navigator-link" hash-for-method="machineCRUD">machineCRUD</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.BulkUploadTest" class="method navigator-link" hash-for-method="bulkUploadCRUD(device_type)">bulkUploadCRUD(device_type)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.BulkUploadTest" class="method navigator-link" hash-for-method="bulkUploadCRUD(machine_master)">bulkUploadCRUD(machine_master)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Command_line_suite -->
@@ -120,40 +125,36 @@
           <div class="suite-Command_line_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">io.mosip.testrig.adminui.testcase.MachineTest</span>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.BulkUploadTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="machineCRUD">
-                  </a> <!-- machineCRUD -->
-                  <span class="method-name">machineCRUD</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ellipsis\-button0&quot;}
-  (Session info: chrome=117.0.5938.149)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61677}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
-*** Element info: {Using=id, value=ellipsis-button0}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:90)
-	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:290)
-	at io.mosip.testrig.adminui.testcase.MachineTest.machineCRUD(MachineTest.java:68)
+                  <a name="bulkUploadCRUD(device_type)">
+                  </a> <!-- bulkUploadCRUD(device_type) -->
+                  <span class="method-name">bulkUploadCRUD</span>
+                  <span class="parameters">(device_type)</span>
+                  <div class="stack-trace">java.lang.AssertionError: Status Should be COMPLETED expected [true] but found [false]
+	at io.mosip.testrig.adminui.testcase.BulkUploadTest.bulkUploadCRUD(BulkUploadTest.java:113)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:99)
-	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:66)
-... Removed 29 stack frames
+	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:100)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:67)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="bulkUploadCRUD(machine_master)">
+                  </a> <!-- bulkUploadCRUD(machine_master) -->
+                  <span class="method-name">bulkUploadCRUD</span>
+                  <span class="parameters">(machine_master)</span>
+                  <div class="stack-trace">java.lang.AssertionError: Status Should be COMPLETED expected [true] but found [false]
+	at io.mosip.testrig.adminui.testcase.BulkUploadTest.bulkUploadCRUD(BulkUploadTest.java:113)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at io.mosip.testrig.adminui.utility.TestRunner.startTestRunner(TestRunner.java:100)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:67)
+... Removed 27 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -170,7 +171,6 @@ Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
 &lt;suite name=&quot;Command line suite&quot;&gt;
   &lt;groups&gt;
     &lt;run&gt;
-      &lt;exclude name=&quot;BU&quot;/&gt;
       &lt;exclude name=&quot;BL&quot;/&gt;
       &lt;exclude name=&quot;CTR&quot;/&gt;
       &lt;exclude name=&quot;CT&quot;/&gt;
@@ -180,9 +180,10 @@ Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
       &lt;exclude name=&quot;DOC&quot;/&gt;
       &lt;exclude name=&quot;DOCT&quot;/&gt;
       &lt;exclude name=&quot;DF&quot;/&gt;
-      &lt;exclude name=&quot;MS&quot;/&gt;
-      &lt;exclude name=&quot;MT&quot;/&gt;
       &lt;exclude name=&quot;H&quot;/&gt;
+      &lt;exclude name=&quot;MS&quot;/&gt;
+      &lt;exclude name=&quot;M&quot;/&gt;
+      &lt;exclude name=&quot;MT&quot;/&gt;
       &lt;exclude name=&quot;T&quot;/&gt;
     &lt;/run&gt;
   &lt;/groups&gt;
@@ -227,10 +228,10 @@ Session ID: 7241e8fc9e9d09464c22f6248a90d9cd
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">M</span>
+              <span class="test-group-name">BU</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">machineCRUD</span>
+                <span class="method-in-group-name">bulkUploadCRUD</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -250,16 +251,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'machineCRUD')
-data.setCell(0, 2, 'io.mosip.testrig.adminui.testcase.MachineTest')
-data.setCell(0, 3, 187404);
+data.setCell(0, 1, 'bulkUploadCRUD')
+data.setCell(0, 2, 'io.mosip.testrig.adminui.testcase.BulkUploadTest')
+data.setCell(0, 3, 46406);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'bulkUploadCRUD')
+data.setCell(1, 2, 'io.mosip.testrig.adminui.testcase.BulkUploadTest')
+data.setCell(1, 3, 46328);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -278,19 +283,10 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">set</span>
-                <br/>
-                <span class="ignored-method-name">documentCategoriesCRUD</span>
-                <br/>
-                <span class="ignored-method-name">pushFileToS3</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
               <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineTest</span>
               <div class="ignored-methods-div">
+                <span class="ignored-method-name">machineCRUD</span>
+                <br/>
                 <span class="ignored-method-name">set</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
@@ -298,11 +294,11 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BulkUploadTest</span>
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.TemplateTest</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">set</span>
                 <br/>
-                <span class="ignored-method-name">bulkUploadCRUD</span>
+                <span class="ignored-method-name">templateCRUD</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
@@ -314,17 +310,6 @@ return data;
                 <span class="ignored-method-name">set</span>
                 <br/>
                 <span class="ignored-method-name">documentTypesCRUD</span>
-                <br/>
-                <span class="ignored-method-name">pushFileToS3</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DynamicFieldTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">dynamicFieldCRUD</span>
-                <br/>
-                <span class="ignored-method-name">set</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
@@ -349,11 +334,31 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineSpecificationTest</span>
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BlockListTest</span>
               <div class="ignored-methods-div">
+                <span class="ignored-method-name">blocklistedwordsCRUD</span>
+                <br/>
                 <span class="ignored-method-name">set</span>
                 <br/>
-                <span class="ignored-method-name">machineSpecCRUD</span>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DynamicFieldTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">dynamicFieldCRUD</span>
+                <br/>
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BulkUploadTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
@@ -371,22 +376,33 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.HolidaysTest</span>
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.CenterTypeTest</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">set</span>
                 <br/>
-                <span class="ignored-method-name">holidaysCRUD</span>
+                <span class="ignored-method-name">centerTypeCRUD</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BlockListTest</span>
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">blocklistedwordsCRUD</span>
-                <br/>
                 <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">documentCategoriesCRUD</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.HolidaysTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">holidaysCRUD</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
@@ -415,22 +431,11 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.CenterTypeTest</span>
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineSpecificationTest</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">set</span>
                 <br/>
-                <span class="ignored-method-name">centerTypeCRUD</span>
-                <br/>
-                <span class="ignored-method-name">pushFileToS3</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.TemplateTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">set</span>
-                <br/>
-                <span class="ignored-method-name">templateCRUD</span>
+                <span class="ignored-method-name">machineSpecCRUD</span>
                 <br/>
                 <span class="ignored-method-name">pushFileToS3</span>
                 <br/>
@@ -451,31 +456,49 @@ return data;
               </div> <!-- configuration-suite before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.MachineTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.BulkUploadTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">set</span>
-                <span class="method-start">129 ms</span>
+                <span class="method-start">225 ms</span>
               </div> <!-- configuration-method before -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">130 ms</span>
+                <span class="method-start">227 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">machineCRUD</span>
-                <span class="method-start">8471 ms</span>
+                <span class="method-name">bulkUploadCRUD(device_type)</span>
+                <span class="method-start">5750 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">195879 ms</span>
+                <span class="method-start">52082 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">52616 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">52616 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">bulkUploadCRUD(machine_master)</span>
+                <span class="method-start">57970 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">104377 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.CenterTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">pushFileToS3</span>
-                <span class="method-start">196451 ms</span>
+                <span class="method-start">104760 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

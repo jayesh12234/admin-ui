@@ -10,6 +10,7 @@ import org.testng.TestNG;
 
 import io.mosip.testrig.adminui.dbaccess.DBManager;
 import io.mosip.testrig.adminui.fw.util.AdminTestUtil;
+import io.mosip.testrig.adminui.kernel.util.ConfigManager;
 import io.mosip.testrig.adminui.testcase.*;
 
 

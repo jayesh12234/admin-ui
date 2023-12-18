@@ -4,7 +4,6 @@
   <test thread-count="5" name="Command line test(failed)">
     <groups>
       <run>
-        <exclude name="BU"/>
         <exclude name="BL"/>
         <exclude name="CTR"/>
         <exclude name="CT"/>
@@ -14,22 +13,23 @@
         <exclude name="DOC"/>
         <exclude name="DOCT"/>
         <exclude name="DF"/>
-        <exclude name="MS"/>
-        <exclude name="MT"/>
         <exclude name="H"/>
+        <exclude name="MS"/>
+        <exclude name="M"/>
+        <exclude name="MT"/>
         <exclude name="T"/>
       </run>
     </groups>
     <classes>
-      <class name="io.mosip.testrig.adminui.testcase.MachineTest">
+      <class name="io.mosip.testrig.adminui.testcase.BulkUploadTest">
         <methods>
-          <include name="machineCRUD"/>
           <include name="set"/>
+          <include name="bulkUploadCRUD" invocation-numbers="0 1"/>
           <include name="setUp"/>
           <include name="tearDown"/>
           <include name="pushFileToS3"/>
         </methods>
-      </class> <!-- io.mosip.testrig.adminui.testcase.MachineTest -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.BulkUploadTest -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

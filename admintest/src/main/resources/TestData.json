@@ -18,9 +18,9 @@
 		"14machineTypesCRUD": "MT",
 		"15templateCRUD": "T",
 		"BELOW_ARE_STATIC_KEYWORDS": "We are using this setExcludedGroups to exclude scenarios",
-		"setExcludedGroups": "BU",
+		"setExcludedGroups": "BL,CTR,CT,DS,D,DT,DOC,DOCT,DF,H,MS,M,MT,T",
 		"holidayDateCenter": "10/12/2025",
-		"holidayDate": "10/16/2025",
+		"holidayDate": "10/11/2025",
 		"validityDate":"10/12/2026",
 		"loginlang": "sin",
 		"preappend": "0",
@@ -28,8 +28,8 @@
 		"headless": "no",
 		"bulkwait": "10000",
 		"dummyData":"blocklistwordsss",
-		"publicKey": "AAEACwACAHIAIINxl2dEhLP4GpDMjUal1yT9UtduBlILZPKh2hszFGmqABAAFwALCAAAAQABAQDFEX4nLppAuHIfGzhYn7DR_3wAQkVnrPSFFaiV9TAvN0WHtH_hweGNNjUGYvyaowwmC8jsazufmnIoPisZIFraVQNWCA6N0RhZF_LisoTYDoQSM-ZbCKPxRTFnemtTwXHxQdlVWGUXst_WZIWC0OTSzJHbBg_iXQW1UOXRJL845GFOKjvOPQiEbOZgmoWslkTIAi9bf-AeWdEYuO3bwPf-T5Xxj_xH2-PTinQA_4itRWSrhG5kEU-zQHWGL72SiGzwOOoPnzZZv2X_9djpWGEz1gyNl5ionns8IfuQrvikSEMxm-E7Z9RfKNhl_rEHgnOR4gl0ju7kg_n9tnuUeXXP",
-		"signPublicKey": "AAEABAAEAHIAAAAQABQACwgAAAEAAQEArjUwXvR8QvkWcplKOqMhU-tK4YxPHdkkm9IN7azBolMoAs41uR32xp070AW5LfhQokuEskOF_dvRrqHw4JzWMXDRVSpBrW_k-OwLzNfeFvuKQ9JTAXdzKUOXbPgcLY1B5bJe9E7fn-gPKYki35RgwphHraSKaYZ1yELpXiT3KPoWXzDvZE5Lqx317bgMGh2RPkf80alJks-iv-aEPDWlSWE5jr3t68gUYx4r_eixdw6tx1ADGCqK1ZEKCul73ptnR8eWorN1njcxlxUaoECvf3rCEuvfZAprBKSWBEnaFPkfgc9lYSBwtP4YKJHttmPX0Dzc85wa7V18SIwNVEiCsQ",
+		"publicKey": "AAEACwACAHIAIINxl2dEhLP4GpDMjUal1yT9UtduBlILZPKh2hszFGmqABAAFwALCAAAAQABAQDFEX4nLppAuHIfGzhYn7DR_3wAQkVnrPSFFaiV9TAvN0WHtH_hweGNNjUGYvyaowwmC8jsazufmnIoPisZIFraVQNWCA6N0RhZF_LisoTYDoQSM-ZbCKPxRTFnemtTwXHxQdlVWGUXst_WZIWC0OTSzJHbBg_iXQW1UOXRJL845GFOKjvOPQiEbOZgmoWslkTIAi9bf-AeWdEYuO3bwPf-T5Xxj_xH2-PTinQA_4itRWSrhG5kEU-zQHWGL72SiGzwOOoPnzZZv2X_9djpWGEz1gyNl5ionns8IfuQrvikSEMxm-E6Z9RfKNhl_rEHgnOR4gl0ju7kg_n9tnuUeXXP",
+		"signPublicKey": "AAEABAAEAHIAAAAQABQACwgAAAEAAQEArjUwXvR8QvkWcplKOqMhU-tK4YxPHdkkm9IN7azBolMoAs41uR32xp070AW5LfhQokuEskOF_dvRrqHw4JzWMXDRVSpBrW_k-OwLzNfeFvuKQ9JTAXdzKUOXbPgcLY1B5bJe9E7fn-gPKYki35RgwphHraSKaYZ1yELpXiT3KPoWXzDvZE5Lqx317bgMGh2RPkf80alJks-iv-aEPDWlSWE5jr3t68gUYx4r_eixdw6tx1ADGCqK1ZEKCul73ptnR8eWorN1njcxlxUaoECvf3rCEuvfZAprBKSWBEnaFPkfgc9lYSBwtP4YKJHttmPX0Dzc85wa6V18SIwNVEiCsQ",
 		"langcode": [
 			{
 				"language": "tam",
