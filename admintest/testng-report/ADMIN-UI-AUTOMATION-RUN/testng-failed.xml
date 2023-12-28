@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ADMIN-UI-AUTOMATION-RUN]" guice-stage="DEVELOPMENT">
+  <parameter name="stopOnError" value="false"/>
+  <parameter name="scenarioFilter" value="random"/>
+  <listeners>
+    <listener class-name="io.mosip.testrig.adminui.utility.EmailableReport"/>
+  </listeners>
+  <test thread-count="5" name="ADMIN-UI-AUTOMATION(failed)">
+    <classes>
+      <class name="io.mosip.testrig.adminui.testcase.CenterTest">
+        <methods>
+          <include name="set"/>
+          <include name="setUp"/>
+          <include name="centerCRUD"/>
+          <include name="tearDown"/>
+          <include name="pushFileToS3"/>
+        </methods>
+      </class> <!-- io.mosip.testrig.adminui.testcase.CenterTest -->
+    </classes>
+  </test> <!-- ADMIN-UI-AUTOMATION(failed) -->
+</suite> <!-- Failed suite [ADMIN-UI-AUTOMATION-RUN] -->
