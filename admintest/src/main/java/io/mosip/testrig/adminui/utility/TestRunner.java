@@ -70,28 +70,28 @@ public class TestRunner {
 	
 	public static void startTestRunner() throws Exception {
 		File homeDir = null;
-	//	TestNG runner = new TestNG();
-testNg=new TestNG();
-		
-		String listExcludedGroups=JsonUtil.JsonObjParsing(Commons.getTestData(),"setExcludedGroups");
-		testNg.setExcludedGroups(listExcludedGroups);
-		testNg.setTestClasses(new Class[] {
-				
-	CenterTest.class,HolidaysTest.class,TemplateTest.class
-				
-				,
-				
-				DeviceTest.class,MachineTest.class
-				,BlockListTest.class,CenterTypeTest.class,
-				DeviceSpecificationTest.class,DeviceTypesTest.class,
-				MachineSpecificationTest.class,MachineTypesTest.class,
-				DynamicFieldTest.class,DocumentCategoriesTest.class,DocumentTypes.class,
-				
-			BulkUploadTest.class
-		
-		});
+		TestNG runner = new TestNG();
+		List<String> suitefiles = new ArrayList<String>();
+		String os = System.getProperty("os.name");
+		if (checkRunType().contains("IDE") || os.toLowerCase().contains("windows") == true) {
+			homeDir = new File(getResourcePath() + "/testngFile");
+ 
+		} else {
+			homeDir = new File(getResourcePath() + "/testngFile");
+ 
+		}
+ 
+		for (File file : homeDir.listFiles()) {
+			if (file.getName().toLowerCase() != null) {
+				suitefiles.add(file.getAbsolutePath());
+			}
+		}
+ 
+		runner.setTestSuites(suitefiles);
+
 		
 		System.getProperties().setProperty("testng.outpur.dir", "testng-report");
+<<<<<<< HEAD
 		testNg.setOutputDirectory("testng-report");
 		System.getProperties().setProperty("emailable.report2.name", "AdminUI" + "-"
 				+ ConfigManager.getiam_apienvuser()+ "-"  + System.currentTimeMillis() + "-report.html");
@@ -101,7 +101,15 @@ testNg=new TestNG();
 		
 	//	MockSMTPListener mockSMTPListener = new MockSMTPListener();
 	//	mockSMTPListener.bTerminate = true;
+=======
+		runner.setOutputDirectory("testng-report");
+		System.getProperties().setProperty("emailable.report2.name", "ADMINUI-" + BaseTestCaseFunc.environment + "-"
+				+ "-run-" + System.currentTimeMillis() + "-report.html");
+>>>>>>> upstream/develop
 
+		runner.run();
+		
+ 
 		System.exit(0);
 	}
 

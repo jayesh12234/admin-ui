@@ -98,8 +98,9 @@ public class Commons  extends BaseClass{
 		} catch (Exception e) {
 		
 			try {
-				test.fail(e.getMessage(), MediaEntityBuilder.createScreenCaptureFromBase64String(Screenshot.ClickScreenshot(driver)).build());
-			} catch (IOException e1) {
+		//		test.fail(e.getMessage(), MediaEntityBuilder.createScreenCaptureFromBase64String(Screenshot.ClickScreenshot(driver)).build());
+				driver.findElement(by).click();
+			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

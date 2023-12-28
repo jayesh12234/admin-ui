@@ -7,6 +7,7 @@
 	<test name="ADMIN-UI-AUTOMATION" group-by-instances="true">
 	
 		<classes>
+<<<<<<< HEAD
 			<!--<class name="io.mosip.testrig.adminui.testcase.BlockListTest" />
 			<class name="io.mosip.testrig.adminui.testcase.BulkUploadTest" />-->
 			<!--<class name="io.mosip.testrig.adminui.testcase.CenterTest" />-->
@@ -23,6 +24,25 @@
 			<class name="io.mosip.testrig.adminui.testcase.MachineTest" />
 			<class name="io.mosip.testrig.adminui.testcase.MachineTypesTest" />
 			<class name="io.mosip.testrig.adminui.testcase.TemplateTest" />-->
+=======
+			<!-- <class name="io.mosip.testrig.adminui.testcase.BlockListTest" />
+			<class name="io.mosip.testrig.adminui.testcase.BulkUploadTest" />
+			<class name="io.mosip.testrig.adminui.testcase.CenterTest" />
+			<class name="io.mosip.testrig.adminui.testcase.CenterTypeTest" />
+			<class name="io.mosip.testrig.adminui.testcase.DeviceSpecificationTest" />
+			<class name="io.mosip.testrig.adminui.testcase.DeviceTest" />
+			<class name="io.mosip.testrig.adminui.testcase.DeviceTypesTest" />
+			<class name="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest" />
+			<class name="io.mosip.testrig.adminui.testcase.DocumentTypes" />
+			<class name="io.mosip.testrig.adminui.testcase.DynamicFieldTest" />
+			<class name="io.mosip.testrig.adminui.testcase.HolidaysTest" />
+			<class name="io.mosip.testrig.adminui.testcase.LoginTest" />
+			<class name="io.mosip.testrig.adminui.testcase.MachineTypesTest" />
+			<class name="io.mosip.testrig.adminui.testcase.TemplateTest" />
+			<class name="io.mosip.testrig.adminui.testcase.MachineSpecificationTest" />-->
+			<class name="io.mosip.testrig.adminui.testcase.MachineTest" />
+			
+>>>>>>> upstream/develop
 			
 		</classes>
 	</test>

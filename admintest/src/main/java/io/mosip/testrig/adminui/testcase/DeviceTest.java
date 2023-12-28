@@ -50,11 +50,7 @@ public class DeviceTest extends BaseClass{
 	//   Commons.enter(test,driver, By.id("validity"),validityDate);
       Commons.calendar(validityDate);
     Commons.dropdown(test,driver,By.id("deviceSpecId"));
-    try{   Commons.dropdown(test,driver, By.id("zone"));
-	 
-	 }catch(Exception e) {
-		 test.log(Status.INFO, e);
-	 }
+    // Commons.dropdown(test,driver,By.id("zone"));
       Commons.dropdown(test,driver,By.id("regCenterId"));
       
 

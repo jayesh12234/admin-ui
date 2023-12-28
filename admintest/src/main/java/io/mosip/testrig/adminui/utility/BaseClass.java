@@ -89,16 +89,20 @@ public class BaseClass {
 		 Reporter.log("BaseClass",true);
 		   test=extent.createTest(getCommitId(),getCommitId());
 		  
-		ChromeOptions options = new ChromeOptions();
-		
-		String headless=JsonUtil.JsonObjParsing(Commons.getTestData(),"headless");
-		
-	
-		if(headless.equalsIgnoreCase("yes")) {
-			options.addArguments("--headless=new");
-		}
-	
-	WebDriverManager.chromedriver().setup();
+		   if(System.getProperty("os.name").equalsIgnoreCase("Linux")) {
+				String configFilePath ="/usr/bin/chromedriver";
+				System.setProperty("webdriver.chrome.driver", configFilePath);
+			}else {
+				WebDriverManager.chromedriver().setup();
+			}
+			
+			
+	     	ChromeOptions options = new ChromeOptions();
+			String headless=JsonUtil.JsonObjParsing(Commons.getTestData(),"headless");
+			if(headless.equalsIgnoreCase("yes")) {
+				options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080");
+				
+			}
 	driver=new ChromeDriver(options);
 		 
 		
@@ -189,11 +193,15 @@ public class BaseClass {
 		try {
 			String langcode = JsonUtil.JsonObjParsing(Commons.getTestData(),"loginlang");
 				
+<<<<<<< HEAD
 
 			File directoryPath = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\BulkUploadFiles\\" + langcode + "\\");
 
 	//		File directoryPath = new File(TestRunner.getResourcePath() + "\\BulkUploadFiles\\" + langcode + "\\");
 
+=======
+			File directoryPath = new File(TestRunner.getResourcePath()+ "\\BulkUploadFiles\\" + langcode + "\\");
+>>>>>>> upstream/develop
 
 			if (directoryPath.exists()) {
 

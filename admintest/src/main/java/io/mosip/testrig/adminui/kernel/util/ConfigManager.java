@@ -3,6 +3,8 @@ package io.mosip.testrig.adminui.kernel.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -86,6 +88,7 @@ public class ConfigManager {
 	private static String MASTER_DB_PASS = "postgresql-password";
 	private static String MASTER_DB_SCHEMA = "master_db_schema";
 //
+	private static String SERVICES_NOT_DEPLOYED = "servicesNotDeployed";
 	private static String IAM_EXTERNAL_URL = "keycloak-external-url";
 	private static String IAM_ADMINPORTAL_PATH = "adminPortalPath";
 	private static String IAM_APIENVUSER = "apiEnvUser";
@@ -172,6 +175,7 @@ public class ConfigManager {
 //	private static String km_db_pass;
 //	private static String km_db_schema;
 //
+	private static String serviceNotDeployedList;
 	private static String enableDebug;
 	private static String master_db_user;
 	private static String master_db_pass;
@@ -255,6 +259,10 @@ public class ConfigManager {
 				: System.getenv(IAM_APIINTERNALENDPOINT);
 		logger.info("apiinternalendpoint from config manager::" + iam_apiinternalendpoint);
 		
+		serviceNotDeployedList = System.getenv(SERVICES_NOT_DEPLOYED) == null
+				? propsKernel.getProperty(SERVICES_NOT_DEPLOYED)
+				: System.getenv(SERVICES_NOT_DEPLOYED);
+		propsKernel.setProperty(SERVICES_NOT_DEPLOYED, serviceNotDeployedList);
 		//admin testdata end
 		iam_realm_id = getValueForKey(IAM_REALM_ID);
 		iam_users_to_create = getValueForKey(IAM_USERS_TO_CREATE);
@@ -514,6 +522,24 @@ public class ConfigManager {
 			logger.error("Exception " + e.getMessage());
 		}
 		return prop;
+	}
+	public static boolean isInServiceNotDeployedList(String stringToFind) {
+		synchronized (serviceNotDeployedList) {
+			if (serviceNotDeployedList.isBlank())
+				return false;
+			List<String> serviceNotDeployed = Arrays.asList(serviceNotDeployedList.split(","));
+			if (ConfigManager.IsDebugEnabled())
+				logger.info("serviceNotDeployedList:  " + serviceNotDeployedList + ", serviceNotDeployed : " + serviceNotDeployed
+						+ ", stringToFind : " + stringToFind);
+			for (String string : serviceNotDeployed) {
+				if (string.equalsIgnoreCase(stringToFind))
+					return true;
+				else if(stringToFind.toLowerCase().contains(string.toLowerCase())) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public static String getiam_adminportal_path() {
