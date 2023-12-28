@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -84,55 +86,105 @@ public class BaseClass {
         extent=ExtentReportManager.getReports();
   }
   
-	@BeforeMethod
-	public void setUp() throws Exception {
-		 Reporter.log("BaseClass",true);
-		   test=extent.createTest(getCommitId(),getCommitId());
-		  
-		   if(System.getProperty("os.name").equalsIgnoreCase("Linux")) {
-				String configFilePath ="/usr/bin/chromedriver";
-				System.setProperty("webdriver.chrome.driver", configFilePath);
-			}else {
-				WebDriverManager.chromedriver().setup();
-			}
-			
-			
-	     	ChromeOptions options = new ChromeOptions();
-			String headless=JsonUtil.JsonObjParsing(Commons.getTestData(),"headless");
-			if(headless.equalsIgnoreCase("yes")) {
-				options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080");
-				
-			}
-	driver=new ChromeDriver(options);
-		 
-		
+//	@BeforeMethod
+//	public void setUp() throws Exception {
+//		 Reporter.log("BaseClass",true);
+//		   test=extent.createTest(getCommitId(),getCommitId());
+//		  
+//		   if(System.getProperty("os.name").equalsIgnoreCase("Linux")) {
+//				String configFilePath ="/usr/bin/chromedriver";
+//				System.setProperty("webdriver.chrome.driver", configFilePath);
+//			}else {
+//				WebDriverManager.chromedriver().setup();
+//			}
+//			
+//			
+//	     	ChromeOptions options = new ChromeOptions();
+//			String headless=JsonUtil.JsonObjParsing(Commons.getTestData(),"headless");
+//			if(headless.equalsIgnoreCase("yes")) {
+//				options.addArguments("--no-sandbox");
+//				options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080");
+//				
+//			}
+//	driver=new ChromeDriver(options);
+//		 
 //		
-		js = (JavascriptExecutor) driver;
-		vars = new HashMap<String, Object>();
-		driver.get(envPath);
-		driver.manage().window().maximize();
-		Thread.sleep(500);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
-		String language1 = null;
-		try {
-			language1 = Commons.getFieldData("langcode");
+////		
+//		js = (JavascriptExecutor) driver;
+//		vars = new HashMap<String, Object>();
+//		driver.get(envPath);
+//		driver.manage().window().maximize();
+//		Thread.sleep(500);
+//		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//		
+//		String language1 = null;
+//		try {
+//			language1 = Commons.getFieldData("langcode");
+//
+//			logger.info(language1);
+//			if(!language1.equals("sin"))
+//			{Commons.click(test,driver, By.xpath("//*[@id='kc-locale-dropdown']"));
+//			String var = "//li/a[contains(text(),'" + language1 + "')]";
+//			Commons.click(test,driver, By.xpath(var));
+//			}
+//
+//		} catch (Exception e) {
+//			e.getMessage();
+//		}
+//		driver.findElement(By.id("username")).sendKeys(userid);
+//		driver.findElement(By.id("password")).sendKeys(password);
+//		driver.findElement(By.xpath("//input[@name=\'login\']")).click();
+//
+//	}
+	  @BeforeMethod
+	    public void setUp() throws Exception {
+	        Reporter.log("BaseClass", true);
+	        test = extent.createTest(getCommitId(), getCommitId());
 
-			logger.info(language1);
-			if(!language1.equals("sin"))
-			{Commons.click(test,driver, By.xpath("//*[@id='kc-locale-dropdown']"));
-			String var = "//li/a[contains(text(),'" + language1 + "')]";
-			Commons.click(test,driver, By.xpath(var));
-			}
+	        ChromeOptions options = new ChromeOptions();
+	        String headless = JsonUtil.JsonObjParsing(Commons.getTestData(), "headless");
+	        if (headless.equalsIgnoreCase("yes")) {
+	            options.addArguments("--no-sandbox");
+	            options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080");
+	        }
 
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		driver.findElement(By.id("username")).sendKeys(userid);
-		driver.findElement(By.id("password")).sendKeys(password);
-		driver.findElement(By.xpath("//input[@name=\'login\']")).click();
+	        WebDriver driver;
 
-	}
+	        if (System.getProperty("os.name").equalsIgnoreCase("Linux")) {
+	            // Use remote WebDriver for Linux
+	            options.addArguments("--no-sandbox"); // Add additional arguments if needed
+	            driver = new RemoteWebDriver(new URL("http://localhost:4444/grid/console"), options);
+	        } else {
+	            // Use local WebDriver for non-Linux
+	            WebDriverManager.chromedriver().setup();
+	            driver = new ChromeDriver(options);
+	        }
+
+	        js = (JavascriptExecutor) driver;
+	        vars = new HashMap<String, Object>();
+	        driver.get(envPath);
+	        driver.manage().window().maximize();
+	        Thread.sleep(500);
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+	        String language1 = null;
+	        try {
+	            language1 = Commons.getFieldData("langcode");
+	            logger.info(language1);
+	            if (!language1.equals("sin")) {
+	                Commons.click(test, driver, By.xpath("//*[@id='kc-locale-dropdown']"));
+	                String var = "//li/a[contains(text(),'" + language1 + "')]";
+	                Commons.click(test, driver, By.xpath(var));
+	            }
+	        } catch (Exception e) {
+	            e.getMessage();
+	        }
+
+	        driver.findElement(By.id("username")).sendKeys(userid);
+	        driver.findElement(By.id("password")).sendKeys(password);
+	        driver.findElement(By.xpath("//input[@name='login']")).click();
+	    }
+	
 
 	@AfterMethod
 	public void tearDown() {

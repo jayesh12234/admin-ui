@@ -1,24 +1,39 @@
-FROM selenium/standalone-chrome:latest
+# Use the official Selenium Grid standalone image
+FROM selenium/hub:latest
+
 USER root
+
+# Install wget
+RUN apt-get update && apt-get install -y wget
+
+# Download and install the ChromeDriver
+RUN CHROME_DRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
+    && wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin \
+    && rm /tmp/chromedriver.zip \
+    && chown root:root /usr/bin/chromedriver \
+    && chmod +x /usr/bin/chromedriver
+
 ARG SOURCE
 ARG COMMIT_HASH
 ARG COMMIT_ID
 ARG BUILD_TIME
+
 LABEL source=${SOURCE}
 LABEL commit_hash=${COMMIT_HASH}
 LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 
-# can be passed during Docker build as build time environment for github branch to pickup configuration from.
+# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user=mosip
 
-# can be passed during Docker build as build time environment for github branch to pickup configuration from.
+# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_group=mosip
 
-# can be passed during Docker build as build time environment for github branch to pickup configuration from.
+# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_uid=1001
 
-# can be passed during Docker build as build time environment for github branch to pickup configuration from.
+# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_gid=1001
 
 # set working directory for the user
@@ -38,4 +53,5 @@ COPY --chown=${container_user_uid}:${container_user} ./target/*.jar ${work_dir}
 # set working directory
 WORKDIR ${work_dir}
 
-ENTRYPOINT ["/bin/bash", "-c", "./entrypoint.sh"]
+# Start the Selenium Hub when the container starts
+CMD ["./entrypoint.sh"]
