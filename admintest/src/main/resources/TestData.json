@@ -25,7 +25,7 @@
 		"loginlang": "sin",
 		"preappend": "0",
 		"jsonObjName": "identity",
-		"headless": "yes",
+		"headless": "no",
 		"bulkwait": "10000",
 		"dummyData":"blocklistwordsss",
 		"publicKey": "AAEACwACAHIAIINxl2dEhLP4GpDMjUal1yT9UtduBlILZPKh2hszFGmqABAAFwALCAAAAQABAQDFEX4nLppAuHIfGzhYn7DR_3wAQkVnrPSFFaiV9TAvN0WHtH_hweGNNjUGYvyaowwmC8jsazufmnIoPisZIFraVQNWCA6N0RhZF_LisoTYDoQSM-ZbCKPxRTFnemtTwXHxQdlVWGUXst_WZIWC0OTSzJHbBg_iXQW1UOXRJL845GFOKjvOPQiEbOZgmoWslkTIAi9bf-AeWdEYuO3bwPf-T5Xxj_xH2-PTinQA_4itRWSrhG5kEU-zQHWGL72SiGzwOOoPnzZZv2X_9djpWGEz1gyNl5ionns8IfuQrvikSEMxm-E6Z9RfKNhl_rEHgnOR4gl0ju7kg_n9tnuUeXXP",

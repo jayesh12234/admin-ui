@@ -8,15 +8,15 @@
   </listeners>
   <test thread-count="5" name="ADMIN-UI-AUTOMATION(failed)">
     <classes>
-      <class name="io.mosip.testrig.adminui.testcase.CenterTest">
+      <class name="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest">
         <methods>
           <include name="set"/>
           <include name="setUp"/>
-          <include name="centerCRUD"/>
           <include name="tearDown"/>
+          <include name="documentCategoriesCRUD"/>
           <include name="pushFileToS3"/>
         </methods>
-      </class> <!-- io.mosip.testrig.adminui.testcase.CenterTest -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentCategoriesTest -->
     </classes>
   </test> <!-- ADMIN-UI-AUTOMATION(failed) -->
 </suite> <!-- Failed suite [ADMIN-UI-AUTOMATION-RUN] -->

@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Command line suite]">
-  <test thread-count="5" name="Command line test(failed)">
-    <groups>
-      <run>
-        <exclude name="BL"/>
-        <exclude name="CTR"/>
-        <exclude name="CT"/>
-        <exclude name="DS"/>
-        <exclude name="D"/>
-        <exclude name="DT"/>
-        <exclude name="DOC"/>
-        <exclude name="DOCT"/>
-        <exclude name="DF"/>
-        <exclude name="H"/>
-        <exclude name="MS"/>
-        <exclude name="M"/>
-        <exclude name="MT"/>
-        <exclude name="T"/>
-      </run>
-    </groups>
+<suite name="Failed suite [ADMIN-UI-AUTOMATION-RUN]" guice-stage="DEVELOPMENT">
+  <parameter name="stopOnError" value="false"/>
+  <parameter name="scenarioFilter" value="random"/>
+  <listeners>
+    <listener class-name="io.mosip.testrig.adminui.utility.EmailableReport"/>
+  </listeners>
+  <test thread-count="5" name="ADMIN-UI-AUTOMATION(failed)">
     <classes>
-      <class name="io.mosip.testrig.adminui.testcase.BulkUploadTest">
+      <class name="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest">
         <methods>
           <include name="set"/>
-          <include name="bulkUploadCRUD" invocation-numbers="0 1"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="documentCategoriesCRUD"/>
           <include name="pushFileToS3"/>
         </methods>
-      </class> <!-- io.mosip.testrig.adminui.testcase.BulkUploadTest -->
+      </class> <!-- io.mosip.testrig.adminui.testcase.DocumentCategoriesTest -->
     </classes>
-  </test> <!-- Command line test(failed) -->
-</suite> <!-- Failed suite [Command line suite] -->
+  </test> <!-- ADMIN-UI-AUTOMATION(failed) -->
+</suite> <!-- Failed suite [ADMIN-UI-AUTOMATION-RUN] -->

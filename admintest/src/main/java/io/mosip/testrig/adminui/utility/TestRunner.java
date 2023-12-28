@@ -91,21 +91,20 @@ public class TestRunner {
 
 		
 		System.getProperties().setProperty("testng.outpur.dir", "testng-report");
-<<<<<<< HEAD
-		testNg.setOutputDirectory("testng-report");
-		System.getProperties().setProperty("emailable.report2.name", "AdminUI" + "-"
-				+ ConfigManager.getiam_apienvuser()+ "-"  + System.currentTimeMillis() + "-report.html");
+
+	//	testNg.setOutputDirectory("testng-report");
+	//	System.getProperties().setProperty("emailable.report2.name", "AdminUI" + "-"
+	//			+ ConfigManager.getiam_apienvuser()+ "-"  + System.currentTimeMillis() + "-report.html");
 		
 		
-		testNg.run();
+	//	testNg.run();
 		
 	//	MockSMTPListener mockSMTPListener = new MockSMTPListener();
 	//	mockSMTPListener.bTerminate = true;
-=======
+
 		runner.setOutputDirectory("testng-report");
 		System.getProperties().setProperty("emailable.report2.name", "ADMINUI-" + BaseTestCaseFunc.environment + "-"
 				+ "-run-" + System.currentTimeMillis() + "-report.html");
->>>>>>> upstream/develop
 
 		runner.run();
 		
