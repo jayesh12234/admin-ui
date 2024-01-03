@@ -1,57 +1,45 @@
-# Use the official Selenium Grid standalone image
-FROM selenium/hub:latest
+FROM -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:latest
 
 USER root
 
-# Install wget
-RUN apt-get update && apt-get install -y wget
-
-# Download and install the ChromeDriver
-RUN CHROME_DRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
-    && wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip \
-    && unzip /tmp/chromedriver.zip -d /usr/bin \
-    && rm /tmp/chromedriver.zip \
-    && chown root:root /usr/bin/chromedriver \
-    && chmod +x /usr/bin/chromedriver
-
+# Define build-time arguments
 ARG SOURCE
 ARG COMMIT_HASH
 ARG COMMIT_ID
 ARG BUILD_TIME
 
+# Set labels for metadata
 LABEL source=${SOURCE}
 LABEL commit_hash=${COMMIT_HASH}
 LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 
-# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
+# Define build-time arguments for user and group
 ARG container_user=mosip
-
-# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_group=mosip
-
-# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_uid=1001
-
-# can be passed during Docker build as build time environment for GitHub branch to pick up configuration from.
 ARG container_user_gid=1001
 
-# set working directory for the user
+# Set working directory for the user
 ENV work_dir=/home/${container_user}/
 
-# install packages and create user
+# Install packages and create user
 RUN groupadd -g ${container_user_gid} ${container_user_group} \
     && useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/bash -m ${container_user} -d ${work_dir}
 
-# select container user for all tasks
+# Switch to the specified user for the subsequent commands
 USER ${container_user_uid}:${container_user_gid}
 
+# Copy files
 COPY --chown=${container_user_uid}:${container_user} --chmod=771 ./entrypoint.sh ${work_dir}/entrypoint.sh
 COPY --chown=${container_user}:${container_user} ./src/main/resources/ ${work_dir}/resources/
 COPY --chown=${container_user_uid}:${container_user} ./target/*.jar ${work_dir}
 
-# set working directory
+# Set working directory
 WORKDIR ${work_dir}
 
-# Start the Selenium Hub when the container starts
-CMD ["./entrypoint.sh"]
+# Expose port 4444 (this is where Selenium Grid will be accessible)
+EXPOSE 4444
+
+# Entrypoint for the container
+ENTRYPOINT ["/bin/bash", "-c", "./entrypoint.sh"]

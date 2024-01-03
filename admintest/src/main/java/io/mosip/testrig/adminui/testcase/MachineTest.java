@@ -1,5 +1,6 @@
 package io.mosip.testrig.adminui.testcase;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +45,13 @@ public class MachineTest extends BaseClass{
 		Commons.click(test,driver,By.id("admin/resources"));
 		logger.info(driver.findElement(By.id("/admin/resources/machines")).isDisplayed()+"2");
 		Commons.click(test,driver,By.id("/admin/resources/machines"));
-	//	Commons.click(test,driver,By.id("/admin/resources/machines"));
+		  List<WebElement> allElements = driver.findElements(By.xpath("//*"));
+
+	        // Print XPath for each element
+	        for (WebElement element : allElements) {
+	          
+	            logger.info(element);
+	        }
 		Thread.sleep(20000);
 		logger.info(driver.findElement(By.id("Create Machine")).isDisplayed()+"3");
 		Commons.click(test,driver,By.id("Create Machine"));
@@ -85,4 +92,17 @@ public class MachineTest extends BaseClass{
 		test.log(Status.INFO, "Click on Deactivated");
 		Commons.decommission(test,driver);
 	}
+	 private static String getXPath(WebElement element) {
+	        if (element == null) {
+	            return null;
+	        }
+
+	        if (!element.getAttribute("id").isEmpty()) {
+	            return "//*[@id='" + element.getAttribute("id") + "']";
+	        }
+
+	        // You can add more conditions based on attributes if needed
+
+	        return getXPath(element.findElement(By.xpath(".."))) + "/" + element.getTagName();
+	    }
 }
