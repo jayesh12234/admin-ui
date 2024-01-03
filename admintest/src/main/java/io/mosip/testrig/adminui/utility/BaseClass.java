@@ -189,7 +189,17 @@ public class BaseClass {
 		try {
 			String langcode = JsonUtil.JsonObjParsing(Commons.getTestData(),"loginlang");
 				
-			File directoryPath = new File(System.getProperty("user.dir") + "\\BulkUploadFiles\\" + langcode + "\\");
+
+
+
+			File directoryPath = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\BulkUploadFiles\\" + langcode + "\\");
+
+	//		File directoryPath = new File(TestRunner.getResourcePath() + "\\BulkUploadFiles\\" + langcode + "\\");
+
+
+		//	File directoryPath = new File(TestRunner.getResourcePath()+ "\\BulkUploadFiles\\" + langcode + "\\");
+
+
 
 			if (directoryPath.exists()) {
 

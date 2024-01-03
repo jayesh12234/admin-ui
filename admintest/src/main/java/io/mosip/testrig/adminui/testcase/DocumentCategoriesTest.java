@@ -32,10 +32,10 @@ public class DocumentCategoriesTest extends BaseClass{
   @Test(groups = "DOC")
   public void documentCategoriesCRUD() {
 	  test=extent.createTest("DocumentCategoriesTest", "verify Login");
-	   String documentCategories="admin/masterdata/document-categories/view";
+	   String documentCategories="//*[@id=\"admin/masterdata/document-categories/view\"]";
     Commons.click(test,driver,By.xpath("//a[@href='#/admin/masterdata']"));
    
-    Commons.click(test,driver,By.id(documentCategories));
+    Commons.click(test,driver,By.xpath(documentCategories));
     Commons.click(test,driver,By.id("Create"));
     test.log(Status.INFO, "Click on Create");
    
@@ -60,5 +60,7 @@ public class DocumentCategoriesTest extends BaseClass{
    	Commons.deactivate(test,driver);
    	test.log(Status.INFO, "Click on Deactivate");
 
+   	
+   	
        }
    }

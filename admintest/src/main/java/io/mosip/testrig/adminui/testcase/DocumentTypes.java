@@ -32,10 +32,10 @@ public class DocumentTypes extends BaseClass{
   @Test(groups = "DOCT")
   public void documentTypesCRUD() {
 	  test=extent.createTest("DocumentTypes", "verify Login");
-	  String documentTypes="admin/masterdata/document-type/view"; 
+	  String documentTypes="//*[@id=\"admin/masterdata/document-type/view\"]"; 
     Commons.click(test,driver,By.xpath("//a[@href='#/admin/masterdata']"));
    
-    Commons.click(test,driver,By.id(documentTypes));
+    Commons.click(test,driver,By.xpath(documentTypes));
     
     Commons.click(test,driver,By.id("Create"));
     test.log(Status.INFO, "Click on Create");

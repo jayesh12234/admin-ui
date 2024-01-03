@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 4 failed tests</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Command_line_suite" class="navigator-link">
+              <span class="suite-name border-failed">Command line suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Command_line_suite" class="navigator-link ">
+                    <span>[unset file name]</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Command_line_suite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Command_line_suite" class="navigator-link ">
+                    <span>14 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Command_line_suite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Command_line_suite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Command_line_suite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Command_line_suite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">14 methods, 4 failed,   10 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods failed suite-Command_line_suite"> (hide)</a> <!-- hide-methods failed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods failed suite-Command_line_suite"> (show)</a> <!-- show-methods failed suite-Command_line_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Command_line_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.CenterTest" class="method navigator-link" hash-for-method="centerCRUD">centerCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.CenterTypeTest" class="method navigator-link" hash-for-method="centerTypeCRUD">centerTypeCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DocumentCategoriesTest" class="method navigator-link" hash-for-method="documentCategoriesCRUD">documentCategoriesCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DocumentTypes" class="method navigator-link" hash-for-method="documentTypesCRUD">documentTypesCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Command_line_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods passed suite-Command_line_suite"> (hide)</a> <!-- hide-methods passed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods passed suite-Command_line_suite"> (show)</a> <!-- show-methods passed suite-Command_line_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Command_line_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.BlockListTest" class="method navigator-link" hash-for-method="blocklistedwordsCRUD">blocklistedwordsCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DeviceTest" class="method navigator-link" hash-for-method="deviceCRUD">deviceCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DeviceSpecificationTest" class="method navigator-link" hash-for-method="deviceSpecCRUD">deviceSpecCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DeviceTypesTest" class="method navigator-link" hash-for-method="deviceTypesCRUD">deviceTypesCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.DynamicFieldTest" class="method navigator-link" hash-for-method="dynamicFieldCRUD">dynamicFieldCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.HolidaysTest" class="method navigator-link" hash-for-method="holidaysCRUD">holidaysCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.MachineTest" class="method navigator-link" hash-for-method="machineCRUD">machineCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.MachineSpecificationTest" class="method navigator-link" hash-for-method="machineSpecCRUD">machineSpecCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.MachineTypesTest" class="method navigator-link" hash-for-method="machineTypesCRUD">machineTypesCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="io.mosip.testrig.adminui.testcase.TemplateTest" class="method navigator-link" hash-for-method="templateCRUD">templateCRUD</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Command_line_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Command_line_suite" class="panel Command_line_suite">
+          <div class="suite-Command_line_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DocumentTypes</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="documentTypesCRUD">
+                  </a> <!-- documentTypesCRUD -->
+                  <span class="method-name">documentTypesCRUD</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#Activate0&quot;}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.134&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56721}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4eee9917382d13787096eed1e8e6d125
+*** Element info: {Using=id, value=Activate0}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+	at io.mosip.testrig.adminui.testcase.DocumentTypes.documentTypesCRUD(DocumentTypes.java:56)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
+          <div class="suite-Command_line_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="documentCategoriesCRUD">
+                  </a> <!-- documentCategoriesCRUD -->
+                  <span class="method-name">documentCategoriesCRUD</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#Activate0&quot;}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.134&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0e383ae7ef42b2d4f34099dbb765264c
+*** Element info: {Using=id, value=Activate0}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+	at io.mosip.testrig.adminui.testcase.DocumentCategoriesTest.documentCategoriesCRUD(DocumentCategoriesTest.java:56)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
+          <div class="suite-Command_line_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.CenterTypeTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="centerTypeCRUD">
+                  </a> <!-- centerTypeCRUD -->
+                  <span class="method-name">centerTypeCRUD</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#Activate0&quot;}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.134&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56397}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 64e25264985e1bccc40d3454f4d33a04
+*** Element info: {Using=id, value=Activate0}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+	at io.mosip.testrig.adminui.utility.Commons.activate(Commons.java:289)
+	at io.mosip.testrig.adminui.testcase.CenterTypeTest.centerTypeCRUD(CenterTypeTest.java:55)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
+          <div class="suite-Command_line_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.CenterTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="centerCRUD">
+                  </a> <!-- centerCRUD -->
+                  <span class="method-name">centerCRUD</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#confirmpopup&quot;}
+  (Session info: chrome=116.0.5845.180)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;TECHNO-531&apos;, ip: &apos;192.168.254.134&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.180, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\KIRUTH~1.M\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56070}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ae91bfb94c6899ed7edde084a6a5526
+*** Element info: {Using=id, value=confirmpopup}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.mosip.testrig.adminui.utility.Commons.click(Commons.java:88)
+	at io.mosip.testrig.adminui.utility.Commons.createRes(Commons.java:404)
+	at io.mosip.testrig.adminui.testcase.CenterTest.centerCRUD(CenterTest.java:96)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at io.mosip.testrig.adminui.utility.TestRunner.main(TestRunner.java:61)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DynamicFieldTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="dynamicFieldCRUD">
+                  </a> <!-- dynamicFieldCRUD -->
+                  <span class="method-name">dynamicFieldCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.HolidaysTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="holidaysCRUD">
+                  </a> <!-- holidaysCRUD -->
+                  <span class="method-name">holidaysCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.TemplateTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="templateCRUD">
+                  </a> <!-- templateCRUD -->
+                  <span class="method-name">templateCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DeviceSpecificationTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="deviceSpecCRUD">
+                  </a> <!-- deviceSpecCRUD -->
+                  <span class="method-name">deviceSpecCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.BlockListTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="blocklistedwordsCRUD">
+                  </a> <!-- blocklistedwordsCRUD -->
+                  <span class="method-name">blocklistedwordsCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.MachineSpecificationTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="machineSpecCRUD">
+                  </a> <!-- machineSpecCRUD -->
+                  <span class="method-name">machineSpecCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.MachineTypesTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="machineTypesCRUD">
+                  </a> <!-- machineTypesCRUD -->
+                  <span class="method-name">machineTypesCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DeviceTypesTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="deviceTypesCRUD">
+                  </a> <!-- deviceTypesCRUD -->
+                  <span class="method-name">deviceTypesCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.MachineTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="machineCRUD">
+                  </a> <!-- machineCRUD -->
+                  <span class="method-name">machineCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">io.mosip.testrig.adminui.testcase.DeviceTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="deviceCRUD">
+                  </a> <!-- deviceCRUD -->
+                  <span class="method-name">deviceCRUD</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+        </div> <!-- panel Command_line_suite -->
+        <div panel-name="test-xml-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Command line suite&quot;&gt;
+  &lt;groups&gt;
+    &lt;run&gt;
+      &lt;exclude name=&quot;BU&quot;/&gt;
+    &lt;/run&gt;
+  &lt;/groups&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Command line test&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.CenterTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.HolidaysTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.TemplateTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DeviceTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.MachineTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.BlockListTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.CenterTypeTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DeviceSpecificationTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DeviceTypesTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.MachineSpecificationTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.MachineTypesTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DynamicFieldTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DocumentCategoriesTest&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.DocumentTypes&quot;/&gt;
+      &lt;class name=&quot;io.mosip.testrig.adminui.testcase.BulkUploadTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Command line test --&gt;
+&lt;/suite&gt; &lt;!-- Command line suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Command line suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Command line test (15 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Command line suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">BL</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">blocklistedwordsCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">CT</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">centerTypeCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">CTR</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">centerCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">D</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">deviceCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">DF</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">dynamicFieldCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">DOC</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">documentCategoriesCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">DOCT</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">documentTypesCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">DS</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">deviceSpecCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">DT</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">deviceTypesCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">H</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">holidaysCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">M</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">machineCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">MS</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">machineSpecCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">MT</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">machineTypesCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">T</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">templateCRUD</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Command line suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Command_line_suite');
+function tableData_Command_line_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(14);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'centerCRUD')
+data.setCell(0, 2, 'io.mosip.testrig.adminui.testcase.CenterTest')
+data.setCell(0, 3, 132524);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'deviceCRUD')
+data.setCell(1, 2, 'io.mosip.testrig.adminui.testcase.DeviceTest')
+data.setCell(1, 3, 81400);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'machineCRUD')
+data.setCell(2, 2, 'io.mosip.testrig.adminui.testcase.MachineTest')
+data.setCell(2, 3, 78963);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'documentTypesCRUD')
+data.setCell(3, 2, 'io.mosip.testrig.adminui.testcase.DocumentTypes')
+data.setCell(3, 3, 68818);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'documentCategoriesCRUD')
+data.setCell(4, 2, 'io.mosip.testrig.adminui.testcase.DocumentCategoriesTest')
+data.setCell(4, 3, 68538);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'centerTypeCRUD')
+data.setCell(5, 2, 'io.mosip.testrig.adminui.testcase.CenterTypeTest')
+data.setCell(5, 3, 68495);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'templateCRUD')
+data.setCell(6, 2, 'io.mosip.testrig.adminui.testcase.TemplateTest')
+data.setCell(6, 3, 60946);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'deviceSpecCRUD')
+data.setCell(7, 2, 'io.mosip.testrig.adminui.testcase.DeviceSpecificationTest')
+data.setCell(7, 3, 53389);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'machineSpecCRUD')
+data.setCell(8, 2, 'io.mosip.testrig.adminui.testcase.MachineSpecificationTest')
+data.setCell(8, 3, 53322);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'holidaysCRUD')
+data.setCell(9, 2, 'io.mosip.testrig.adminui.testcase.HolidaysTest')
+data.setCell(9, 3, 53246);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'deviceTypesCRUD')
+data.setCell(10, 2, 'io.mosip.testrig.adminui.testcase.DeviceTypesTest')
+data.setCell(10, 3, 49271);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'machineTypesCRUD')
+data.setCell(11, 2, 'io.mosip.testrig.adminui.testcase.MachineTypesTest')
+data.setCell(11, 3, 49261);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'blocklistedwordsCRUD')
+data.setCell(12, 2, 'io.mosip.testrig.adminui.testcase.BlockListTest')
+data.setCell(12, 3, 49174);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'dynamicFieldCRUD')
+data.setCell(13, 2, 'io.mosip.testrig.adminui.testcase.DynamicFieldTest')
+data.setCell(13, 3, 48355);
+window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 15 minutes</span>
+              <div id="times-div-Command_line_suite">
+              </div> <!-- times-div-Command_line_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Command line suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">centerCRUD</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">centerCRUD</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">29 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.TemplateTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.HolidaysTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DeviceSpecificationTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineSpecificationTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DeviceTypesTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BulkUploadTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">bulkUploadCRUD</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DynamicFieldTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.BlockListTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.MachineTypesTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DocumentTypes</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.DeviceTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">io.mosip.testrig.adminui.testcase.CenterTypeTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">set</span>
+                <br/>
+                <span class="ignored-method-name">pushFileToS3</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Command_line_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.CenterTest</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">set</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">110 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">111 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">centerCRUD</span>
+                <span class="method-start">5400 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">137926 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.HolidaysTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">138383 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">138383 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">holidaysCRUD</span>
+                <span class="method-start">143506 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">196753 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.TemplateTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">197001 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">197001 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">templateCRUD</span>
+                <span class="method-start">202039 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">262986 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DeviceTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">263251 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">263251 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deviceCRUD</span>
+                <span class="method-start">268186 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">349586 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.MachineTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">349870 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">349870 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">machineCRUD</span>
+                <span class="method-start">354613 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">433576 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.BlockListTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">433839 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">433839 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">blocklistedwordsCRUD</span>
+                <span class="method-start">438780 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">487954 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.CenterTypeTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">488251 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">488251 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">centerTypeCRUD</span>
+                <span class="method-start">493048 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">561543 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DeviceSpecificationTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">561866 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">561866 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deviceSpecCRUD</span>
+                <span class="method-start">567036 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">620426 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DeviceTypesTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">620702 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">620702 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deviceTypesCRUD</span>
+                <span class="method-start">625607 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">674879 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.MachineSpecificationTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">675125 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">675125 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">machineSpecCRUD</span>
+                <span class="method-start">679882 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">733204 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.MachineTypesTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">733498 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">733499 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">machineTypesCRUD</span>
+                <span class="method-start">738058 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">787319 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DynamicFieldTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">787602 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">787602 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">dynamicFieldCRUD</span>
+                <span class="method-start">792823 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">841178 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DocumentCategoriesTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">841498 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">841498 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">documentCategoriesCRUD</span>
+                <span class="method-start">846305 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">914843 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.DocumentTypes</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">set</span>
+                <span class="method-start">915118 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">915118 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">documentTypesCRUD</span>
+                <span class="method-start">919922 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">988740 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">io.mosip.testrig.adminui.testcase.CenterTest</div> <!-- chronological-class-name -->
+              <div class="configuration-suite after">
+                <span class="method-name">pushFileToS3</span>
+                <span class="method-start">989015 ms</span>
+              </div> <!-- configuration-suite after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>
