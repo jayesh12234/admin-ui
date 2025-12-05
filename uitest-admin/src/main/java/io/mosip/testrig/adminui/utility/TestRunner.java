@@ -44,6 +44,7 @@ public class TestRunner {
 			XmlSuite suite = new XmlSuite();
 			suite.setName("ADMIN-UI-AUTOMATION");
 			suite.addListener("io.mosip.testrig.adminui.utility.EmailableReport");
+			suite.addListener("io.mosip.testrig.adminui.utility.AdminTestListener");
 			XmlClass blocklistedwordsCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BlockListTest");
 			XmlClass bulkUploadCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BulkUploadTest");
 			XmlClass centerCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.CenterTest");
