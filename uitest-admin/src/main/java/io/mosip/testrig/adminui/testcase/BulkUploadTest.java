@@ -41,14 +41,14 @@ public class BulkUploadTest extends BaseClass {
 
 			Commons.click(driver(), By.xpath("//button[@id='createButton']"), "Clicked on Create/Upload button");
 			Commons.click(driver(), By.id("confirmpopup"), "Confirmed the upload in popup");
-			Commons.wait(2000);
+			Commons.waitForElementVisible(driver(), By.xpath("//div[@class='mat-dialog-content']//div"));
 
 			String divText = driver().findElement(By.xpath("//div[@class='mat-dialog-content']//div")).getText();
 			String divTextArr[] = divText.split(":");
 			logger.info("Bulk Upload Result: " + divTextArr[1].trim());
 
 			Commons.click(driver(), By.id("confirmmessagepopup"), "Closed the confirmation message popup");
-			Commons.wait(2000);
+			Commons.waitForElementVisible(driver(), By.xpath("//table[@class='mat-table']//tr[2]//td[1]"));
 			String transId = driver().findElement(By.xpath("//table[@class='mat-table']//tr[2]//td[1]")).getText();
 			String status = driver().findElement(By.xpath("//table[@class='mat-table']//tr[2]//td[5]")).getText();
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver())

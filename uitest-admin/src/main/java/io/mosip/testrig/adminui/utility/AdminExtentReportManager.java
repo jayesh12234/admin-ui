@@ -230,42 +230,39 @@ public class AdminExtentReportManager {
 	}
 
 	public static synchronized void flushReport() {
-	    if (extent != null) {
-	        extent.flush();
-	        LOGGER.info("Extent report flushed successfully.");
+		if (extent != null) {
+			extent.flush();
+			LOGGER.info("Extent report flushed successfully.");
 
-	        try {
-	        	pushReportToS3(reportPath);
-	        } catch (Exception e) {
-	            LOGGER.error("Error while uploading report: ", e);
-	        }
-	    }
+			try {
+				pushReportToS3(reportPath);
+			} catch (Exception e) {
+				LOGGER.error("Error while uploading report: ", e);
+			}
+		}
 	}
-	
+
+	public static String getReportPath() {
+		return reportPath;
+	}
+
 	public static synchronized void pushReportToS3(String reportFilePath) {
-	    if (ConfigManager.getPushReportsToS3().equalsIgnoreCase("yes")) {
-	        S3Adapter s3Adapter = new S3Adapter();
-	        File reportFile = new File(reportFilePath);
-	        boolean isStoreSuccess = false;
-	        try {
-	            isStoreSuccess = s3Adapter.putObject(
-	                    ConfigManager.getS3Account(), 
-	                    "Adminui", 
-	                    null, 
-	                    null, 
-	                    reportFile.getName(), 
-	                    reportFile
-	            );
-	            if (isStoreSuccess) {
-	            	LOGGER.info("Admin Extent report successfully pushed to S3/MinIO: {} "+reportFile.getName());
-	            } else {
-	            	LOGGER.error("Failed to push Admin Extent report to S3/MinIO: { } "+ reportFile.getName());
-	            }
-	        } catch (Exception e) {
-	        	LOGGER.error("Exception while pushing Admin Extent report to S3/MinIO: {} "+e.getMessage());
-	        }
-	    }
+		if (ConfigManager.getPushReportsToS3().equalsIgnoreCase("yes")) {
+			S3Adapter s3Adapter = new S3Adapter();
+			File reportFile = new File(reportFilePath);
+			boolean isStoreSuccess = false;
+			try {
+				isStoreSuccess = s3Adapter.putObject(ConfigManager.getS3Account(), "Adminui", null, null,
+						reportFile.getName(), reportFile);
+				if (isStoreSuccess) {
+					LOGGER.info("Admin Extent report successfully pushed to S3/MinIO: {} " + reportFile.getName());
+				} else {
+					LOGGER.error("Failed to push Admin Extent report to S3/MinIO: { } " + reportFile.getName());
+				}
+			} catch (Exception e) {
+				LOGGER.error("Exception while pushing Admin Extent report to S3/MinIO: {} " + e.getMessage());
+			}
+		}
 	}
-
 
 }

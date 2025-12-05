@@ -13,6 +13,9 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -28,6 +31,23 @@ public class Commons extends BaseClass {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
+	}
+
+	private static WebDriverWait getWait(WebDriver driver) {
+		return new WebDriverWait(driver, Duration.ofSeconds(20));
+	}
+
+	public static void waitForElementClickable(WebDriver driver, By by) {
+		getWait(driver).until(ExpectedConditions.elementToBeClickable(by));
+	}
+
+	public static void waitForElementVisible(WebDriver driver, By by) {
+		getWait(driver).until(ExpectedConditions.visibilityOfElementLocated(by));
+	}
+
+	public static void waitForPageLoad(WebDriver driver) {
+		getWait(driver).until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState")
+				.equals("complete"));
 	}
 
 	private static void logStep(String description, By by) {
@@ -50,9 +70,9 @@ public class Commons extends BaseClass {
 		try {
 			logger.info("Inside Filter " + by + " with data: " + data);
 			Commons.click(driver, By.id("Filter"), "Click Filter");
-			wait(3000);
+			waitForElementVisible(driver, by);
 			Commons.enter(driver, by, data, "Enter filter text");
-			wait(3000);
+			waitForElementClickable(driver, By.id("applyTxt"));
 			Commons.click(driver, By.id("applyTxt"), "Apply filter");
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
@@ -90,9 +110,8 @@ public class Commons extends BaseClass {
 		logStep(description, by);
 		logger.info("Clicking " + by);
 		try {
-			wait(1000);
+			waitForElementClickable(driver, by);
 			driver.findElement(by).click();
-			wait(500);
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
 					+ "' width='900' height='450'/></p>");
@@ -162,14 +181,14 @@ public class Commons extends BaseClass {
 		logStep(description + " | Selected index 0", by);
 		logger.info("Selecting DropDown Index Zero Value " + by);
 		try {
-			wait(500);
+			waitForElementClickable(driver, by);
 			click(driver, by, "Clicked dropdown to expand options");
-			wait(500);
 
 			String att = driver.findElement(by).getAttribute("aria-owns");
 			String[] list = att.split(" ");
+			waitForElementClickable(driver, By.id(list[0]));
 			click(driver, By.id(list[0]), "Clicked on first element from the list");
-			wait(500);
+
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
 					+ "' width='900' height='450'/></p>");
@@ -183,14 +202,13 @@ public class Commons extends BaseClass {
 		logger.info("Selecting DropDown By Value " + by + value);
 
 		try {
-			wait(500);
+			waitForElementClickable(driver, by);
 			click(driver, by, "Clicked dropdown to expand options");
-			wait(500);
-
+			waitForElementClickable(driver, By.xpath("//span[contains(text(),'" + value + "')]"));
 			String val = "'" + value + "'";
 			click(driver, By.xpath("//span[contains(text()," + val + ")]"),
 					"Selected value: " + value + " from the list");
-			wait(500);
+
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
 					+ "' width='900' height='450'/></p>");
@@ -204,11 +222,11 @@ public class Commons extends BaseClass {
 		logger.info("Selecting DropDown By Value " + by + value);
 
 		try {
-			wait(500);
+			waitForElementClickable(driver, by);
 			click(driver, by, "Clicked dropdown field to view options");
-			wait(500);
+			waitForElementClickable(driver, By.id(value));
 			click(driver, By.id(value), "Selected dropdown value with ID: " + value);
-			wait(500);
+
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
 					+ "' width='900' height='450'/></p>");
@@ -225,11 +243,10 @@ public class Commons extends BaseClass {
 		logStep(description, by);
 		logger.info("Selecting DropDown By Value " + by + value);
 		try {
-			wait(500);
+			waitForElementClickable(driver, by);
 			click(driver, by, "Clicked on dropdown field to expand options");
-			wait(500);
+			waitForElementClickable(driver, value);
 			click(driver, value, "Selected value from the dropdown");
-			wait(500);
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver)
 					+ "' width='900' height='450'/></p>");
@@ -245,6 +262,7 @@ public class Commons extends BaseClass {
 	public static void deactivate(WebDriver driver, String description) throws IOException {
 		AdminExtentReportManager.logStep(description);
 		Commons.click(driver, By.id("ellipsis-button0"), "Clicked on Ellipsis button for the first record");
+		waitForElementClickable(driver, By.id("Deactivate0"));
 		Commons.click(driver, By.id("Deactivate0"), "Clicked on Deactivate for the first record");
 		if (isElementDisplayed(By.id("confirmpopup"))) {
 			Commons.click(driver, By.id("confirmpopup"), "Clicked on Confirm popup if displayed");
@@ -260,6 +278,7 @@ public class Commons extends BaseClass {
 	public static void activate(WebDriver driver, String description) throws IOException {
 		AdminExtentReportManager.logStep(description);
 		Commons.click(driver, By.id("ellipsis-button0"), "Clicked on Ellipsis button for the first record");
+		waitForElementClickable(driver, By.id("Activate0"));
 		Commons.click(driver, By.id("Activate0"), "Clicked on Activate for the first record");
 		if (isElementDisplayed(By.id("confirmpopup"))) {
 			Commons.click(driver, By.id("confirmpopup"), "Clicked on Confirm popup if displayed");
@@ -305,10 +324,9 @@ public class Commons extends BaseClass {
 		try {
 			Commons.click(driver, By.id("ellipsis-button0"), "Clicked on Ellipsis button for the first record");
 			Commons.click(driver, By.id("Edit0"), "Clicked on Edit for the first record");
-			wait(3000);
+			waitForElementVisible(driver, by);
 			Assert.assertNotEquals(data, driver.findElement(by).getText(),
 					"Verified existing value is different from new data");
-			wait(3000);
 			driver.findElement(by).clear();
 			Commons.enter(driver, by, data, "Entered new data: " + data);
 			Commons.click(driver, By.id("createButton"), "Clicked on Create button to save changes");
@@ -336,15 +354,18 @@ public class Commons extends BaseClass {
 		try {
 			Commons.click(driver, By.id("ellipsis-button0"), "Clicked on Ellipsis button for the first record");
 			Commons.click(driver, By.id("Edit0"), "Clicked on Edit for the first record");
+			waitForPageLoad(driver);
 			Assert.assertNotEquals(data, driver.findElement(by).getText(),
 					"Verified existing value is different from new data");
 			driver.findElement(by).clear();
 			Commons.enter(driver, by, data, "Entered new data: " + data);
+			waitForElementClickable(driver, By.xpath("(//*[@id='createButton'])[1]"));
 			Commons.click(driver, By.xpath("(//*[@id='createButton'])[1]"), "Clicked on Create button to save changes");
 			if (isElementDisplayed(By.id("confirmpopup"))) {
 				Commons.click(driver, By.id("confirmpopup"), "Clicked on Confirm popup if displayed");
 			}
 			Commons.click(driver, By.id("confirmmessagepopup"), "Clicked on Confirm Message popup after editing");
+			waitForElementClickable(driver, By.xpath("(//*[@id='cancel'])[1]"));
 			Commons.click(driver, By.xpath("(//*[@id='cancel'])[1]"), "Clicked on first Cancel button");
 			Commons.click(driver, By.xpath("(//*[@id='cancel'])[1]"), "Clicked on second Cancel button");
 			logger.info("Click editCenter and Confirm " + by + data);
@@ -391,6 +412,7 @@ public class Commons extends BaseClass {
 	public static void decommission(WebDriver driver, String description) throws IOException {
 		AdminExtentReportManager.logStep(description);
 		Commons.click(driver, By.id("ellipsis-button0"), "Clicked on Ellipsis button for the first record");
+		waitForElementClickable(driver, By.id("Decommission0"));
 		Commons.click(driver, By.id("Decommission0"), "Clicked on Decommission for the first record");
 		if (isElementDisplayed(By.id("confirmpopup")))
 			Commons.click(driver, By.id("confirmpopup"), "Clicked on Confirm popup if displayed");
@@ -432,20 +454,20 @@ public class Commons extends BaseClass {
 		int day = Integer.parseInt(d);
 		int year = Integer.parseInt(a.substring(4, 8));
 		try {
+			waitForElementClickable(driver(), By.xpath("//*[@class='mat-datepicker-toggle']//button"));
 			Commons.click(driver(), By.xpath("//*[@class='mat-datepicker-toggle']//button"), "Opened the datepicker");
-			wait(500);
 
+			waitForElementClickable(driver(), By.xpath("//*[@class='mat-calendar-arrow']"));
 			Commons.click(driver(), By.xpath("//*[@class='mat-calendar-arrow']"),
 					"Navigated to year selection in datepicker");
-			wait(500);
 
+			waitForElementClickable(driver(), By.xpath("//*[text()='" + year + "']"));
 			Commons.click(driver(), By.xpath("//*[text()='" + year + "']"), "Selected year: " + year);
-			wait(500);
 
 			List<WebElement> cli = driver().findElements(By.xpath("//*[@class='mat-calendar-body-cell-content']"));
 			cli.get(month - 1).click();
-			wait(500);
 
+			waitForElementClickable(driver(), By.xpath("//*[text()='" + day + "']"));
 			Commons.click(driver(), By.xpath("//*[text()='" + day + "']"), "Selected day: " + day);
 		} catch (Exception e) {
 			Reporter.log("<p><img src='data:image/png;base64," + Screenshot.ClickScreenshot(driver())
@@ -463,27 +485,26 @@ public class Commons extends BaseClass {
 
 		try {
 			// Open calendar
+			waitForElementClickable(driver(), By.xpath("//*[@class='mat-datepicker-toggle']//button"));
 			Commons.click(driver(), By.xpath("//*[@class='mat-datepicker-toggle']//button"), "Opened the datepicker");
-			wait(500);
+			waitForElementClickable(driver(), By.xpath("//*[@class='mat-calendar-arrow']"));
 
 			// Expand year/month selector
 			Commons.click(driver(), By.xpath("//*[@class='mat-calendar-arrow']"),
 					"Expanded year/month selector in datepicker");
-			wait(500);
 
 			// Click the desired year
 			String yearText = convertDigits(String.valueOf(year), locale);
 			Commons.click(driver(), By.xpath("//*[normalize-space(text())='" + yearText + "']"),
 					"Selected year: " + yearText);
-			wait(500);
 
 			// Select month (index based to avoid translation issues)
 			List<WebElement> months = driver().findElements(By.xpath("//*[@class='mat-calendar-body-cell-content']"));
 			months.get(month - 1).click();
-			wait(500);
 
 			// Select day (convert if Arabic locale)
 			String dayText = convertDigits(String.valueOf(day), locale);
+			waitForElementClickable(driver(), By.xpath("//*[normalize-space(text())='" + dayText + "']"));
 			Commons.click(driver(), By.xpath("//*[normalize-space(text())='" + dayText + "']"),
 					"Selected day: " + dayText);
 		} catch (Exception e) {
@@ -493,17 +514,9 @@ public class Commons extends BaseClass {
 		}
 	}
 
-	public static void wait(int waitTime) {
-		try {
-			Thread.sleep(waitTime);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public static boolean isElementDisplayed(By by) {
 		try {
-			wait(500); // Make sure you have a proper wait method or use Thread.sleep(500);
+			waitForElementVisible(driver(), by);
 			return driver().findElement(by).isDisplayed();
 		} catch (Exception e) {
 			return false;

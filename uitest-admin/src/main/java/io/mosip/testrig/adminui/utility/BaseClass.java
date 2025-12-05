@@ -48,7 +48,6 @@ public class BaseClass {
 	@BeforeMethod
 	public void setUp(Method testMethod) throws Exception {
 		AdminExtentReportManager.initReport();
-
 		Reporter.log("BaseClass setup started", true);
 		logger.info("Start set up");
 
@@ -77,7 +76,8 @@ public class BaseClass {
 		driver().get(envPath);
 		logger.info("Launch URL: " + envPath);
 		driver().manage().window().maximize();
-		Commons.wait(500);
+		Commons.waitForPageLoad(driver());
+		;
 		driver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 		String language1 = ConfigManager.getloginlang();
@@ -101,21 +101,6 @@ public class BaseClass {
 		Commons.enterSensitive(driver(), By.id("password"), password, "Entered password");
 		Commons.click(driver(), By.xpath("//input[@name='login']"), "Clicked login button");
 
-		if (AdminExtentReportManager.getTest() == null) {
-			String className = this.getClass().getSimpleName();
-			String methodName = testMethod.getName();
-
-			String lang = "unknown";
-			try {
-				lang = ConfigManager.getloginlang();
-			} catch (Exception ignored) {
-			}
-
-			String cleanName = className + " | " + methodName + " | Language: " + lang;
-
-			AdminExtentReportManager.createTest(cleanName);
-			AdminExtentReportManager.logStep("Setup complete for " + cleanName);
-		}
 	}
 
 	@AfterMethod(alwaysRun = true)
