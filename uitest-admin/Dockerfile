@@ -68,24 +68,34 @@ RUN groupadd -g ${container_user_gid} ${container_user_group} || true \
  && mkdir -p ${WORK_DIR} \
  && chown -R ${container_user}:${container_user} ${WORK_DIR}
 
-# --- Copy application artifacts as root (robust for CI) ---
-# Expected files in build context:
-#  - entrypoint.sh
-#  - target/*.jar  (your application jar)
-#  - src/main/resources/  (optional resources)
+# --- Copy application artifacts robustly (avoid failing when optional paths don't exist) ---
+# We always copy entrypoint.sh ( it must exist ). To avoid failing when target/*.jar or src/main/resources/ are absent,
+# copy the build context to /tmp/_ctx and then move conditionally.
+
 COPY entrypoint.sh /tmp/entrypoint.sh
-COPY target/*.jar /tmp/app.jar
-COPY src/main/resources/ /tmp/resources/ || true
+COPY . /tmp/_ctx
 
-# Set ownership and permissions, then move to work dir
-RUN mv /tmp/app.jar ${WORK_DIR}/app.jar || true \
- && mv /tmp/entrypoint.sh ${WORK_DIR}/entrypoint.sh || true \
- && mv /tmp/resources ${WORK_DIR}/resources || true \
- && chown -R ${container_user}:${container_user} ${WORK_DIR} \
- && chmod +x ${WORK_DIR}/entrypoint.sh || true
-
-# Expose port if your app needs (uncomment and adjust)
-# EXPOSE 8080
+# Move jar and resources only if present, then cleanup
+RUN set -eux; \
+    # move any jar from target/ to /home/<user>/app.jar (use first match)
+    if ls /tmp/_ctx/target/*.jar >/dev/null 2>&1; then \
+      mkdir -p /tmp/target && cp -a /tmp/_ctx/target/*.jar /tmp/target/; \
+      mv /tmp/target/*.jar /tmp/app.jar; \
+    else \
+      echo "No jar found in /tmp/_ctx/target/ — continuing without app.jar"; \
+    fi; \
+    # copy resources if present
+    if [ -d /tmp/_ctx/src/main/resources ]; then \
+      mkdir -p /tmp/resources && cp -a /tmp/_ctx/src/main/resources/. /tmp/resources/; \
+    else \
+      echo "No src/main/resources found — continuing"; \
+    fi; \
+    # move entrypoint and set ownership
+    mv /tmp/entrypoint.sh ${WORK_DIR}/entrypoint.sh || true; \
+    chown -R ${container_user}:${container_user} ${WORK_DIR}; \
+    chmod +x ${WORK_DIR}/entrypoint.sh || true; \
+    # cleanup build context copy
+    rm -rf /tmp/_ctx /tmp/target || true
 
 # Switch to non-root user and set workdir
 USER ${container_user}
