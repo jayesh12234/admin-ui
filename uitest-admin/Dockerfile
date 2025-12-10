@@ -1,105 +1,59 @@
-# Start with a Java 21 runtime
-FROM eclipse-temurin:21-jre
+# --- Base image ---
+FROM eclipse-temurin:21-jre-alpine
 
-# Build-time metadata (CI expects these ARG/LABEL lines)
+# --- Build-time arguments (MUST be declared before LABEL) ---
 ARG SOURCE
 ARG COMMIT_HASH
 ARG COMMIT_ID
 ARG BUILD_TIME
 
+# --- Metadata labels (used by CI for validation) ---
 LABEL source=${SOURCE}
 LABEL commit_hash=${COMMIT_HASH}
 LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 
-# --- Install required packages and Chrome & dependencies as root ---
-USER root
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install general dependencies needed by Chrome and for downloads
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-      ca-certificates curl wget unzip gnupg2 apt-transport-https \
-      fonts-liberation libasound2 libatk1.0-0 libatk-bridge2.0-0 \
-      libc6 libgdk-pixbuf2.0-0 libnspr4 libnss3 libx11-6 libx11-xcb1 \
-      libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxrandr2 libxss1 \
-      libxtst6 libgbm1 libglib2.0-0 libgtk-3-0 libgconf-2-4 \
-      xvfb procps \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Download and install google-chrome-stable (amd64 .deb)
-RUN wget -q -O /tmp/google-chrome-stable_current_amd64.deb \
-      https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
- && apt-get update \
- && apt-get install -y --no-install-recommends /tmp/google-chrome-stable_current_amd64.deb \
- && rm -f /tmp/google-chrome-stable_current_amd64.deb \
- && apt-get -y --purge autoremove \
- && rm -rf /var/lib/apt/lists/*
-
-# Install kubectl (stable)
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
- && chmod +x kubectl \
- && mv kubectl /usr/local/bin/kubectl
-
-# Install matching chromedriver for the installed Chrome
-RUN set -eux; \
-    CHROME_VER="$(google-chrome --product-version 2>/dev/null || google-chrome-stable --product-version 2>/dev/null)"; \
-    echo "Detected Chrome version: ${CHROME_VER}"; \
-    CHROME_MAJOR="$(echo ${CHROME_VER} | cut -d. -f1)"; \
-    if [ -z "${CHROME_MAJOR}" ]; then echo "ERROR: Couldn't detect Chrome major version"; exit 1; fi; \
-    LATEST_DRIVER="$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR})"; \
-    if [ -z "${LATEST_DRIVER}" ]; then echo "ERROR: No matching chromedriver for Chrome major ${CHROME_MAJOR}"; exit 1; fi; \
-    echo "Matching chromedriver: ${LATEST_DRIVER}"; \
-    wget -q -O /tmp/chromedriver_linux64.zip "https://chromedriver.storage.googleapis.com/${LATEST_DRIVER}/chromedriver_linux64.zip"; \
-    unzip -q /tmp/chromedriver_linux64.zip -d /tmp; \
-    mv /tmp/chromedriver /usr/local/bin/chromedriver; \
-    chmod +x /usr/local/bin/chromedriver; \
-    rm -f /tmp/chromedriver_linux64.zip
-
-# --- Create runtime user (non-root) ---
+# --- Additional build-time args ---
 ARG container_user=mosip
 ARG container_user_group=mosip
 ARG container_user_uid=1001
 ARG container_user_gid=1001
-ENV WORK_DIR=/home/${container_user}
+ARG KUBECTL_VERSION=1.22.9
 
-RUN groupadd -g ${container_user_gid} ${container_user_group} || true \
- && useradd -m -u ${container_user_uid} -g ${container_user_gid} -s /bin/bash ${container_user} || true \
- && mkdir -p ${WORK_DIR} \
- && chown -R ${container_user}:${container_user} ${WORK_DIR}
+# --- Environment variables ---
+ENV DISPLAY=:99
+ENV work_dir=/home/${container_user}
 
-# --- Copy application artifacts robustly (avoid failing when optional paths don't exist) ---
-# We always copy entrypoint.sh ( it must exist ). To avoid failing when target/*.jar or src/main/resources/ are absent,
-# copy the build context to /tmp/_ctx and then move conditionally.
+# --- Install dependencies & setup user ---
+RUN apk -q update && \
+    apk add --no-cache wget curl unzip xvfb libxi chromium chromium-chromedriver bash shadow && \
+    \
+    addgroup -g ${container_user_gid} ${container_user_group} && \
+    adduser -s /bin/sh -u ${container_user_uid} -G ${container_user_group} -h /home/${container_user} --disabled-password ${container_user} && \
+    \
+    curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
+    chmod +x kubectl && mv kubectl /usr/local/bin/ && \
+    \
+    mkdir -p ${work_dir}/src/test/resources/ \
+             ${work_dir}/test-output/SparkReport/ \
+             ${work_dir}/screenshots/ && \
+    chmod -R 775 ${work_dir}
 
-COPY entrypoint.sh /tmp/entrypoint.sh
-COPY . /tmp/_ctx
+# Copy your application files into the container
+COPY --chown=${container_user_uid}:${container_user} --chmod=771 ./entrypoint.sh ${work_dir}/entrypoint.sh
+COPY --chown=${container_user}:${container_user} ./src/main/resources/ ${work_dir}/resources/
+COPY --chown=${container_user_uid}:${container_user} ./target/*.jar ${work_dir}
 
-# Move jar and resources only if present, then cleanup
-RUN set -eux; \
-    # move any jar from target/ to /home/<user>/app.jar (use first match)
-    if ls /tmp/_ctx/target/*.jar >/dev/null 2>&1; then \
-      mkdir -p /tmp/target && cp -a /tmp/_ctx/target/*.jar /tmp/target/; \
-      mv /tmp/target/*.jar /tmp/app.jar; \
-    else \
-      echo "No jar found in /tmp/_ctx/target/ — continuing without app.jar"; \
-    fi; \
-    # copy resources if present
-    if [ -d /tmp/_ctx/src/main/resources ]; then \
-      mkdir -p /tmp/resources && cp -a /tmp/_ctx/src/main/resources/. /tmp/resources/; \
-    else \
-      echo "No src/main/resources found — continuing"; \
-    fi; \
-    # move entrypoint and set ownership
-    mv /tmp/entrypoint.sh ${WORK_DIR}/entrypoint.sh || true; \
-    chown -R ${container_user}:${container_user} ${WORK_DIR}; \
-    chmod +x ${WORK_DIR}/entrypoint.sh || true; \
-    # cleanup build context copy
-    rm -rf /tmp/_ctx /tmp/target || true
+# --- Fix permissions for entrypoint and JARs ---
+RUN chmod +x ${work_dir}/entrypoint.sh && \
+    find ${work_dir} -name "*.jar" -exec chmod 644 {} \; && \
+    chown -R ${container_user}:${container_user} ${work_dir};
 
-# Switch to non-root user and set workdir
-USER ${container_user}
-WORKDIR ${WORK_DIR}
+# --- Switch to non-root user ---
+USER ${container_user_uid}:${container_user_gid}
 
-# Default entrypoint
-ENTRYPOINT ["./entrypoint.sh"]
+# --- Set working directory ---
+WORKDIR ${work_dir}
+
+# --- Default entrypoint ---
+ENTRYPOINT ["bash", "entrypoint.sh"]
