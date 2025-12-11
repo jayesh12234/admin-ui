@@ -35,6 +35,7 @@ public class AdminExtentReportManager {
 	private static int passedCount = 0;
 	private static int failedCount = 0;
 	private static int skippedCount = 0;
+	private static int knownIssueCount = 0;
 	private static String reportPath;
 
 	public synchronized static void initReport() {
@@ -162,6 +163,10 @@ public class AdminExtentReportManager {
 	public synchronized static void incrementSkipped() {
 		skippedCount++;
 	}
+	
+	public synchronized static void incrementKnownIssue() {
+	    knownIssueCount++;
+	}
 
 	public static int getPassedCount() {
 		return passedCount;
@@ -174,9 +179,13 @@ public class AdminExtentReportManager {
 	public static int getSkippedCount() {
 		return skippedCount;
 	}
+	
+	public static int getKnownIssueCount() {
+	    return knownIssueCount;
+	}
 
 	public static int getTotalCount() {
-		return passedCount + failedCount + skippedCount;
+		return passedCount + failedCount + skippedCount + knownIssueCount;
 	}
 
 	public static void logStep(String message) {

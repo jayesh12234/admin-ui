@@ -65,9 +65,18 @@ public class AdminTestListener implements ITestListener {
 	public void onTestSkipped(ITestResult result) {
 		ExtentTest test = AdminExtentReportManager.getTest();
 		if (test != null) {
-			AdminExtentReportManager.logStep("⚠️ Test Skipped : " + result.getName());
-			AdminExtentReportManager.incrementSkipped();
-			test.skip("Skipped due to preconditions/Dependencies");
+			if (TestRunner.knownIssues.contains(result.getName())) {
+				AdminExtentReportManager.logStep("🟠 Known Issue : " + result.getName());
+				AdminExtentReportManager.incrementKnownIssue();
+				test.skip("Marked as Known Issue");
+
+			} else {
+
+				AdminExtentReportManager.logStep("⚠️ Test Skipped : " + result.getName());
+				AdminExtentReportManager.incrementSkipped();
+				test.skip("Skipped due to preconditions/Dependencies");
+
+			}
 		}
 	}
 
@@ -79,13 +88,15 @@ public class AdminTestListener implements ITestListener {
 		int passed = AdminExtentReportManager.getPassedCount();
 		int failed = AdminExtentReportManager.getFailedCount();
 		int skipped = AdminExtentReportManager.getSkippedCount();
-		int total = AdminExtentReportManager.getTotalCount();
+		int knownIssues = AdminExtentReportManager.getKnownIssueCount();
+
+		int total = passed + failed + skipped + knownIssues;
 
 		String originalReport = AdminExtentReportManager.getReportPath();
 		File oldFile = new File(originalReport);
 
 		String newReportName = originalReport.replace(".html",
-				"-T-" + total + "-P-" + passed + "-F-" + failed + "-S-" + skipped + ".html");
+				"-T-" + total + "-P-" + passed + "-F-" + failed + "-S-" + skipped + "-KI-" + knownIssues + ".html");
 
 		File newFile = new File(newReportName);
 

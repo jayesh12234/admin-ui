@@ -26,6 +26,7 @@
     </test>
 
     <listeners>
+    	<listener class-name="io.mosip.testrig.adminui.utility.KnownIssueListener" />
      	<listener class-name="io.mosip.testrig.adminui.utility.AdminTestListener" />
         <listener class-name="io.mosip.testrig.adminui.utility.EmailableReport" />
     </listeners>
