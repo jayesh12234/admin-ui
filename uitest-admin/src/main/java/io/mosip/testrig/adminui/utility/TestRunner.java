@@ -13,6 +13,10 @@ import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 import io.mosip.testrig.adminui.dbaccess.DBManager;
 import io.mosip.testrig.adminui.fw.util.AdminTestUtil;
 import io.mosip.testrig.adminui.kernel.util.ConfigManager;
@@ -34,8 +38,9 @@ public class TestRunner {
 
 		AdminTestUtil.initialize();
 		DBManager.clearMasterDbData();
-		
-		try (BufferedReader br = new BufferedReader(new FileReader(getResourcePath() + "/config/Known_Issues.txt"))) {
+
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(
+				new FileInputStream(getResourcePath() + "/config/Known_Issues.txt"), StandardCharsets.UTF_8))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				if (!line.trim().isEmpty()) {
@@ -59,6 +64,7 @@ public class TestRunner {
 			suite.setName("ADMIN-UI-AUTOMATION");
 			suite.addListener("io.mosip.testrig.adminui.utility.EmailableReport");
 			suite.addListener("io.mosip.testrig.adminui.utility.AdminTestListener");
+			suite.addListener("io.mosip.testrig.adminui.utility.KnownIssueListener");
 			XmlClass blocklistedwordsCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BlockListTest");
 			XmlClass bulkUploadCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BulkUploadTest");
 			XmlClass centerCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.CenterTest");
@@ -155,7 +161,7 @@ public class TestRunner {
 
 		}
 		// Set other properties and run TestNG
-		System.getProperties().setProperty("testng.outpur.dir", "testng-report");
+		System.getProperties().setProperty("testng.output.dir", "testng-report");
 		runner.setOutputDirectory("testng-report");
 		System.getProperties().setProperty("emailable.report2.name",
 				"ADMINUI-" + BaseTestCaseFunc.environment + "-run-" + System.currentTimeMillis() + "-report.html");

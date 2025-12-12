@@ -1,2 +1,2 @@
-deviceTypesCRUD
-templateCRUD
+#Add the Known Issue Testcase here
+#Ex:deviceTypesCRUD
