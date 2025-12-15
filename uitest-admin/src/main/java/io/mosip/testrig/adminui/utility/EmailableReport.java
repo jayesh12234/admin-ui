@@ -69,6 +69,7 @@ public class EmailableReport implements IReporter {
 	}
 
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
+		totalKnownIssues = 0;
 		try {
 			writer = createWriter(outputDirectory);
 		} catch (IOException e) {

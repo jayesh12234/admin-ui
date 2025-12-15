@@ -163,9 +163,9 @@ public class AdminExtentReportManager {
 	public synchronized static void incrementSkipped() {
 		skippedCount++;
 	}
-	
+
 	public synchronized static void incrementKnownIssue() {
-	    knownIssueCount++;
+		knownIssueCount++;
 	}
 
 	public static int getPassedCount() {
@@ -179,9 +179,9 @@ public class AdminExtentReportManager {
 	public static int getSkippedCount() {
 		return skippedCount;
 	}
-	
+
 	public static int getKnownIssueCount() {
-	    return knownIssueCount;
+		return knownIssueCount;
 	}
 
 	public static int getTotalCount() {
@@ -242,12 +242,6 @@ public class AdminExtentReportManager {
 		if (extent != null) {
 			extent.flush();
 			LOGGER.info("Extent report flushed successfully.");
-
-			try {
-				pushReportToS3(reportPath);
-			} catch (Exception e) {
-				LOGGER.error("Error while uploading report: ", e);
-			}
 		}
 	}
 

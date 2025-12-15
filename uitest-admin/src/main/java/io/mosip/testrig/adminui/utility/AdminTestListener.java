@@ -9,15 +9,12 @@ import org.testng.ITestContext;
 
 import java.io.File;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.apache.log4j.Logger;
 
-import io.mosip.testrig.adminui.utility.BaseClass;
 import io.mosip.testrig.adminui.kernel.util.ConfigManager;
-import io.mosip.testrig.adminui.utility.AdminExtentReportManager;
 
 public class AdminTestListener implements ITestListener {
+	static Logger logger = Logger.getLogger(EmailableReport.class);
 
 	@Override
 	public void onStart(ITestContext context) {
@@ -101,9 +98,9 @@ public class AdminTestListener implements ITestListener {
 		File newFile = new File(newReportName);
 
 		if (oldFile.renameTo(newFile)) {
-			System.out.println("Renamed Report: " + newReportName);
+			logger.info("Renamed Report: " + newReportName);
 		} else {
-			System.out.println("Report rename failed, still uploading original name.");
+			logger.info("Report rename failed, still uploading original name.");
 			newReportName = originalReport;
 		}
 
