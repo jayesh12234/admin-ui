@@ -99,13 +99,13 @@ public class EmailableReport implements IReporter {
 
 		String reportDir = outputDirectory; // or System.getProperty("testng.output.dir")
 		File orignialReportFile = new File(reportDir, oldString);
-		logger.info("reportFile is::" + System.getProperty("user.dir") + "/" + System.getProperty("testng.outpur.dir")
+		logger.info("reportFile is::" + System.getProperty("user.dir") + "/" + System.getProperty("testng.output.dir")
 				+ "/" + System.getProperty("emailable.report2.name"));
 
 		File newReportFile = new File(
-				System.getProperty("user.dir") + "/" + System.getProperty("testng.outpur.dir") + "/" + newString);
+				System.getProperty("user.dir") + "/" + System.getProperty("testng.output.dir") + "/" + newString);
 		logger.info("New reportFile is::" + System.getProperty("user.dir") + "/"
-				+ System.getProperty("testng.outpur.dir") + "/" + newString);
+				+ System.getProperty("testng.output.dir") + "/" + newString);
 
 		if (orignialReportFile.exists()) {
 			if (orignialReportFile.renameTo(newReportFile)) {
