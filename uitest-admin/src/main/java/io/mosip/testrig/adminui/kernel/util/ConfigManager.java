@@ -3,6 +3,7 @@ package io.mosip.testrig.adminui.kernel.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -10,7 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.log4j.Logger;
 
@@ -364,10 +364,12 @@ public class ConfigManager {
 		propsKernel.setProperty(Testcases, testcases);
 
 	}
+	private static final SecureRandom SECURE_RANDOM = new SecureRandom();
+
 	private static String randomLetters(int length) {
 		StringBuilder word = new StringBuilder(length);
 		for (int i = 0; i < length; i++) {
-			word.append((char) ('a' + ThreadLocalRandom.current().nextInt(26)));
+			word.append((char) ('a' + SECURE_RANDOM.nextInt(26)));
 		}
 		return word.toString();
 	}
@@ -376,7 +378,7 @@ public class ConfigManager {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		String formatted;
 		do {
-			int plusDays = ThreadLocalRandom.current().nextInt(1, 700);
+			int plusDays = 1 + SECURE_RANDOM.nextInt(699);
 			formatted = LocalDate.now().plusDays(plusDays).format(formatter);
 		} while (!usedDates.add(formatted));
 		return formatted;
