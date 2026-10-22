@@ -73,7 +73,7 @@ public class BaseTestCaseFunc {
 	public static List<String> getLanguageList() {
 		logger.info("We have created a Config Manager. Beginning to read properties!");
 
-		environment = ConfigManager.getiam_apienvuser();
+		environment = resolveReportEnvironment();
 		logger.info("Environemnt is  ==== :" + environment);
 		ApplnURI = ConfigManager.getiam_apiinternalendpoint();
 		logger.info("Application URI ======" + ApplnURI);
@@ -94,6 +94,17 @@ public class BaseTestCaseFunc {
 		return languageList;
 	}
 	
+	/**
+	 * Report label. Local portal runs use "local" even when API properties still point at a named env.
+	 */
+	public static String resolveReportEnvironment() {
+		String portalPath = ConfigManager.getiam_adminportal_path();
+		if (portalPath != null && portalPath.toLowerCase().contains("localhost")) {
+			return "local";
+		}
+		return ConfigManager.getiam_apienvuser();
+	}
+
 	public static Properties getproperty(String path) {
 		Properties prop = new Properties();
 
@@ -120,7 +131,7 @@ public class BaseTestCaseFunc {
 		getOSType();
 		logger.info("We have created a Config Manager. Beginning to read properties!");
 
-		environment = ConfigManager.getiam_apienvuser();
+		environment = resolveReportEnvironment();
 		logger.info("Environemnt is  ==== :" + environment);
 		ApplnURI = ConfigManager.getiam_apiinternalendpoint();
 		logger.info("Application URI ======" + ApplnURI);

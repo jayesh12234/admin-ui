@@ -130,13 +130,7 @@ public static String JsonObjArrayListParsing2(String a) throws Exception {
         try {
             
 
-        	if (TestRunner.checkRunType().equalsIgnoreCase("JAR")) {
-        		f = new File(TestRunner.getResourcePath() + "/" +document);
-    		} else if (TestRunner.checkRunType().equalsIgnoreCase("IDE")) {
-
-            
-    	         f = new File(System.getProperty("user.dir") + System.getProperty("path.config")+ "/"+document);
-    		}
+        	f = new File(TestRunner.getResourcePath() + "/" + document);
                 if (f.exists()) {
                     InputStream is = new FileInputStream(f);
                     jsonTxt = IOUtils.toString(is, "UTF-8");

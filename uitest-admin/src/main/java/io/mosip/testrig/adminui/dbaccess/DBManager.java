@@ -52,8 +52,8 @@ public class DBManager extends BaseClass {
 							statement.addBatch("delete from biometric_type  where cr_by ='"+BaseClass.userid+"'");
 							statement.addBatch("delete from blocklisted_words  where cr_by ='"+BaseClass.userid+"'");
 //							statement.addBatch("delete from daysofweek_list  where cr_by ='"+BaseClass.userid+"'");
-//							statement.addBatch(
-//									"delete from device_master  where cr_by ='"+BaseClass.userid+"'");
+							statement.addBatch(
+									"delete from device_master  where cr_by ='"+BaseClass.userid+"'");
 							statement.addBatch(
 									"delete from device_master_h  where cr_by ='"+BaseClass.userid+"'");
 							statement.addBatch(

@@ -3,9 +3,14 @@ package io.mosip.testrig.adminui.kernel.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.log4j.Logger;
 
@@ -308,10 +313,11 @@ public class ConfigManager {
 		
 		push_reports_to_s3 =System.getenv(PUSH_TO_S3) == null ? propsKernel.getProperty(PUSH_TO_S3) : System.getenv(PUSH_TO_S3);
 		propsKernel.setProperty(PUSH_TO_S3, push_reports_to_s3);
-		holidayDateCenter =System.getenv(HolidayDateCenter) == null ? propsKernel.getProperty(HolidayDateCenter) : System.getenv(HolidayDateCenter);
+		Set<String> usedDates = new HashSet<>();
+		holidayDateCenter = randomFutureDate(usedDates);
 		propsKernel.setProperty(HolidayDateCenter, holidayDateCenter);
 		
-		holidayDate =System.getenv(HolidayDate) == null ? propsKernel.getProperty(HolidayDate) : System.getenv(HolidayDate);
+		holidayDate = randomFutureDate(usedDates);
 		propsKernel.setProperty(HolidayDate, holidayDate);
 		
 		preappend =System.getenv(Preappend) == null ? propsKernel.getProperty(Preappend) : System.getenv(Preappend);
@@ -328,11 +334,13 @@ public class ConfigManager {
 		
 		
 		
-		dummyData =System.getenv(DummyData) == null ? propsKernel.getProperty(DummyData) : System.getenv(DummyData);
+		dummyData = randomLetters(11);
 		propsKernel.setProperty(DummyData, dummyData);
 		
-		validityDate =System.getenv(ValidityDate) == null ? propsKernel.getProperty(ValidityDate) : System.getenv(ValidityDate);
+		validityDate = randomFutureDate(usedDates);
 		propsKernel.setProperty(ValidityDate, validityDate);
+		logger.info("Generated test data holidayDateCenter=" + holidayDateCenter + " holidayDate=" + holidayDate
+				+ " validityDate=" + validityDate + " dummyData=" + dummyData);
 		
 		publicKey =System.getenv(PublicKey) == null ? propsKernel.getProperty(PublicKey) : System.getenv(PublicKey);
 		propsKernel.setProperty(PublicKey, publicKey);
@@ -356,6 +364,24 @@ public class ConfigManager {
 		propsKernel.setProperty(Testcases, testcases);
 
 	}
+	private static String randomLetters(int length) {
+		StringBuilder word = new StringBuilder(length);
+		for (int i = 0; i < length; i++) {
+			word.append((char) ('a' + ThreadLocalRandom.current().nextInt(26)));
+		}
+		return word.toString();
+	}
+
+	private static String randomFutureDate(Set<String> usedDates) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		String formatted;
+		do {
+			int plusDays = ThreadLocalRandom.current().nextInt(1, 700);
+			formatted = LocalDate.now().plusDays(plusDays).format(formatter);
+		} while (!usedDates.add(formatted));
+		return formatted;
+	}
+
 	public static String gettestcases() {
 		return testcases;
 	}
