@@ -69,21 +69,21 @@ public class BaseClass {
 					"--disable-dev-shm-usage");
 		}
 
-		File userDataDir = new File(System.getProperty("java.io.tmpdir"),
-				"chrome-admin-ui-" + Thread.currentThread().getId() + "-" + System.currentTimeMillis());
-		options.addArguments("--disable-web-security", "--disable-site-isolation-trials",
-				"--user-data-dir=" + userDataDir.getAbsolutePath());
 		if (isLocalPortal(envPath)) {
-			// The API host is a different site from localhost. Chrome must still send the
-			// Authorization cookie on those calls, alongside cookies the API itself sets.
-			options.addArguments(
-					"--disable-features=TrackingProtection3pcd,ThirdPartyStoragePartitioning,SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure");
+			// Local UI (4200) calls local admin-service (8086). The auth adapter does not
+			// allow every header the UI sends, so Chrome blocks the call and the UI shows
+			// "No internet". Disable web security only for this local run.
+			// Each thread needs its own profile. A shared --user-data-dir makes Chrome
+			// fail to open localhost when tests run in parallel.
+			String profileDir = System.getProperty("java.io.tmpdir") + "admin-ui-chrome-"
+					+ Thread.currentThread().getId();
+			options.addArguments("--disable-web-security", "--user-data-dir=" + profileDir,
+					"--proxy-bypass-list=<-loopback>");
 			Map<String, Object> prefs = new HashMap<String, Object>();
 			prefs.put("profile.block_third_party_cookies", Boolean.FALSE);
 			prefs.put("profile.cookie_controls_mode", Integer.valueOf(0));
 			options.setExperimentalOption("prefs", prefs);
 		}
-		logger.info("Chrome started with web security disabled. user-data-dir=" + userDataDir.getAbsolutePath());
 
 		WebDriver threadDriver = new ChromeDriver(options);
 		driverThread.set(threadDriver); // Set driver for this thread
@@ -143,19 +143,32 @@ public class BaseClass {
 		if (token == null || token.isEmpty()) {
 			throw new IllegalStateException("Admin token was empty. Check Kernel.properties client id and secret.");
 		}
-		String apiUrl = BaseTestCaseFunc.ApplnURI.endsWith("/") ? BaseTestCaseFunc.ApplnURI
-				: BaseTestCaseFunc.ApplnURI + "/";
+		String apiUrl = cookieHost();
+		boolean https = apiUrl.startsWith("https://");
 		Map<String, Object> cookie = new HashMap<String, Object>();
 		cookie.put("name", BaseTestCaseFunc.COOKIENAME);
 		cookie.put("value", token);
 		cookie.put("url", apiUrl);
 		cookie.put("path", "/");
-		cookie.put("secure", Boolean.TRUE);
-		cookie.put("sameSite", "None");
+		cookie.put("secure", Boolean.valueOf(https));
+		cookie.put("sameSite", https ? "None" : "Lax");
 		ChromeDriver chromeDriver = (ChromeDriver) threadDriver;
 		chromeDriver.executeCdpCommand("Network.enable", new HashMap<String, Object>());
 		chromeDriver.executeCdpCommand("Network.setCookie", cookie);
 		logger.info("Stored Authorization cookie for " + apiUrl);
+	}
+
+	/**
+	 * The UI calls masterdatabaseurl (local admin-service). A cookie stored on the
+	 * dev2 API host is not sent with those requests.
+	 */
+	private String cookieHost() {
+		String master = ConfigManager.getMasterdatabaseurl();
+		String host = (master != null && !master.isEmpty()) ? master : BaseTestCaseFunc.ApplnURI;
+		if (!host.endsWith("/")) {
+			host = host + "/";
+		}
+		return host;
 	}
 
 	private boolean isLocalPortal(String portalUrl) {

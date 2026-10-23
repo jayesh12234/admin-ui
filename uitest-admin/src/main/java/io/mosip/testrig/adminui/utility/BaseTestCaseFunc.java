@@ -168,7 +168,7 @@ public class BaseTestCaseFunc {
 	
 	public static void getLeafeZone() {
 		String token = kernelAuthLib.getTokenByRole("globalAdmin");
-		String url=ApplnURI + propsKernel.getProperty("leafzonesURL");
+		String url = masterDataUrl(propsKernel.getProperty("leafzonesURL"));
 		JSONObject request = new JSONObject();
 		
 		Response response = RestClient.getRequestWithCookieAndPathParm(url, request, MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON, "Authorization", token);
@@ -179,7 +179,7 @@ public class BaseTestCaseFunc {
 	@SuppressWarnings("unchecked")
 	public static void mapUserToZone(String user, String zone) {
 		String token = kernelAuthLib.getTokenByRole("globalAdmin");
-		String url = ApplnURI + propsKernel.getProperty("zoneMappingUrl");
+		String url = masterDataUrl(propsKernel.getProperty("zoneMappingUrl"));
 		org.json.simple.JSONObject actualrequest = getRequestJson(zoneMappingRequest);
 		JSONObject request = new JSONObject();
 		request.put("zoneCode", RestClient.ZONECODE);
@@ -195,7 +195,7 @@ public class BaseTestCaseFunc {
 	}
 	public static void mapZone(String user) {
 		String token = kernelAuthLib.getTokenByRole("globalAdmin");
-		String url = ApplnURI + propsKernel.getProperty("zoneMappingActivateUrl");
+		String url = masterDataUrl(propsKernel.getProperty("zoneMappingActivateUrl"));
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("isActive","true");
 		map.put("userId", user);
@@ -207,7 +207,7 @@ public class BaseTestCaseFunc {
 	public static int  getHierarchyNumbers() {
         KernelAuthentication kernelAuthLib = new KernelAuthentication();
         String token = kernelAuthLib.getTokenByRole("admin");
-        String url = ApplnURI + props.getProperty("locationHierarchyLevels") + getlang();
+        String url = masterDataUrl(props.getProperty("locationHierarchyLevels") + getlang());
         Response response = RestClient.getRequestWithCookie(url, MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON, "Authorization", token);
         
         String responseString = response.asString();
@@ -230,6 +230,20 @@ public class BaseTestCaseFunc {
         return maxHierarchyLevel;
     }
 	
+	public static String masterDataUrl(String path) {
+		String base = ConfigManager.getMasterdatabaseurl();
+		if (base == null || base.isEmpty()) {
+			base = ApplnURI;
+		}
+		if (base.endsWith("/")) {
+			base = base.substring(0, base.length() - 1);
+		}
+		if (path != null && !path.startsWith("/")) {
+			path = "/" + path;
+		}
+		return base + path;
+	}
+
 	public static String getlang() {
 		String language=ConfigManager.getloginlang();
 		if(language.equalsIgnoreCase("sin")) {
