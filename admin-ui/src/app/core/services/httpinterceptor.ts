@@ -41,12 +41,9 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     request = request.clone({withCredentials: true});
-    const xsrfToken = this.cookieService.get('XSRF-TOKEN');
-    if (xsrfToken) {
-      request = request.clone({
-        setHeaders: { 'X-XSRF-TOKEN': xsrfToken }
-      });
-    }
+    request = request.clone({
+      setHeaders: { 'X-XSRF-TOKEN': this.cookieService.get('XSRF-TOKEN') }
+    });
     return next.handle(request).pipe(
       tap(
         event => {
@@ -127,9 +124,7 @@ export class AuthInterceptor implements HttpInterceptor {
                   });
                 });
             } else {
-              if (err.url && err.url.includes('auditmanager/log')) {
-                console.log(err);
-              } else if(err.statusText === 'Unknown Error'){
+              if(err.statusText === 'Unknown Error'){
                 this.translateService
                 .getTranslation(this.appService.getConfig().primaryLangCode)
                 .subscribe(response => {
