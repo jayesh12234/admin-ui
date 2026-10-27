@@ -160,8 +160,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 });
               }else if(err.url.includes('rid-digital-card')) {
                 console.log("download card");
-              }else if(err.url.includes('auditmanager/log')) {
-                console.log(err);
               }else{
                 this.translateService
                 .getTranslation(this.appService.getConfig().primaryLangCode)
