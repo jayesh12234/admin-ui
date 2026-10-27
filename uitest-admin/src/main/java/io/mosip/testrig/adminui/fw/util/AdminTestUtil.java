@@ -54,7 +54,7 @@ public class AdminTestUtil extends BaseTestCaseFunc {
 	}
 	
 	public static String getMasterDataSchema(String role){
-		String url = ApplnURI + props.getProperty("masterSchemaURL");
+		String url = BaseTestCaseFunc.masterDataUrl(props.getProperty("masterSchemaURL"));
 		kernelAuthLib = new KernelAuthentication();
 		String token = kernelAuthLib.getTokenByRole("admin");
 
@@ -98,8 +98,11 @@ public class AdminTestUtil extends BaseTestCaseFunc {
 					if (ConfigManager.isInServiceNotDeployedList(parts[1])) {
 						continue;
 					}
-					stringBuilder.append("\n")
-							.append(getCommitDetails(BaseTestCaseFunc.ApplnURI + parts[1].replace("health", "info")));
+					String infoPath = parts[1].replace("health", "info");
+					String infoBase = infoPath.contains("/v1/masterdata")
+							? BaseTestCaseFunc.masterDataUrl(infoPath)
+							: BaseTestCaseFunc.ApplnURI + infoPath;
+					stringBuilder.append("\n").append(getCommitDetails(infoBase));
 				}
 			}
 		} catch (Exception e) {

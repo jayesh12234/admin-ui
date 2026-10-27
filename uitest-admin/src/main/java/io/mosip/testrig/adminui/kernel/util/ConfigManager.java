@@ -98,6 +98,7 @@ public class ConfigManager {
 	private static String IAM_ADMINPORTAL_PATH = "adminPortalPath";
 	private static String IAM_APIENVUSER = "apiEnvUser";
 	private static String IAM_APIINTERNALENDPOINT = "apiInternalEndPoint";
+	private static String MASTER_DATA_BASE_URL = "masterdatabaseurl";
 	private static String IAM_REALM_ID = "keycloak-realm-id";
 	private static String IAM_USERS_TO_CREATE = "iam-users-to-create";
 	private static String IAM_USERS_PASSWORD = "iam-users-password";
@@ -222,6 +223,7 @@ public class ConfigManager {
 	private static String iam_adminportal_path;
 	private static String iam_apienvuser;
 	private static String iam_apiinternalendpoint;
+	private static String masterdatabaseurl;
 	private static String iam_realm_id;
 	private static String iam_users_to_create;
 	private static String iam_users_password;
@@ -293,6 +295,10 @@ public class ConfigManager {
 				? propsKernel.getProperty(IAM_APIINTERNALENDPOINT)
 				: System.getenv(IAM_APIINTERNALENDPOINT);
 		logger.info("apiinternalendpoint from config manager::" + iam_apiinternalendpoint);
+		masterdatabaseurl = System.getenv(MASTER_DATA_BASE_URL) == null
+				? propsKernel.getProperty(MASTER_DATA_BASE_URL)
+				: System.getenv(MASTER_DATA_BASE_URL);
+		logger.info("masterdatabaseurl from config manager::" + masterdatabaseurl);
 		
 		serviceNotDeployedList = System.getenv(SERVICES_NOT_DEPLOYED) == null
 				? propsKernel.getProperty(SERVICES_NOT_DEPLOYED)
@@ -697,6 +703,10 @@ public class ConfigManager {
 	}
 	public static String getiam_apiinternalendpoint() {
 		return iam_apiinternalendpoint;
+	}
+
+	public static String getMasterdatabaseurl() {
+		return masterdatabaseurl;
 	}
 //	public static String getAuthDemoServiceUrl() {
 //		return ConfigManager.getAuthDemoServiceBaseUrl() + ":" + ConfigManager.getAuthDemoServicePort();
