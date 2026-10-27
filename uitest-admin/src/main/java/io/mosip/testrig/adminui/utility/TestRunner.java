@@ -178,7 +178,8 @@ public class TestRunner {
 		System.getProperties().setProperty("testng.output.dir", "testng-report");
 		runner.setOutputDirectory("testng-report");
 		System.getProperties().setProperty("emailable.report2.name",
-				"ADMINUI-" + BaseTestCaseFunc.environment + "-run-" + System.currentTimeMillis() + "-report.html");
+				"ADMINUI-" + BaseTestCaseFunc.resolveReportEnvironment() + "-run-" + System.currentTimeMillis()
+						+ "-report.html");
 		runner.run();
 		DBManager.clearMasterDbData();
 		System.exit(0);
@@ -201,7 +202,11 @@ public class TestRunner {
 		if (checkRunType().equalsIgnoreCase("JAR")) {
 			return new File(jarUrl).getParentFile().getAbsolutePath().toString() + "/resources/";
 		} else if (checkRunType().equalsIgnoreCase("IDE")) {
-			String path = System.getProperty("user.dir") + System.getProperty("path.config");
+			String pathConfig = System.getProperty("path.config");
+			if (pathConfig == null || pathConfig.isEmpty()) {
+				pathConfig = "/src/main/resources";
+			}
+			String path = System.getProperty("user.dir") + pathConfig;
 
 			// String path = new
 			// File(TestRunner.class.getClassLoader().getResource("").getPath()).getAbsolutePath()

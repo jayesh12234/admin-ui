@@ -1,7 +1,7 @@
 {
     "primaryLangCode": "eng",
     "secondaryLangCode": "ara",
-    "baseUrl": "https://api-internal.dev-staging.mosip.net/v1/",
+    "baseUrl": "https://api-internal.dev1.mosip.net/v1/",
     "adminUrl":"/admin-ui/",
     "templateRepoUrl":"/admin-ui/templates/",
     "validateToken": "admin/authorize/admin/validateToken",

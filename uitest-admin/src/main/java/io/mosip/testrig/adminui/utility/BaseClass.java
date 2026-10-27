@@ -22,6 +22,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.mosip.testrig.adminui.kernel.util.ConfigManager;
+import io.mosip.testrig.adminui.kernel.util.KernelAuthentication;
 import io.mosip.testrig.adminui.kernel.util.KeycloakUserManager;
 
 public class BaseClass {
@@ -68,17 +69,41 @@ public class BaseClass {
 					"--disable-dev-shm-usage");
 		}
 
+		File userDataDir = new File(System.getProperty("java.io.tmpdir"),
+				"chrome-admin-ui-" + Thread.currentThread().getId() + "-" + System.currentTimeMillis());
+		options.addArguments("--disable-web-security", "--disable-site-isolation-trials",
+				"--user-data-dir=" + userDataDir.getAbsolutePath());
+		if (isLocalPortal(envPath)) {
+			// The API host is a different site from localhost. Chrome must still send the
+			// Authorization cookie on those calls, alongside cookies the API itself sets.
+			options.addArguments(
+					"--disable-features=TrackingProtection3pcd,ThirdPartyStoragePartitioning,SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure");
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("profile.block_third_party_cookies", Boolean.FALSE);
+			prefs.put("profile.cookie_controls_mode", Integer.valueOf(0));
+			options.setExperimentalOption("prefs", prefs);
+		}
+		logger.info("Chrome started with web security disabled. user-data-dir=" + userDataDir.getAbsolutePath());
+
 		WebDriver threadDriver = new ChromeDriver(options);
 		driverThread.set(threadDriver); // Set driver for this thread
 
 		js = (JavascriptExecutor) driver();
 		vars = new HashMap<String, Object>();
+		driver().manage().window().maximize();
+		driver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		if (isLocalPortal(envPath)) {
+			injectAdminToken(threadDriver);
+			logger.info("Localhost run: opened portal with admin Authorization cookie. URL: " + envPath);
+			driver().get(envPath);
+			Commons.waitForPageLoad(driver());
+			return;
+		}
+
 		driver().get(envPath);
 		logger.info("Launch URL: " + envPath);
-		driver().manage().window().maximize();
 		Commons.waitForPageLoad(driver());
-		;
-		driver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 		String language1 = ConfigManager.getloginlang();
 		String loginlang;
@@ -101,6 +126,44 @@ public class BaseClass {
 		Commons.enterSensitive(driver(), By.id("password"), password, "Entered password");
 		Commons.click(driver(), By.xpath("//input[@name='login']"), "Clicked login button");
 
+	}
+
+	/**
+	 * localhost is not in the auth-manager allowed redirect list, so the Keycloak
+	 * login page returns KER-ACP-009. Store the internal-auth token as a real
+	 * cookie on the API host. Forcing a Cookie header instead replaces every other
+	 * cookie, so later POST calls fail and the UI opens a Technical Error dialog
+	 * for each one.
+	 */
+	private void injectAdminToken(WebDriver threadDriver) {
+		if (BaseTestCaseFunc.ApplnURI == null || BaseTestCaseFunc.ApplnURI.isEmpty()) {
+			BaseTestCaseFunc.ApplnURI = ConfigManager.getiam_apiinternalendpoint();
+		}
+		String token = new KernelAuthentication().getAuthForAdmin();
+		if (token == null || token.isEmpty()) {
+			throw new IllegalStateException("Admin token was empty. Check Kernel.properties client id and secret.");
+		}
+		String apiUrl = BaseTestCaseFunc.ApplnURI.endsWith("/") ? BaseTestCaseFunc.ApplnURI
+				: BaseTestCaseFunc.ApplnURI + "/";
+		Map<String, Object> cookie = new HashMap<String, Object>();
+		cookie.put("name", BaseTestCaseFunc.COOKIENAME);
+		cookie.put("value", token);
+		cookie.put("url", apiUrl);
+		cookie.put("path", "/");
+		cookie.put("secure", Boolean.TRUE);
+		cookie.put("sameSite", "None");
+		ChromeDriver chromeDriver = (ChromeDriver) threadDriver;
+		chromeDriver.executeCdpCommand("Network.enable", new HashMap<String, Object>());
+		chromeDriver.executeCdpCommand("Network.setCookie", cookie);
+		logger.info("Stored Authorization cookie for " + apiUrl);
+	}
+
+	private boolean isLocalPortal(String portalUrl) {
+		if (portalUrl == null) {
+			return false;
+		}
+		String url = portalUrl.toLowerCase();
+		return url.contains("localhost") || url.contains("127.0.0.1");
 	}
 
 	@AfterMethod(alwaysRun = true)
