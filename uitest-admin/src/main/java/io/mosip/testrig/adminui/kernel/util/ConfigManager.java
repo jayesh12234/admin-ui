@@ -3,7 +3,10 @@ package io.mosip.testrig.adminui.kernel.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
@@ -334,10 +337,10 @@ public class ConfigManager {
 		validityDate =System.getenv(ValidityDate) == null ? propsKernel.getProperty(ValidityDate) : System.getenv(ValidityDate);
 		propsKernel.setProperty(ValidityDate, validityDate);
 		
-		publicKey =System.getenv(PublicKey) == null ? propsKernel.getProperty(PublicKey) : System.getenv(PublicKey);
+		publicKey = randomRsaPublicKey();
 		propsKernel.setProperty(PublicKey, publicKey);
 		
-		signPublicKey =System.getenv(SignPublicKey) == null ? propsKernel.getProperty(SignPublicKey) : System.getenv(SignPublicKey);
+		signPublicKey = randomRsaPublicKey();
 		propsKernel.setProperty(SignPublicKey, signPublicKey);
 		
 		headless =System.getenv(Headless) == null ? propsKernel.getProperty(Headless) : System.getenv(Headless);
@@ -356,6 +359,19 @@ public class ConfigManager {
 		propsKernel.setProperty(Testcases, testcases);
 
 	}
+
+	// Masterdata rejects a machine whose key fingerprint is already mapped, so every run needs new keys.
+	private static String randomRsaPublicKey() {
+		try {
+			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+			generator.initialize(2048);
+			return Base64.getUrlEncoder().withoutPadding()
+					.encodeToString(generator.generateKeyPair().getPublic().getEncoded());
+		} catch (NoSuchAlgorithmException e) {
+			throw new IllegalStateException("RSA key generation not available", e);
+		}
+	}
+
 	public static String gettestcases() {
 		return testcases;
 	}
