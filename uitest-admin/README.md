@@ -132,22 +132,17 @@ Open the newest one in a browser. Per scenario it shows:
 - a screenshot before every element interaction, the element outlined in red
   (`screenshotEveryAction=yes|no`);
 - an embedded screen recording (`recordVideo=always|onFailure|off`; the default `onFailure` keeps it only for failed scenarios);
-- for failed scenarios, a screenshot at the failing action and a Playwright trace — drag
-  `trace.zip` into [trace.playwright.dev](https://trace.playwright.dev) (runs locally in the
-  browser) to replay every action with DOM snapshots, network calls and console output
-  (`traceOnFailure=yes|no`);
+- for failed scenarios, a screenshot at the failing action and a Playwright trace — download
+  it from the report and drop it onto [trace.playwright.dev](https://trace.playwright.dev) (runs
+  locally in the browser) to replay every action with DOM snapshots, network calls and console
+  output (`traceOnFailure=yes|no`);
 - the portal's own message after each create/update/activate/deactivate/decommission;
 - API errors (HTTP ≥ 400, and MOSIP responses with an `errors` array such as `KER-MSD-…`) and
   browser console errors seen after sign-in.
 
-Screenshots, videos and traces are files under `test-output/artifacts/<run>/<scenario>/` that the
-HTML links to, so the HTML alone shows broken images when shared. **Share the zip instead:** each
-run also writes `<report-name>.zip` next to the HTML (`zipReport=yes|no`), containing the report
-and that run's evidence in the same layout — unzip it and open the HTML. With
-`push-reports-to-s3=yes` the zip is uploaded alongside the HTML.
-
-Recordings make up most of the evidence: a full run with `recordVideo=always` produces roughly
-90 MB and takes about 25% longer. `screenshotEveryAction=no` trims a CI run further.
+Screenshots, recordings and traces are embedded in the HTML, so the single report file can be
+shared as is (and is what `push-reports-to-s3=yes` uploads). Each kept recording adds a few MB;
+`recordVideo=always` makes the file large, and `screenshotEveryAction=no` keeps it small.
 
 ## License
 This project is licensed under the terms of [Mozilla Public License 2.0](../LICENSE).

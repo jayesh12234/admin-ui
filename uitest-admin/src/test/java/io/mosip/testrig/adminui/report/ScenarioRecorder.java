@@ -1,7 +1,6 @@
 package io.mosip.testrig.adminui.report;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -20,29 +19,28 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
-import java.util.Date;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 /**
- * Per-scenario report evidence beyond the step log: screen recording, a highlighted screenshot
- * before every element interaction, a Playwright trace for failed scenarios, and the browser
- * console / API errors seen while the scenario ran. Files go under
- * {@code <reportOutputDir>/artifacts/<run>/<scenario>/} and the report links to them relatively,
- * so keep the artifacts folder next to the HTML when sharing a report.
+ * Per-scenario report evidence beyond the step log: a highlighted screenshot before every
+ * element interaction, a screen recording and Playwright trace for failed scenarios, and the
+ * browser console / API errors seen while the scenario ran. Everything is embedded in the
+ * report HTML itself, so the single file can be shared as is; recordings and traces only pass
+ * through a temporary folder until they are embedded.
  */
 public final class ScenarioRecorder {
 
     private static final Logger logger = LoggerFactory.getLogger(ScenarioRecorder.class);
-    static final String RUN_ID = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
     private static final int MAX_ISSUES = 50;
     private static final int MAX_TEXT = 300;
+    private static final int SCREENSHOT_QUALITY = 50;
     private static final String HIGHLIGHT_ON =
             "el => { el.scrollIntoView({block: 'center', inline: 'nearest'});"
             + " el.setAttribute('data-qa-outline', el.style.outline || '');"
@@ -50,22 +48,29 @@ public final class ScenarioRecorder {
     private static final String HIGHLIGHT_OFF =
             "el => { el.style.outline = el.getAttribute('data-qa-outline') || '';"
             + " el.style.outlineOffset = ''; el.removeAttribute('data-qa-outline'); }";
+    // Click toggles between a thumbnail and full width.
+    private static final String SCREENSHOT_STYLE =
+            "width:480px;max-width:100%;border:1px solid #444;cursor:zoom-in;margin-top:4px;";
+    private static final String SCREENSHOT_TOGGLE =
+            "this.style.width=this.style.width==='100%'?'480px':'100%'";
 
     private static final ThreadLocal<ScenarioRecorder> CURRENT = new ThreadLocal<>();
     private static final Map<String, ExtentTest> TESTS_BY_SCENARIO_ID = new ConcurrentHashMap<>();
 
     private final String scenarioId;
-    private final Path dir;
+    private final String slug;
+    private final Path tempDir;
     private final List<String> consoleErrors = Collections.synchronizedList(new ArrayList<>());
     private final List<String> apiErrors = Collections.synchronizedList(new ArrayList<>());
-    private int shotCount = 0;
+    private ExtentTest test;
     private Path videoPath;
     private boolean tracing;
     private volatile boolean signedIn;
 
-    private ScenarioRecorder(String scenarioId, Path dir) {
+    private ScenarioRecorder(String scenarioId, String slug, Path tempDir) {
         this.scenarioId = scenarioId;
-        this.dir = dir;
+        this.slug = slug;
+        this.tempDir = tempDir;
     }
 
     // ── Lifecycle (driven by AdminHooks) ───────────────────────────────────────
@@ -73,13 +78,13 @@ public final class ScenarioRecorder {
     public static ScenarioRecorder start(Scenario scenario) {
         String slug = scenario.getName().replaceAll("[^A-Za-z0-9]+", "-").replaceAll("(^-|-$)", "")
                 + "-" + scenario.getLine();
-        Path dir = reportDir().resolve("artifacts").resolve(RUN_ID).resolve(slug);
+        Path tempDir;
         try {
-            Files.createDirectories(dir);
+            tempDir = Files.createTempDirectory("admin-ui-evidence-");
         } catch (IOException e) {
-            throw new IllegalStateException("Cannot create report artifacts folder " + dir, e);
+            throw new IllegalStateException("Cannot create a temporary folder for report evidence", e);
         }
-        ScenarioRecorder recorder = new ScenarioRecorder(scenario.getId(), dir);
+        ScenarioRecorder recorder = new ScenarioRecorder(scenario.getId(), slug, tempDir);
         CURRENT.set(recorder);
         return recorder;
     }
@@ -90,7 +95,7 @@ public final class ScenarioRecorder {
 
     /** Folder Playwright records this scenario's video into, or null when recording is off. */
     public Path videoDir() {
-        return AdminConfigManager.getVideoMode() == VideoMode.OFF ? null : dir;
+        return AdminConfigManager.getVideoMode() == VideoMode.OFF ? null : tempDir;
     }
 
     /** Starts tracing and listens for console/API errors — call on the new page before it navigates. */
@@ -132,9 +137,10 @@ public final class ScenarioRecorder {
         return base != null && !base.isBlank() && url != null && url.startsWith(base.trim().replaceAll("/+$", ""));
     }
 
-    /** Links the scenario to its Extent test so the step-text plugin can find it. */
+    /** Links the scenario to its Extent test — for the step-text plugin, and for the recording,
+     *  which can only be embedded after CucumberHooks has detached the test from this thread. */
     public void attachTest() {
-        ExtentTest test = UiExtentReportManager.getTest();
+        test = UiExtentReportManager.getTest();
         if (test != null) TESTS_BY_SCENARIO_ID.put(scenarioId, test);
     }
 
@@ -142,45 +148,40 @@ public final class ScenarioRecorder {
         return TESTS_BY_SCENARIO_ID.get(scenarioId);
     }
 
-    /** Before CucumberHooks.teardownScenario — the Extent test and browser context still exist. */
+    /** Before CucumberHooks.teardownScenario — the browser context still exists. */
     public void beforeTeardown(Scenario scenario, BrowserContext context) {
         boolean failed = scenario.isFailed();
         if (tracing) {
             try {
-                Path trace = failed ? dir.resolve("trace.zip") : null;
+                Path trace = failed ? tempDir.resolve("trace.zip") : null;
                 context.tracing().stop(new Tracing.StopOptions().setPath(trace));
                 if (trace != null) {
-                    log("🧭 Playwright trace: <a href='" + rel(trace) + "'>trace.zip</a> — drag it into "
+                    log("🧭 Playwright trace: <a download='trace-" + slug + ".zip' href='data:application/zip;base64,"
+                            + base64(trace) + "'>download trace-" + slug + ".zip</a> — drop it onto "
                             + "<a href='https://trace.playwright.dev' target='_blank'>trace.playwright.dev</a> "
                             + "(opens locally in your browser) to replay every action with DOM snapshots, "
                             + "network calls and console output.");
                 }
-            } catch (RuntimeException e) {
+            } catch (RuntimeException | IOException e) {
                 logger.warn("Could not save the Playwright trace: {}", e.getMessage());
             }
         }
         logIssues("API errors", apiErrors, failed);
         logIssues("Browser console errors", consoleErrors, failed);
-        if (videoPath != null && keepVideo(failed)) {
-            String src = rel(videoPath);
-            log("🎥 Screen recording<br><video src='" + src + "' controls preload='metadata' "
-                    + "style='width:100%;max-width:960px;border:1px solid #444;'></video>"
-                    + "<br><a href='" + src + "' download>Download video</a>");
-        }
     }
 
     /** After CucumberHooks.teardownScenario — the context is closed, so the video file is final. */
     public void afterTeardown(Scenario scenario) {
         try {
-            if (videoPath != null && !keepVideo(scenario.isFailed())) {
-                Files.deleteIfExists(videoPath);
-            }
-            try (Stream<Path> files = Files.list(dir)) {
-                if (files.findAny().isEmpty()) Files.delete(dir);
+            if (videoPath != null && keepVideo(scenario.isFailed()) && Files.exists(videoPath)) {
+                log("🎥 Screen recording<br><video controls preload='metadata' "
+                        + "style='width:100%;max-width:960px;border:1px solid #444;' "
+                        + "src='data:video/webm;base64," + base64(videoPath) + "'></video>");
             }
         } catch (IOException e) {
-            logger.debug("Artifact cleanup for {} failed: {}", dir, e.getMessage());
+            logger.warn("Could not embed the screen recording: {}", e.getMessage());
         } finally {
+            deleteTempDir();
             TESTS_BY_SCENARIO_ID.remove(scenarioId);
             CURRENT.remove();
         }
@@ -188,7 +189,7 @@ public final class ScenarioRecorder {
 
     // ── Element screenshots (from AdminBasePage) ───────────────────────────────
 
-    /** Outlines the element about to be used and attaches a screenshot of it in context. Skipped
+    /** Outlines the element about to be used and embeds a screenshot of it in context. Skipped
      *  without waiting when the element is not in the page yet (e.g. a dialog about to open) —
      *  the action itself still waits for it. */
     public static void captureAction(Page page, String selector, String description) {
@@ -202,14 +203,11 @@ public final class ScenarioRecorder {
             return;
         }
         try {
-            Path file = recorder.dir.resolve(String.format("action-%03d.jpg", ++recorder.shotCount));
-            page.screenshot(new Page.ScreenshotOptions().setPath(file).setType(ScreenshotType.JPEG).setQuality(60));
-            ExtentTest test = UiExtentReportManager.getTest();
-            if (test != null) {
-                synchronized (UiExtentReportManager.class) {
-                    test.info(MediaEntityBuilder.createScreenCaptureFromPath(recorder.rel(file), description).build());
-                }
-            }
+            byte[] shot = page.screenshot(new Page.ScreenshotOptions()
+                    .setType(ScreenshotType.JPEG).setQuality(SCREENSHOT_QUALITY));
+            recorder.log("<img alt='" + escape(description) + "' title='Click to enlarge' style='" + SCREENSHOT_STYLE
+                    + "' onclick=\"" + SCREENSHOT_TOGGLE + "\" src='data:image/jpeg;base64,"
+                    + Base64.getEncoder().encodeToString(shot) + "'>");
         } catch (RuntimeException e) {
             logger.debug("Action screenshot failed for {}: {}", selector, e.getMessage());
         } finally {
@@ -282,25 +280,34 @@ public final class ScenarioRecorder {
         return mode == VideoMode.ALWAYS || (mode == VideoMode.ON_FAILURE && failed);
     }
 
-    private static void log(String html) {
-        ExtentTest test = UiExtentReportManager.getTest();
-        if (test == null) return;
+    private void log(String html) {
+        ExtentTest target = test != null ? test : UiExtentReportManager.getTest();
+        if (target == null) return;
         synchronized (UiExtentReportManager.class) {
-            test.info(html);
+            target.info(html);
         }
     }
 
-    private String rel(Path file) {
-        return reportDir().relativize(file.toAbsolutePath()).toString().replace('\\', '/');
+    private static String base64(Path file) throws IOException {
+        return Base64.getEncoder().encodeToString(Files.readAllBytes(file));
     }
 
-    static Path reportDir() {
-        String dir = AdminConfigManager.getproperty("reportOutputDir");
-        return Paths.get(dir == null || dir.isBlank() ? "target/extent-reports/" : dir).toAbsolutePath().normalize();
+    private void deleteTempDir() {
+        try (Stream<Path> files = Files.walk(tempDir)) {
+            files.sorted(Comparator.reverseOrder()).forEach(path -> {
+                try {
+                    Files.deleteIfExists(path);
+                } catch (IOException e) {
+                    logger.debug("Could not delete {}: {}", path, e.getMessage());
+                }
+            });
+        } catch (IOException e) {
+            logger.debug("Could not clean up {}: {}", tempDir, e.getMessage());
+        }
     }
 
     private static String escape(String s) {
-        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&#39;");
     }
 
     public enum VideoMode {

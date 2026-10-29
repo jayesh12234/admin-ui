@@ -149,10 +149,6 @@ public class AdminConfigManager extends UiConfigManager {
         return !"no".equalsIgnoreCase(getproperty("screenshotEveryAction").trim());
     }
 
-    public static boolean isZipReport() {
-        return !"no".equalsIgnoreCase(getproperty("zipReport").trim());
-    }
-
     public static boolean isTraceOnFailure() {
         return !"no".equalsIgnoreCase(getproperty("traceOnFailure").trim());
     }
