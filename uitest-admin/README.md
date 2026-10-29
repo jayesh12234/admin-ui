@@ -131,7 +131,7 @@ Open the newest one in a browser. Per scenario it shows:
 - each Gherkin step's text (with its data table) and every action under it, with locators;
 - a screenshot before every element interaction, the element outlined in red
   (`screenshotEveryAction=yes|no`);
-- an embedded screen recording (`recordVideo=always|onFailure|off`);
+- an embedded screen recording (`recordVideo=always|onFailure|off`; the default `onFailure` keeps it only for failed scenarios);
 - for failed scenarios, a screenshot at the failing action and a Playwright trace — drag
   `trace.zip` into [trace.playwright.dev](https://trace.playwright.dev) (runs locally in the
   browser) to replay every action with DOM snapshots, network calls and console output
@@ -146,8 +146,8 @@ run also writes `<report-name>.zip` next to the HTML (`zipReport=yes|no`), conta
 and that run's evidence in the same layout — unzip it and open the HTML. With
 `push-reports-to-s3=yes` the zip is uploaded alongside the HTML.
 
-A full run with everything on produces roughly 90 MB of evidence and takes about 25% longer;
-`recordVideo=onFailure` and `screenshotEveryAction=no` keep CI runs lean.
+Recordings make up most of the evidence: a full run with `recordVideo=always` produces roughly
+90 MB and takes about 25% longer. `screenshotEveryAction=no` trims a CI run further.
 
 ## License
 This project is licensed under the terms of [Mozilla Public License 2.0](../LICENSE).
