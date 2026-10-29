@@ -8,7 +8,7 @@ MOSIP Admin Portal — an Angular 8 SPA used by privileged administrative person
 
 The repo has two independently buildable modules:
 - `admin-ui/` — the Angular frontend
-- `uitest-admin/` — a Selenium + TestNG automation test suite (Java 21, Maven)
+- `uitest-admin/` — a Playwright + Cucumber UI automation suite on the shared `uitest-commons` library (Java 21, Maven)
 
 ---
 
@@ -31,19 +31,12 @@ ng e2e                # end-to-end tests via Protractor
 
 ```bash
 cd uitest-admin
-mvn clean install     # build and package the fat JAR
-
-# Run tests against a deployed environment
-java -Dpath=https://admin.<env>.mosip.net/ \
-     -DKeyclockURL=https://iam.<env>.mosip.net \
-     -Denv.user=api-internal.<env> \
-     -Denv.endpoint=https://api-internal.<env>.mosip.net \
-     -jar target/uitest-admin-1.3.0-jar-with-dependencies.jar
+mvn test                                                # run every feature against the configured env
+mvn test -DscenarioToRun="Center type CRUD"             # by exact scenario name (comma-separated)
+mvn test -Dcucumber.filter.tags="not @bulkUploadCRUD"   # by tag
 ```
 
-Control test execution via `src/main/resources/TestData.json`:
-- `setExcludedGroups`: comma-separated group tags to skip (e.g. `"BL,CT"`)
-- `headless`: `"yes"` for headless Chrome
+Configure the target environment in `src/test/resources/config/adminui.properties` (tracked with blank secrets — never commit real values) or via environment variables of the same names: `baseUrl`, `apiInternalEndPoint`, `keycloak-external-url`, `mosip_admin_client_secret`, `mosip_testrig_client_secret`. `mvn package` skips the live suite when `CI=true`.
 
 ---
 
@@ -91,7 +84,7 @@ API paths are constructed in `app.constants.ts` as `<baseUrl> + <MASTERDATA_BASE
 
 ### UI Test Suite Structure
 
-15 test classes run in parallel (8 threads) via TestNG, one per master-data entity/feature. `KnownIssueListener` cross-references `Known_Issues.txt` to suppress known failures. Test reports go to `admintest/Reports/` (ExtentReports) and `testng-report/`.
+15 Cucumber feature files (`src/test/resources/features/`), one per master-data entity/resource plus bulk upload, run 4 at a time through `AdminTestRunner` (JUnit5 Platform). Step definitions in `steps/` are generic (`MasterDataSteps` covers every CRUD page) and drive Playwright page objects in `pages/`; feature files use `${data}`-style placeholders for per-run test data. `AdminHooks` creates a per-run Keycloak admin user, maps it to a zone, and after the run deletes the master data it created. Browser lifecycle, Extent reporting (`test-output/`) and `Known_Issues.txt` handling come from `uitest-commons`. See `uitest-admin/README.md`.
 
 ---
 

@@ -4,7 +4,7 @@
 	<artifactId>uitest-admin</artifactId>
 	<version>1.4.0-SNAPSHOT</version>
 	<name>uitest-admin</name>
-	<description>Parent project of uitest-admin</description>
+	<description>Playwright + Cucumber UI automation for the MOSIP Admin Portal</description>
 	<url>https://github.com/mosip/admin-ui</url>
 
 	<licenses>
@@ -27,29 +27,18 @@
 			<organizationUrl>https://github.com/mosip/admin-ui</organizationUrl>
 		</developer>
 	</developers>
+
 	<properties>
-		<guava.version>31.1-jre</guava.version>
-		<testng.version>7.10.1</testng.version>
-		<!-- automationtests version -->
-		<wink-json4j-provider.version>1.1.2-incubating</wink-json4j-provider.version>
-		<kernel.version>1.2.0.1</kernel.version>
-		<zjsonpatch.version>0.4.7</zjsonpatch.version>
-		<extentreports.aventstack.version>3.0.0</extentreports.aventstack.version>
-		<extentreports.relevantcodes.version>2.41.2</extentreports.relevantcodes.version>
-		<json-path.version>2.4.0</json-path.version>
-		<maven.model.version>3.3.9</maven.model.version>
-		<rest.assured.version>3.0.7</rest.assured.version>
-		<testng.version>6.11</testng.version>
-		<zt.zip.version>1.13</zt.zip.version>
-		<fileName>uitest-admin-1.4.0-SNAPSHOT-jar-with-dependencies</fileName>
-		
+		<commons.lang3.version>3.13.0</commons.lang3.version>
+		<uitest.commons.version>1.0.0-SNAPSHOT</uitest.commons.version>
+
 		<!-- maven -->
 		<maven.compiler.target>21</maven.compiler.target>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
-		<maven.war.plugin.version>3.1.0</maven.war.plugin.version>
 		<maven.sonar.plugin.version>3.7.0.1746</maven.sonar.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencyManagement>
@@ -57,86 +46,42 @@
 			<dependency>
 				<groupId>io.mosip.kernel</groupId>
 				<artifactId>kernel-bom</artifactId>
-				<version>1.3.1-rc.1</version>
+				<version>1.3.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<!-- uitest-commons (below) is published here as a SNAPSHOT by mosip-functional-tests' CI.
+	     Declared directly so plain `mvn` resolves it without relying on a CI-supplied settings.xml
+	     — notably the Dockerfile's `mvn test-compile`, which gets no custom settings.xml. -->
+	<repositories>
+		<repository>
+			<id>sonatype-central-snapshots</id>
+			<url>https://central.sonatype.com/repository/maven-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<dependencies>
+		<!-- Satisfies GraalVM Feature interface required by sqlite-jdbc's native-image module,
+		     preventing Cucumber classpath scanner warnings at test discovery time. -->
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
+			<groupId>org.graalvm.nativeimage</groupId>
+			<artifactId>svm</artifactId>
+			<version>23.0.0</version>
+			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>5.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>5.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.minio</groupId>
-			<artifactId>minio</artifactId>
-			<version>8.4.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.6.7.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-admin-client</artifactId>
-			<version>17.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-s3</artifactId>
-			<version>1.12.470</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -146,11 +91,22 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.awaitility</groupId>
-			<artifactId>awaitility</artifactId>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+		<!-- Post-run cleanup of master data rows created by the suite (AdminDbCleanup). -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
@@ -163,57 +119,18 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
+
+		<!-- uitest-commons: Playwright + Cucumber + visual validation + MOSIP auth utilities
+		     (also brings Cucumber, JUnit5 Platform, Extent Reports, apitest-commons transitively) -->
 		<dependency>
-			<groupId>com.paulhammant</groupId>
-			<artifactId>ngwebdriver</artifactId>
-			<version>1.1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.15.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>io.mosip.testrig.uitestrig</groupId>
+			<artifactId>uitest-commons</artifactId>
+			<version>${uitest.commons.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jknack</groupId>
-			<artifactId>handlebars</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.mifmif</groupId>
-			<artifactId>generex</artifactId>
-			<version>1.0.2</version>
-		</dependency>
 	</dependencies>
+
 	<build>
-		<pluginManagement>
-			<plugins></plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -231,36 +148,6 @@
 								<arg>--pinentry-mode</arg>
 								<arg>loopback</arg>
 							</gpgArguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.version}</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-					<argLine>-Dfile.encoding=UTF-8</argLine>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>make-jar-executable</id>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<!-- Create a shell script to run the JAR file with executable permission -->
-								<chmod file="${project.build.directory}/*.jar" perm="ugo+rx" />
-							</target>
 						</configuration>
 					</execution>
 				</executions>
@@ -286,42 +173,55 @@
 				</executions>
 				<configuration>
 					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+					<!-- The Dockerfile's `mvn test-compile` build context only copies pom.xml/src/
+					     entrypoint.sh, not .git — skip quietly there instead of failing the build. -->
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.4</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<finalName>${fileName}</finalName>
-							<transformers>
-								<!-- need this to merge the services files properly -->
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-								<!-- add Main-Class to manifest file -->
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>io.mosip.testrig.adminui.utility.TestRunner</mainClass>
-								</transformer>
-							</transformers>
-							<!-- add this to prevent some security issues when merging everything together -->
-							<filters>
-								<filter>
-									<artifact>*:*</artifact>
-									<excludes>
-										<exclude>META-INF/*.SF</exclude>
-										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
-							</filters>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- JUnit5 platform runner for Cucumber BDD tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+				<configuration>
+					<includes>
+						<include>**/AdminTestRunner.java</include>
+					</includes>
+					<argLine>-Dfile.encoding=UTF-8</argLine>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<!-- GitHub Actions' generic build-and-package CI job runs `mvn package`, which includes
+		     the test phase. This suite's "tests" are live Playwright scenarios against a real
+		     MOSIP environment, driven by adminui.properties — a file that is intentionally
+		     committed with blank secrets. That CI job has no real config, so running the suite
+		     there always fails, unrelated to code correctness. GitHub Actions sets env.CI=true
+		     on its runners, so this profile activates there and skips test execution; local and
+		     Docker runs (which supply real config via `mvn test`) are unaffected. -->
+		<profile>
+			<id>skip-tests-in-ci</id>
+			<activation>
+				<property>
+					<name>env.CI</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<properties>
+				<skipTests>true</skipTests>
+			</properties>
+		</profile>
+	</profiles>
 </project>

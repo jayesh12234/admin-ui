@@ -1,0 +1,6 @@
+# Known Issues — Admin Portal UI Automation
+# Format:  bugId------Scenario name exactly as written in the feature file
+# Comments begin with #.  Empty lines are ignored.
+#
+# Example:
+#   MOSIP-2724------Device type CRUD

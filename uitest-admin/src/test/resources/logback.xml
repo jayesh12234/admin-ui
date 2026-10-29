@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="LOG_PATTERN" value="%-7p %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{3}  - %m%n" />
+	<property name="APP_LOG_ROOT" value="logs"/>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="applicationLogAutomation" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${APP_LOG_ROOT}/AutomationLogs.log</file>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${APP_LOG_ROOT}/AutomationLogs-%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<logger name="io.mosip.testrig.adminui" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="applicationLogAutomation" />
+	</logger>
+
+	<logger name="io.mosip.testrig.uitestrig" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="applicationLogAutomation" />
+	</logger>
+
+	<!-- Root: suppress noisy third-party libs, show WARN+ on console -->
+	<root level="WARN">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>

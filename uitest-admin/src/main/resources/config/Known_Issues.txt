@@ -1,3 +1,0 @@
-#Add the Known Issue Testcase with its bug id here
-#Ex:bugId------testcaseName
-#Ex:MOSIP-2724------deviceTypesCRUD
