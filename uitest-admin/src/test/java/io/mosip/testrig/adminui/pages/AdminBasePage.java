@@ -4,6 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.PlaywrightException;
 import com.microsoft.playwright.options.WaitForSelectorState;
+import io.mosip.testrig.adminui.report.ScenarioRecorder;
 import io.mosip.testrig.uitestrig.browser.SmartWait;
 import io.mosip.testrig.uitestrig.pages.BasePage;
 import io.mosip.testrig.uitestrig.reporting.UiExtentReportManager;
@@ -45,6 +46,7 @@ public abstract class AdminBasePage extends BasePage {
 
     protected void step(String description, String selector, Runnable action) {
         UiExtentReportManager.logStepWithLocator(description, selector);
+        ScenarioRecorder.captureAction(page, selector, description);
         try {
             action.run();
         } catch (RuntimeException | AssertionError e) {

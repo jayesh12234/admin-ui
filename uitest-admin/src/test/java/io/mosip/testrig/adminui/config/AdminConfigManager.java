@@ -1,5 +1,6 @@
 package io.mosip.testrig.adminui.config;
 
+import io.mosip.testrig.adminui.report.ScenarioRecorder;
 import io.mosip.testrig.apirig.testrunner.BaseTestCase;
 import io.mosip.testrig.apirig.utils.ConfigManager;
 import io.mosip.testrig.uitestrig.core.UiConfigManager;
@@ -138,6 +139,18 @@ public class AdminConfigManager extends UiConfigManager {
 
     public static boolean isCleanupMasterData() {
         return !"no".equalsIgnoreCase(getproperty("cleanupMasterData").trim());
+    }
+
+    public static ScenarioRecorder.VideoMode getVideoMode() {
+        return ScenarioRecorder.VideoMode.parse(getproperty("recordVideo"));
+    }
+
+    public static boolean isActionScreenshots() {
+        return !"no".equalsIgnoreCase(getproperty("screenshotEveryAction").trim());
+    }
+
+    public static boolean isTraceOnFailure() {
+        return !"no".equalsIgnoreCase(getproperty("traceOnFailure").trim());
     }
 
     public static int getBulkUploadStatusWaitSeconds() {

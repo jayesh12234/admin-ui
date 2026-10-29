@@ -7,6 +7,8 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.BeforeStep;
 import io.cucumber.java.Scenario;
 import io.mosip.testrig.adminui.config.AdminConfigManager;
+import io.mosip.testrig.adminui.report.ScenarioRecorder;
+import io.mosip.testrig.uitestrig.browser.PlaywrightFactory;
 import io.mosip.testrig.uitestrig.core.MosipTestDataManager;
 import io.mosip.testrig.uitestrig.listeners.CucumberHooks;
 import io.mosip.testrig.uitestrig.reporting.KnownIssueManager;
@@ -36,10 +38,13 @@ public class AdminHooks {
     public void scenarioSetup(Scenario scenario) {
         // Must open before CucumberHooks.setupScenario so its initPage() picks this session up;
         // skipped for filtered-out/known-issue scenarios, which teardown never closes.
-        if (AdminConfigManager.isLocalPortal() && willRun(scenario)) {
-            AdminLocalSession.open();
+        ScenarioRecorder recorder = null;
+        if (willRun(scenario)) {
+            recorder = ScenarioRecorder.start(scenario);
+            AdminBrowserSession.open(recorder);
         }
         CucumberHooks.setupScenario(scenario);
+        if (recorder != null) recorder.attachTest();
     }
 
     @BeforeStep
@@ -49,7 +54,18 @@ public class AdminHooks {
 
     @After
     public void scenarioTeardown(Scenario scenario) {
+        ScenarioRecorder recorder = ScenarioRecorder.current();
+        if (recorder == null) {
+            CucumberHooks.teardownScenario(scenario);
+            return;
+        }
+        try {
+            recorder.beforeTeardown(scenario, PlaywrightFactory.getPage().context());
+        } catch (RuntimeException e) {
+            logger.warn("Could not finish the scenario recording: {}", e.getMessage());
+        }
         CucumberHooks.teardownScenario(scenario);
+        recorder.afterTeardown(scenario);
     }
 
     @AfterAll

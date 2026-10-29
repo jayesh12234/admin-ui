@@ -125,10 +125,25 @@ scenarios are skipped and reported with a link to the bug.
 ## Reports
 
 Each run writes an Extent HTML report to `reportOutputDir` (default `test-output/`), named
-`admin-ui-<env>-<date>-<time>-T-<total>-P-<passed>-F-<failed>-S-<skipped>-KI-<known>.html`,
-with every action and its locator, a screenshot at every failing step, and the portal's own
-result message after each create/update/status change. Optionally pushed to S3/MinIO when
-`push-reports-to-s3=yes`.
+`admin-ui-<env>-<date>-<time>-T-<total>-P-<passed>-F-<failed>-S-<skipped>-KI-<known>.html`.
+Open the newest one in a browser. Per scenario it shows:
+
+- each Gherkin step's text (with its data table) and every action under it, with locators;
+- a screenshot before every element interaction, the element outlined in red
+  (`screenshotEveryAction=yes|no`);
+- an embedded screen recording (`recordVideo=always|onFailure|off`);
+- for failed scenarios, a screenshot at the failing action and a Playwright trace — drag
+  `trace.zip` into [trace.playwright.dev](https://trace.playwright.dev) (runs locally in the
+  browser) to replay every action with DOM snapshots, network calls and console output
+  (`traceOnFailure=yes|no`);
+- the portal's own message after each create/update/activate/deactivate/decommission;
+- API errors (HTTP ≥ 400, and MOSIP responses with an `errors` array such as `KER-MSD-…`) and
+  browser console errors seen after sign-in.
+
+Screenshots, videos and traces are files under `test-output/artifacts/<run>/<scenario>/`, linked
+relatively from the HTML — keep that folder next to the report when sharing it. A full run with
+everything on produces roughly 90 MB of artifacts and takes about 25% longer; `recordVideo=onFailure`
+and `screenshotEveryAction=no` keep CI runs lean. `push-reports-to-s3=yes` uploads only the HTML.
 
 ## License
 This project is licensed under the terms of [Mozilla Public License 2.0](../LICENSE).
