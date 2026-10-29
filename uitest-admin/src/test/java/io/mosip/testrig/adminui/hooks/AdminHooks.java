@@ -7,6 +7,7 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.BeforeStep;
 import io.cucumber.java.Scenario;
 import io.mosip.testrig.adminui.config.AdminConfigManager;
+import io.mosip.testrig.adminui.report.ReportBundler;
 import io.mosip.testrig.adminui.report.ScenarioRecorder;
 import io.mosip.testrig.uitestrig.browser.PlaywrightFactory;
 import io.mosip.testrig.uitestrig.core.MosipTestDataManager;
@@ -74,6 +75,7 @@ public class AdminHooks {
             AdminDbCleanup.run();
         } finally {
             CucumberHooks.teardownSuite();
+            ReportBundler.bundle();
         }
     }
 

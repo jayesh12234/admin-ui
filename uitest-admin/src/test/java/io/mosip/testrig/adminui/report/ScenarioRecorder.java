@@ -40,7 +40,7 @@ import java.util.stream.Stream;
 public final class ScenarioRecorder {
 
     private static final Logger logger = LoggerFactory.getLogger(ScenarioRecorder.class);
-    private static final String RUN_ID = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+    static final String RUN_ID = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
     private static final int MAX_ISSUES = 50;
     private static final int MAX_TEXT = 300;
     private static final String HIGHLIGHT_ON =
@@ -294,7 +294,7 @@ public final class ScenarioRecorder {
         return reportDir().relativize(file.toAbsolutePath()).toString().replace('\\', '/');
     }
 
-    private static Path reportDir() {
+    static Path reportDir() {
         String dir = AdminConfigManager.getproperty("reportOutputDir");
         return Paths.get(dir == null || dir.isBlank() ? "target/extent-reports/" : dir).toAbsolutePath().normalize();
     }

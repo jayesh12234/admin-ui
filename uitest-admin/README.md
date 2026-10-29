@@ -140,10 +140,14 @@ Open the newest one in a browser. Per scenario it shows:
 - API errors (HTTP ≥ 400, and MOSIP responses with an `errors` array such as `KER-MSD-…`) and
   browser console errors seen after sign-in.
 
-Screenshots, videos and traces are files under `test-output/artifacts/<run>/<scenario>/`, linked
-relatively from the HTML — keep that folder next to the report when sharing it. A full run with
-everything on produces roughly 90 MB of artifacts and takes about 25% longer; `recordVideo=onFailure`
-and `screenshotEveryAction=no` keep CI runs lean. `push-reports-to-s3=yes` uploads only the HTML.
+Screenshots, videos and traces are files under `test-output/artifacts/<run>/<scenario>/` that the
+HTML links to, so the HTML alone shows broken images when shared. **Share the zip instead:** each
+run also writes `<report-name>.zip` next to the HTML (`zipReport=yes|no`), containing the report
+and that run's evidence in the same layout — unzip it and open the HTML. With
+`push-reports-to-s3=yes` the zip is uploaded alongside the HTML.
+
+A full run with everything on produces roughly 90 MB of evidence and takes about 25% longer;
+`recordVideo=onFailure` and `screenshotEveryAction=no` keep CI runs lean.
 
 ## License
 This project is licensed under the terms of [Mozilla Public License 2.0](../LICENSE).
